@@ -1,6 +1,6 @@
 # Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how do factors like location and business features affect these ratings?
 
-![image]https://miro.medium.com/v2/resize:fit:1012/1*6mGFJh8XrCqOlBRRvf2Deg.png)
+![image](https://miro.medium.com/v2/resize:fit:1012/1*6mGFJh8XrCqOlBRRvf2Deg.png)
 
 ## Introduction
 Since its launch in 2004, Yelp, as one of the largest online review platforms, has played a crucial role in shaping the reputations of businesses, particularly in the food industry. While there is an abundance of research analyzing Yelp reviews (*Agarwal, Pelullo, & Merchant 2019; Arthur, Etzioni, & Schwartz, 2019*), most studies focus on general patterns of consumer behavior (*Fogel, J. and Zachariah, S., 2017*), sentiment analysis (*Guerreiro & Rita, 2020*), or the detection of fake reviews (*Lee, Ham, Yang, & Koo, 2018*). What these studies largely overlook, however, is the significant role that influential users—those with elite status, numerous followers, or high review counts—play in shaping business ratings (*Pranata, I. and Susilo, W., 2016*). These users wield disproportionate influence on the platform, and their ratings are often perceived as more credible and trustworthy than those of regular users (*Tucker, T., 2011*).
