@@ -38,6 +38,16 @@ This study aims to address this gap by asking: **Do influential Yelp users give 
 ### Conceptual model
 ## Research Method and Results 
 ### Data Source
+From the Yelp database the business, user, and review data files are downloaded to answer the research question. 
+- Yelp Database (https://www.yelp.com/dataset/download)
+
+Since the file is in .tar format, we need to extract it into separate JSON files by using R. The next step is to convert the JSON files into CSV format using Python code.  You can find the R & Python code here:
+- Extracting JSON files:
+- Converting CSV files: 
+
+Finally, run the script from your terminal with the following command and replace *yelp_academic_dataset.json* with the path to the JSON file you wish to convert. The script will generate a CSV file with the same name as your input JSON file, located in the same directory.
+
+*python json_to_csv_converter.py yelp_academic_dataset.json*
 
 ### Research Method
 To explore these relationships, **regression analysis** will be employed as the primary research method. This method is well-suited for controlling multiple factors such as restaurant location, business attributes (e.g., parking, takeout options), and user metrics (e.g., yelping_since, fans, elite status). By using regression, we can isolate the effect of user influence on ratings and better understand the causal relationships at play. The analysis will focus on key variables like user profiles (including elite status, review count, and average stars), and business characteristics from the Yelp dataset. This approach will help to provide a clearer picture of how influential users impact the ratings of take-out restaurants compared to non-influential users.
