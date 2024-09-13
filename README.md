@@ -42,8 +42,8 @@ From the Yelp database the business, user, and review data files are downloaded 
 - Yelp Database (https://www.yelp.com/dataset/download)
 
 Since the file is in .tar format, we need to extract it into separate JSON files by using R. The next step is to convert the JSON files into CSV format using Python code.  You can find the R & Python code here:
-- Extracting JSON files:
-- Converting CSV files: 
+- Extracting JSON files: https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/tar_format_to_json_converter.R
+- Converting CSV files: https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/json_to_csv_converter.py
 
 Finally, run the script from your terminal with the following command and replace *yelp_academic_dataset.json* with the path to the JSON file you wish to convert. The script will generate a CSV file with the same name as your input JSON file, located in the same directory.
 
