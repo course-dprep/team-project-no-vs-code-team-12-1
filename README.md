@@ -90,3 +90,4 @@ This repository was created for the Data Preparation and Workflow Management cou
 - Nakayama, M. and Wan, Y., 2019. The cultural impact on social commerce: A sentiment analysis on Yelp ethnic restaurant reviews. Information & Management, 56(2), pp.271-279.
 - Pranata, I. and Susilo, W., 2016. Are the most popular users always trustworthy? The case of Yelp. Electronic Commerce Research and Applications, 20, pp.30-41.
 - Tucker, T., 2011. Online word of mouth: characteristics of Yelp. com reviews. Elon Journal of Undergraduate Research in Communications, 2(1), pp.37-42.
+- https://www.yelp.com/dataset/documentation/main
