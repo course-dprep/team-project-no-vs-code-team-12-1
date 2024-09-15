@@ -13,9 +13,9 @@ Additionally, the accessibility and usefulness of the output from this study sig
 ### Research Question
 This study aims to address this gap in the dynamics of online reviews, especially from influential Yelp users, by asking: **Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how do factors like location and business features affect these ratings?** This research is critical for several reasons. First, understanding the behavior of influential users could help businesses better manage their online reputations, particularly in a niche market like take-out dining. Second, the relationship between user influence, business attributes (such as parking availability or hours of operation), and location can provide key insights into consumer decision-making. For businesses operating in highly competitive environments, especially those without an established offline presence, this research could offer practical strategies for improving ratings and attracting new customers.
 
-### Variable types
+### Variable Types
 
-| Variable      | Description                                                         | Data class | Dataset           |
+| Variable      | Description                                                         | Data Class | Dataset           |
 |---------------|:-------------------------------------------------------------------:|-----------:|-------------------|
 | business_id   | A unique character string for each individual business              | numeric    | business dataset  |
 | name          | The business name                                                   | character  | business dataset  |
@@ -35,7 +35,7 @@ This study aims to address this gap in the dynamics of online reviews, especiall
 | review_id     | Unique review id                                                    | numeric    | review dataset    |
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
-### Conceptual model
+### Conceptual Model
 ## Research Method and Results 
 ### Data Source
 From the Yelp database the business, user, and review data files are downloaded to answer the research question. 
@@ -57,7 +57,7 @@ To explore these relationships, **regression analysis** will be employed as the 
 ### Result  
 
 
-## Relevance of analysis / Future applications
+## Relevance of Analysis / Future Applications
 
 
 ## Repository Overview
