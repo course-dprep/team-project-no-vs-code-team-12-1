@@ -27,7 +27,6 @@ This study aims to address this gap in the dynamics of online reviews, especiall
 | attributes    | Business attributes to values                                       | character  | business dataset  |
 | user_id       | An unique character string as user id                               | numeric    | user dataset      |
 | review_count  | The number of reviews                                               | numeric    | user dataset      |
-| yelping_since | Date when user joined Yelp                                          | numeric    | user dataset      |
 | fans          | The number of fans the user has                                     | numeric    | user dataset      |
 | elite         | The years the user was 'elite'                                      | numeric    | user dataset      |
 | user_id       | An unique character string as user id                               | numeric    | review dataset    |
