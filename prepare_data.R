@@ -1,14 +1,34 @@
 ### Libraries ###
 library(tidyverse)
 library(here)
+library(googledrive)
 
 ### Input ### 
 
-# Loading in data files
-business_data <- read_csv(here("Data", "yelp_academic_dataset_business.csv"))
-user_data <- read_csv(here("Data", "yelp_academic_dataset_user.csv"))
-review_data <- read_csv(here("Data", "yelp_academic_dataset_review.csv"))
+# File URL with direct download
+business_dataset <- 'https://drive.google.com/uc?export=download&id=12o5mGJV8ck_Kqi_x23WF1HbsNGIP70ru'
+user_dataset <- 'https://drive.google.com/uc?export=download&id=1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
+review_dataset <- 'https://drive.google.com/uc?export=download&id=1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
 
+# Temporary file to save the download
+temp_business <- tempfile(fileext = ".csv")
+temp_user <- tempfile(fileext = ".csv")
+temp_review <- tempfile(fileext = ".csv")
+
+# Download the files
+download.file(business_dataset, destfile = temp_business, mode = "wb")
+download.file(user_dataset, destfile = temp_user, mode = "wb")
+download.file(review_dataset, destfile = temp_review, mode = "wb")
+
+# Load the CSV files into variables
+business_data <- read_csv(temp_business)
+user_data <- read_csv(temp_user)
+review_data <- read_csv(temp_review)
+
+# View the first few rows
+head(business_data)
+head(user_data)
+head(review_data)
 
 ### Transforming ###
 
