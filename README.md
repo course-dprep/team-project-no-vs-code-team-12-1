@@ -51,7 +51,7 @@ python json_to_csv_converter.py yelp_academic_dataset.json
 ```
 
 To streamline the process, we've provided an R script that automatically downloads all the necessary data sets for this study. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the googledrive and tidyverse packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
-- **Link R script:**  
+- **Link R script:** https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/download_files_automatically.R
 
 ### Research Method
 To explore these relationships, **regression analysis** will be employed as the primary research method. This method is well-suited for controlling multiple factors such as restaurant location, business attributes (e.g., parking, takeout options), and user metrics (e.g., yelping_since, fans, elite status). By using regression, we can isolate the effect of user influence on ratings and better understand the causal relationships at play. The analysis will focus on key variables like user profiles (including elite status, review count, and average stars), and business characteristics from the Yelp dataset. This approach will help to provide a clearer picture of how influential users impact the ratings of take-out restaurants compared to non-influential users.
