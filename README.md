@@ -50,6 +50,9 @@ Finally, run the script from your terminal with the following command and replac
 python json_to_csv_converter.py yelp_academic_dataset.json
 ```
 
+To streamline the process, we've provided an R script that automatically downloads all the necessary data sets for this study. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the googledrive and tidyverse packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
+- **Link R script:**  
+
 ### Research Method
 To explore these relationships, **regression analysis** will be employed as the primary research method. This method is well-suited for controlling multiple factors such as restaurant location, business attributes (e.g., parking, takeout options), and user metrics (e.g., yelping_since, fans, elite status). By using regression, we can isolate the effect of user influence on ratings and better understand the causal relationships at play. The analysis will focus on key variables like user profiles (including elite status, review count, and average stars), and business characteristics from the Yelp dataset. This approach will help to provide a clearer picture of how influential users impact the ratings of take-out restaurants compared to non-influential users.
 
@@ -79,13 +82,13 @@ This repository was created for the Data Preparation and Workflow Management cou
 ## Research Reference
 - Agarwal, A.K., Pelullo, A.P. and Merchant, R.M., 2019. “Told”: the word most correlated to negative online hospital reviews. Journal of General Internal Medicine, 34, pp.1079-1080.
 - Anderson, M. and Magruder, J., 2012. Learning from the crowd: Regression discontinuity estimates of the effects of an online review database. The Economic Journal, 122(563), pp.957-989.
-- Arthur, J.R., Etzioni, D. and Schwartz, A.J., 2019. Characterizing extremely negative reviews of total joint arthroplasty practices and surgeons on yelp. com. Arthroplasty Today, 5(2), pp.216-220.
+- Arthur, J.R., Etzioni, D. and Schwartz, A.J., 2019. Characterizing extremely negative reviews of total joint arthroplasty practices and surgeons on Yelp. com. Arthroplasty Today, 5(2), pp.216-220.
 - Baek, S., Suk, Y., Lee, H. and Ham, S., 2022. The influence of customer perception about food safety on the use of restaurant food delivery or takeout. Journal of the Korean Dietetic Association, 28(3), pp.182-194.
-- Fogel, J. and Zachariah, S., 2017. Intentions to use the yelp review website and purchase behavior after reading reviews. Journal of theoretical and applied electronic commerce research, 12(1), pp.53-67.
+- Fogel, J. and Zachariah, S., 2017. Intentions to use the Yelp review website and purchase behavior after reading reviews. Journal of Theoretical and applied electronic commerce research, 12(1), pp.53-67.
 - Guerreiro, J. and Rita, P., 2020. How to predict explicit recommendations in online reviews using text mining and sentiment analysis. Journal of Hospitality and Tourism Management, 43, pp.269-272.
-- Jeffery, R.W., Baxter, J., McGuire, M. and Linde, J., 2006. Are fast food restaurants an environmental risk factor for obesity?. International Journal of Behavioral Nutrition and Physical Activity, 3, pp.1-6.
+- Jeffery, R.W., Baxter, J., McGuire, M. and Linde, J., 2006. Are fast food restaurants an environmental risk factor for obesity? International Journal of Behavioral Nutrition and Physical Activity, 3, pp.1-6.
 - Jiménez, F.R. and Mendoza, N.A., 2013. Too popular to ignore: The influence of online reviews on purchase intentions of search and experience products. Journal of interactive marketing, 27(3), pp.226-235.
-- Lee, K., Ham, J., Yang, S.B. and Koo, C., 2018. Can you identify fake or authentic reviews? An fsQCA approach. In Information and Communication Technologies in Tourism 2018: Proceedings of the International Conference in Jönköping, Sweden, January 24-26, 2018 (pp. 214-227). Springer International Publishing.
+- Lee, K., Ham, J., Yang, S.B. and Koo, C., 2018. Can you identify fake or authentic reviews? A fsQCA approach. In Information and Communication Technologies in Tourism 2018: Proceedings of the International Conference in Jönköping, Sweden, January 24-26, 2018 (pp. 214-227). Springer International Publishing.
 - Luca, M., 2016. Reviews, reputation, and revenue: The case of Yelp. com. Com (March 15, 2016). Harvard Business School NOM Unit Working Paper, (12-016).
 - Nakayama, M. and Wan, Y., 2019. The cultural impact on social commerce: A sentiment analysis on Yelp ethnic restaurant reviews. Information & Management, 56(2), pp.271-279.
 - Pranata, I. and Susilo, W., 2016. Are the most popular users always trustworthy? The case of Yelp. Electronic Commerce Research and Applications, 20, pp.30-41.
