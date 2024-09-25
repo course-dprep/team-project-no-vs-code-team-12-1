@@ -14,46 +14,129 @@ colnames(sample_data)
 
 # Change column names
 sample_data <- sample_data %>% 
-  rename(stars_user = stars.x,
-         stars_business = stars.y,
-         review_count_user = review_count.x,
-         review_count_business = review_count.y,
-         username = name)
-
+  rename(
+    stars_user = stars.x,
+    stars_business = stars.y,
+    review_count_user = review_count.x,
+    review_count_business = review_count.y,
+    username = name
+  )
 
 # Check changes
 colnames(sample_data)
 
-# Check for NA's in the data
-variable_na <- sample_data %>%
-  summarise(across(everything(), ~ sum(is.na(.)))) %>%
-  pivot_longer(cols = everything(), 
-               names_to = "variable", values_to = "na_count")
-
-View(variable_na)
-
 # Check elite variable
 unique(sample_data$elite)
 
-# Split the years in the elite variable
+# Change user to elite users indicated by 1 and non-elite users indicated by 0
+sample_data <- sample_data %>%
+  mutate(elite_user = if_else(is.na(elite), 0, 1))
 
-###### !!! Needs to be added !!! ########
+# Check elite_user variable
+sample_data$elite_user
 
-# check attributes variable
+# Create new division variable
+
+# Step 1: Define the state_divisions vector
+state_divisions <- c(
+  # New England
+  'CT' = 'New England',
+  'ME' = 'New England',
+  'MA' = 'New England',
+  'NH' = 'New England',
+  'RI' = 'New England',
+  'VT' = 'New England',
+  
+  # Middle Atlantic
+  'NJ' = 'Middle Atlantic',
+  'NY' = 'Middle Atlantic',
+  'PA' = 'Middle Atlantic',
+  
+  # East North Central
+  'IL' = 'East North Central',
+  'IN' = 'East North Central',
+  'MI' = 'East North Central',
+  'OH' = 'East North Central',
+  'WI' = 'East North Central',
+  
+  # West North Central
+  'IA' = 'West North Central',
+  'KS' = 'West North Central',
+  'MN' = 'West North Central',
+  'MO' = 'West North Central',
+  'NE' = 'West North Central',
+  'ND' = 'West North Central',
+  'SD' = 'West North Central',
+  
+  # South Atlantic
+  'DE' = 'South Atlantic',
+  'DC' = 'South Atlantic',
+  'FL' = 'South Atlantic',
+  'GA' = 'South Atlantic',
+  'MD' = 'South Atlantic',
+  'NC' = 'South Atlantic',
+  'SC' = 'South Atlantic',
+  'VA' = 'South Atlantic',
+  'WV' = 'South Atlantic',
+  
+  # East South Central
+  'AB' = 'East South Central',
+  'KY' = 'East South Central',
+  'MS' = 'East South Central',
+  'TN' = 'East South Central',
+  
+  # West South Central
+  'AR' = 'West South Central',
+  'LA' = 'West South Central',
+  'OK' = 'West South Central',
+  'TX' = 'West South Central',
+  
+  # Mountain
+  'AZ' = 'Mountain',
+  'CO' = 'Mountain',
+  'ID' = 'Mountain',
+  'MT' = 'Mountain',
+  'NV' = 'Mountain',
+  'NM' = 'Mountain',
+  'UT' = 'Mountain',
+  'WY' = 'Mountain',
+  
+  # Pacific
+  'AK' = 'Pacific',
+  'CA' = 'Pacific',
+  'HI' = 'Pacific',
+  'OR' = 'Pacific',
+  'WA' = 'Pacific'
+)
+
+# Step 2: Map the states to divisions
+sample_data <- sample_data %>%
+  mutate(division = state_divisions[state])
+
+# Check division variable
+unique(sample_data$division)
+
+# Check for NA's in the data
+variable_na <- sample_data %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%
+  pivot_longer(
+    cols = everything(), 
+    names_to = "variable", 
+    values_to = "na_count"
+  )
+
+View(variable_na)
+
+# Check attributes variable
 unique(sample_data$attributes)
 
 # Remove NA's in attributes data
 sample_data <- sample_data %>% 
   filter(!is.na(attributes))
 
-# Create variable that shows if a review is a "elite review"
-
-###### !!! Needs to be added !!! ########
-
 # Select only the take-out restaurants
 takeout_data <- sample_data %>%
   filter(str_detect(attributes, "'RestaurantsTakeOut'\\s*:\\s*'True'"))
 
-
 ### Output ###
-#write_csv(takeout_data, here("data", "takeout_data.csv"))
+write_csv(takeout_data, here("Data", "takeout_data.csv"))
