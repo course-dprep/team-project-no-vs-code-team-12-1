@@ -11,9 +11,9 @@ editor: visual
 
 ## 1.1 Research Motivation
 
-Since its launch in 2004, Yelp, as one of the largest online review platforms, plays a crucial role in shaping the reputations of businesses, particularly in the food industry. While there is an abundance of research analyzing Yelp reviews (*Agarwal, Pelullo, & Merchant 2019; Arthur, Etzioni, & Schwartz, 2019*), most studies focus on general patterns of consumer behavior (*Fogel, J. and Zachariah, S., 2017*), sentiment analysis (*Guerreiro & Rita, 2020*), or the detection of fake reviews (*Lee, Ham, Yang, & Koo, 2018*). What these studies largely overlook, however, is the significant role that influential users—those with elite status, numerous followers, or high review counts—play in shaping business ratings (*Pranata, I. and Susilo, W., 2016*). These users wield disproportionate influence on the platform, and their ratings are often perceived as more credible and trustworthy than those of regular users (*Tucker, T., 2011*). In competitive sectors like the food industry, where reputation can make or break a business, understanding the impact of these influential users is essential, as evidenced in study conducted by *Nakayama and Wan (2018)* about one-third of customers rely on online reviews when choosing a restaurant and over half of 18-to-34-year-old factor reviews into their dining decisions.
+Since its launch in 2004, Yelp, as one of the largest online review platforms, has played a crucial role in shaping the reputations of businesses, particularly in the food industry. While there is an abundance of research analyzing Yelp reviews (*Agarwal, Pelullo, & Merchant 2019; Arthur, Etzioni, & Schwartz, 2019*), most studies focus on general patterns of consumer behavior (*Fogel, J. and Zachariah, S., 2017*), sentiment analysis (*Guerreiro & Rita, 2020*), or the detection of fake reviews (*Lee, Ham, Yang, & Koo, 2018*). What these studies largely overlook, however, is the significant role that influential users—those with elite status, numerous followers, or high review counts—play in shaping business ratings (*Pranata, I. and Susilo, W., 2016*). These users wield disproportionate influence on the platform, and their ratings are often perceived as more credible and trustworthy than those of regular users (*Tucker, T., 2011*). In competitive sectors like the food industry, where reputation can make or break a business, understanding the impact of these influential users is essential, as evidenced in a study conducted by *Nakayama and Wan (2018)* about one-third of customers rely on online reviews when choosing a restaurant and over half of 18-to-34-year-old factor reviews into their dining decisions.
 
-Moreover, while the food industry on Yelp has been extensively studied (*Anderson and Magruder, 2012*) because of its tremendous impacts on business outcomes (*Luca, 2011*), the take-out restaurant niche has received minimal attention. The majority of existing studies on take-out restaurants emphasize negative aspects such as health risks, obesity, and food safety concerns (*Jeffery et al., 2006; Baek et al., 2022*). These studies tend to focus on the health implications of frequent take-out consumption, but fail to address the consumer dynamics on platforms like Yelp, where reviews have the power to influence public perception and business success. This gap in the literature calls for a deeper investigation into how influential users interact with take-out restaurants, especially as take-out has become increasingly important in the post-pandemic dining landscape.
+Moreover, while the food industry on Yelp has been extensively studied (*Anderson and Magruder, 2012*) because of its tremendous impacts on business outcomes (*Luca, 2011*), the take-out restaurant niche has received minimal attention. The majority of existing studies on take-out restaurants emphasize negative aspects such as health risks, obesity, and food safety concerns (*Jeffery et al., 2006; Baek et al., 2022*). These studies tend to focus on the health implications of frequent take-out consumption but fail to address the consumer dynamics on platforms like Yelp, where reviews have the power to influence public perception and business success. This gap in the literature calls for a deeper investigation into how influential users interact with take-out restaurants, especially as take-out has become increasingly important in the post-pandemic dining landscape.
 
 This study aims to address this gap by asking: **Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how do factors like location and business features affect these ratings?** This research is critical for several reasons. First, understanding the behavior of influential users could help businesses better manage their online reputations, particularly in a niche market like take-out dining. Second, the relationship between user influence, business attributes (such as parking availability or hours of operation), and location can provide key insights into consumer decision-making. For businesses operating in highly competitive environments, especially those without an established offline presence, this research could offer practical strategies for improving ratings and attracting new customers.
 
@@ -171,41 +171,8 @@ python json_to_csv_converter.py yelp_academic_dataset.json
 
 To streamline the process, we've provided an ***R script that automatically downloads all the necessary data sets for this study***. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
 
-Particularly, the **googledrive** package enables direct interaction with Google Drive, allowing for seamless downloading of files, while **tidyverse** provides essential tools for data manipulation and analysis. By automating the download process, this approach saves time and minimizes manual errors during setup, allowing you to focus on the analysis.
+Particularly, the **googledrive** package enables direct interaction with Google Drive, allowing for seamless downloading of files, while **tidyverse** provides essential tools for data manipulation and analysis. Automating the download process saves time and minimizes manual errors during setup, allowing you to focus on the analysis.
 
-```{r}
-### Libraries ###
-library(tidyverse)
-library(here)
-library(googledrive)
-
-### Input ### 
-
-# File ID from Google Drive URLs
-business_file_id <- '12o5mGJV8ck_Kqi_x23WF1HbsNGIP70ru'
-user_file_id <- '1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
-review_file_id <- '1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
-
-# Paths to save the files in the working directory
-business_file <- "business_data.csv"
-user_file <- "user_data.csv"
-review_file <- "review_data.csv"
-
-# Download files using googledrive package
-drive_download(as_id(business_file_id), path = business_file, overwrite = TRUE)
-drive_download(as_id(user_file_id), path = user_file, overwrite = TRUE)
-drive_download(as_id(review_file_id), path = review_file, overwrite = TRUE)
-
-# Load the CSV files into variables
-business_data <- read_csv(business_file)
-user_data <- read_csv(user_file)
-review_data <- read_csv(review_file)
-
-# View the first few rows
-head(business_data)
-head(user_data)
-head(review_data)
-```
 ------------------------------------------------------------------------
 
 ### 2.1.4 Inspect Yelp Data
@@ -224,7 +191,7 @@ The business data set consists of the following variables:
 |---------------|------------------------------------------|---------------|
 | business_id  | *A unique character string for each business*                       | Character      |
 | name         | *The business name*                                                 | Character      |
-| adress       | *The full address of the business*                                  | Character      |
+| address      | *The full address of the business*                                  | Character      |
 | city         | *The city name where the business is located*                       | Character      |
 | state        | *The state name where the business is located*                      | Character      |
 | postal_code  | *The postal code of the business*                                   | Character      |
@@ -235,7 +202,7 @@ The business data set consists of the following variables:
 | is_open      | *Variable that shows with 0 or 1 if the business is closed or open* | Numeric        |
 | attributes   | *Business attributes to values*                                     | Character      |
 | categories   | *An array of different business categories*                         | Character      |
-| hours        | *An object of key day to value hours, hours are using a 24hr clock* | Character      |
+| hours        | *An object of key day-to-value hours, hours are using a 24-hr clock*| Character      |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
 
@@ -257,7 +224,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 
 ***User_data***
 
-The user dataset consist of the following variables:
+The user dataset consists of the following variables:
 
 | Variable           | Description                                            | Data Class |
 |---------------|------------------------------------------|---------------|
@@ -348,7 +315,7 @@ Because of the size of the Yelp data files and the time it takes to handle large
 
 **Loading libraries**
 
-The first step of preparing the data is loading in the required R libraries.
+The first step of preparing the data is loading into the required R libraries.
 
 ```{r, echo=TRUE, eval=FALSE}
 library(tidyverse) 
@@ -360,7 +327,30 @@ library(here)
 **Download data**
 
 ```{r, echo=TRUE, eval=FALSE}
-### Needs to be added ###
+### Libraries ###
+library(tidyverse)
+library(here)
+library(googledrive)
+
+### Authentication ###
+drive_auth()
+
+### Input ### 
+
+# File ID from Google Drive URLs
+business_file_id <- '12o5mGJV8ck_Kqi_x23WF1HbsNGIP70ru'
+user_file_id <- '1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
+review_file_id <- '1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
+
+# Paths to save the files in the working directory
+business_file <- "business_data.csv"
+user_file <- "user_data.csv"
+review_file <- "review_data.csv"
+
+# Download files using googledrive package
+drive_download(as_id(business_file_id), path = business_file, overwrite = TRUE)
+drive_download(as_id(user_file_id), path = user_file, overwrite = TRUE)
+drive_download(as_id(review_file_id), path = review_file, overwrite = TRUE)
 ```
 
 ------------------------------------------------------------------------
@@ -372,9 +362,14 @@ The first step is to load the different data files. To load these files, the lib
 *Currently, the original Yelp data sets are loaded. This will later be changed to from the internet downloaded data sets*
 
 ```{r, echo=TRUE, eval=FALSE}
-business_data <- read_csv(here("Data", "yelp_academic_dataset_business.csv"))
-user_data <- read_csv(here("Data", "yelp_academic_dataset_user.csv"))
-review_data <- read_csv(here("Data", "yelp_academic_dataset_review.csv"))
+business_data <- read_csv(business_file)
+user_data <- read_csv(user_file)
+review_data <- read_csv(review_file)
+
+# View the first few rows
+head(business_data)
+head(user_data)
+head(review_data)
 ```
 
 ------------------------------------------------------------------------
@@ -436,7 +431,7 @@ write_csv(merged_data, here("data", "merged_data.csv"))
 
 **Taking a sample of the merged data**
 
-Because of the large size of the merged data, with almost seven million observation, a sample of 50.000 observation is taken. This sample will be cleaned in the next phase.
+Because of the large size of the merged data, with almost seven million observations, a sample of 50.000 observations is taken. This sample will be cleaned in the next phase.
 
 To take make sure each sample that will be taken from the data set is identical, the seed is set to 90 using `set.seed()`.
 
@@ -467,7 +462,7 @@ write_csv(sample_data, "sample_data.csv")
 
 **Loading libraries**
 
-The first step of cleaning the data is loading in the required R libraries.
+The first step of cleaning the data is loading it into the required R libraries.
 
 ```{r, echo=TRUE, eval=FALSE}
 library(tidyverse)
@@ -528,6 +523,32 @@ variable_na <- sample_data %>%
 View(variable_na)
 ```
 
-The "**variable_na**" table show that "**elite**" contains 37669 NA values and that "**attributes**" contains 1331 NA values.
+The "**variable_na**" table shows that "**elite**" contains 37669 NA values and that "**attributes**" contains 1331 NA values.
 
-The
+To make it easier for analysis, we decided to encode the values in the "**elite**" column by creating a new column 'elite_label_encoder' to identify influential users. The logic is 
+  - If the 'elite' column is "NA" or an empty string, set 'elite_label_encoder' to 0 (not influential user)
+  - If the 'elite' column has a value, set 'elite_label_encoder' to 1 (influential user).
+
+```{r, echo=TRUE, eval=FALSE}
+# Check the unique values in the 'elite' column
+unique_elite_values <- unique(data$elite)
+print(unique_elite_values)
+
+# Ensure that the 'elite' column is of character type
+data$elite <- as.character(data$elite)
+
+# Create 'elite_label_encoder' column:
+# - If 'elite' is "nan", then set to 0 (non-influential user)
+# - Otherwise, set to 1 (influential user)
+
+data$elite_label_encoder <- ifelse(data$elite == "nan", 0, 1)
+
+num_non_influential <- sum(data$elite_label_encoder == 0)
+cat("Number of non-influential users (elite_label_encoder == 0):", num_non_influential, "\n")
+
+num_influential <- sum(data$elite_label_encoder == 1)
+cat("Number of non-influential users (elite_label_encoder == 1):", num_influential, "\n")
+
+# Remove the 'elite' column from the data frame
+data$elite <- NULL
+```
