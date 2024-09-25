@@ -84,17 +84,19 @@ This repository was created for the Data Preparation and Workflow Management cou
 ## Research Reference
 - Agarwal, A.K., Pelullo, A.P. and Merchant, R.M., 2019. “Told”: the word most correlated to negative online hospital reviews. Journal of General Internal Medicine, 34, pp.1079-1080.
 - Anderson, M. and Magruder, J., 2012. Learning from the crowd: Regression discontinuity estimates of the effects of an online review database. The Economic Journal, 122(563), pp.957-989.
-- Arthur, J.R., Etzioni, D. and Schwartz, A.J., 2019. Characterizing extremely negative reviews of total joint arthroplasty practices and surgeons on Yelp. com. Arthroplasty Today, 5(2), pp.216-220.
+- Arthur, J.R., Etzioni, D. and Schwartz, A.J., 2019. Characterizing extremely negative reviews of total joint arthroplasty practices and surgeons on Yelp. Arthroplasty Today, 5(2), pp.216-220.
 - Baek, S., Suk, Y., Lee, H. and Ham, S., 2022. The influence of customer perception about food safety on the use of restaurant food delivery or takeout. Journal of the Korean Dietetic Association, 28(3), pp.182-194.
-- Fogel, J. and Zachariah, S., 2017. Intentions to use the Yelp review website and purchase behavior after reading reviews. Journal of Theoretical and applied electronic commerce research, 12(1), pp.53-67.
+- Fogel, J. and Zachariah, S., 2017. Intentions to use the Yelp review website and purchase behavior after reading reviews. Journal of Theoretical and Applied Electronic Commerce Research, 12(1), pp.53-67.
 - Guerreiro, J. and Rita, P., 2020. How to predict explicit recommendations in online reviews using text mining and sentiment analysis. Journal of Hospitality and Tourism Management, 43, pp.269-272.
 - Jeffery, R.W., Baxter, J., McGuire, M. and Linde, J., 2006. Are fast food restaurants an environmental risk factor for obesity? International Journal of Behavioral Nutrition and Physical Activity, 3, pp.1-6.
-- Jiménez, F.R. and Mendoza, N.A., 2013. Too popular to ignore: The influence of online reviews on purchase intentions of search and experience products. Journal of interactive marketing, 27(3), pp.226-235.
-- Lee, K., Ham, J., Yang, S.B. and Koo, C., 2018. Can you identify fake or authentic reviews? A fsQCA approach. In Information and Communication Technologies in Tourism 2018: Proceedings of the International Conference in Jönköping, Sweden, January 24-26, 2018 (pp. 214-227). Springer International Publishing.
-- Luca, M., 2016. Reviews, reputation, and revenue: The case of Yelp. com. Com (March 15, 2016). Harvard Business School NOM Unit Working Paper, (12-016).
-- Nakayama, M. and Wan, Y., 2019. The cultural impact on social commerce: A sentiment analysis on Yelp ethnic restaurant reviews. Information & Management, 56(2), pp.271-279.
+- Jiménez, F.R. and Mendoza, N.A., 2013. Too popular to ignore: The influence of online reviews on purchase intentions of search and experience products. Journal of Interactive Marketing, 27(3), pp.226-235.
+- Lee, K., Ham, J., Yang, S.B. and Koo, C., 2018. Can you identify fake or authentic reviews? A fsQCA approach. In Information and Communication Technologies in Tourism 2018: Proceedings of the International
+- Conference in Jönköping, Sweden, January 24-26, 2018 (pp. 214-227). Springer International Publishing.
+- Luca, M., 2016. Reviews, reputation, and revenue: The case of Yelp.com. Com (March 15, 2016). Harvard Business School NOM Unit Working Paper, (12-016).
+- Nakayama, M. and Wan, Y., 2019. The cultural impact on social commerce: A sentiment analysis on Yelp ethnic restaurant reviews. Information & Management, 56(2), pp.271-279.=
 - Pranata, I. and Susilo, W., 2016. Are the most popular users always trustworthy? The case of Yelp. Electronic Commerce Research and Applications, 20, pp.30-41.
-- Tucker, T., 2011. Online word of mouth: characteristics of Yelp. com reviews. Elon Journal of Undergraduate Research in Communications, 2(1), pp.37-42.
+- Rahimi, S., Mottahedi, S. and Liu, X., 2018. The geography of taste: using Yelp to study urban culture. ISPRS International Journal of Geo-Information, 7(9), p.376.
 - Tayeen, A.S.M., Mtibaa, A., Misra, S. and Biswal, M., 2021. Impact of Locational Factors on Business Ratings/Reviews: A Yelp and TripAdvisor Study. Big Data and Social Media Analytics: Trending Applications, pp.25-49.
-- Tayeen, A.S.M., Mtibaa, A. and Misra, S., 2019, August. Location, location, location! quantifying the true impact of location on business reviews using a yelp dataset. In Proceedings of the 2019 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (pp. 1081-1088).
-- Rahimi, S., Mottahedi, S. and Liu, X., 2018. The geography of taste: using yelp to study urban culture. ISPRS International Journal of Geo-Information, 7(9), p.376.
+- Tayeen, A.S.M., Mtibaa, A. and Misra, S., 2019, August. Location, location, location! quantifying the true impact of location on business reviews using a Yelp dataset. In Proceedings of the 2019 IEEE/ACM
+- International Conference on Advances in Social Networks Analysis and Mining (pp. 1081-1088).
+- Tucker, T., 2011. Online word of mouth: characteristics of Yelp.com reviews. Elon Journal of Undergraduate Research in Communications, 2(1), pp.37-42.
