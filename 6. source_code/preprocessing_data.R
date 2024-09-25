@@ -35,6 +35,9 @@ sample_data <- sample_data %>%
 # Check elite_user variable
 sample_data$elite_user
 
+# Remove elite column
+sample_data <- sample_data %>% select(-elite)
+
 # Create new division variable
 
 # Step 1: Define the state_divisions vector
@@ -139,4 +142,4 @@ takeout_data <- sample_data %>%
   filter(str_detect(attributes, "'RestaurantsTakeOut'\\s*:\\s*'True'"))
 
 ### Output ###
-write_csv(takeout_data, here("Data", "takeout_data.csv"))
+write_csv(takeout_data, here("data", "takeout_data.csv"))
