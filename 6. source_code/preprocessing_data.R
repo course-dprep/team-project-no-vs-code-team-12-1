@@ -5,7 +5,7 @@ library(here)
 
 ### Input ###
 
-sample_data <- read_csv(here('6. source_code', 'sample_data.csv'))
+sample_data <- read_csv(here('2. temporary_data', 'sample_data.csv'))
 
 ### Transformation ###
 
@@ -30,10 +30,10 @@ unique(sample_data$elite)
 
 # Change user to elite users indicated by 1 and non-elite users indicated by 0
 sample_data <- sample_data %>%
-  mutate(elite_user = if_else(is.na(elite), 0, 1))
+  mutate(elite_review = if_else(is.na(elite), 0, 1))
 
 # Check elite_user variable
-sample_data$elite_user
+sample_data$elite_review
 
 # Remove elite column
 sample_data <- sample_data %>% select(-elite)
@@ -137,9 +137,18 @@ unique(sample_data$attributes)
 sample_data <- sample_data %>% 
   filter(!is.na(attributes))
 
+# Create a take_out variable that contains 1 for take-out restaurants and
+# 0 for non take-out restaurants
+# Select only the take-out restaurants
+sample_data <- sample_data %>%
+  mutate(take_out = ifelse(str_detect(attributes, 
+                                      "'RestaurantsTakeOut'\\s*:\\s*'True'"),
+                           1, 0))
+
+
 # Select only the take-out restaurants
 takeout_data <- sample_data %>%
-  filter(str_detect(attributes, "'RestaurantsTakeOut'\\s*:\\s*'True'"))
+  filter(take_out == 1)
 
 ### Output ###
-write_csv(takeout_data, here("data", "takeout_data.csv"))
+write_csv(takeout_data, here("3.final_data", "takeout_data.csv"))
