@@ -5,7 +5,7 @@ library(here)
 
 ### Input ###
 
-sample_data <- read_csv(here('data', 'sample_data.csv'))
+sample_data <- read_csv(here('6. source_code', 'sample_data.csv'))
 
 ### Transformation ###
 
