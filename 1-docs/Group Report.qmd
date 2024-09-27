@@ -190,7 +190,7 @@ The first step after loading the data is to take a look at the different variabl
 The business data set consists of the following variables:
 
 | Variable     | Description                                                          | **Data class** |
-|-----------------|---------------------------------------|-----------------|
+|--------------|----------------------------------------------------------------------|----------------|
 | business_id  | *A unique character string for each business*                        | Character      |
 | name         | *The business name*                                                  | Character      |
 | address      | *The full address of the business*                                   | Character      |
@@ -229,7 +229,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The user dataset consists of the following variables:
 
 | Variable           | Description                                            | Data Class |
-|-----------------|---------------------------------------|-----------------|
+|--------------------|--------------------------------------------------------|------------|
 | user_id            | *A unique character string as user identification*     | Character  |
 | name               | *The user's first name*                                | Character  |
 | review_count       | *The number of reviews written by an individual user*  | Numeric    |
@@ -270,7 +270,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The review data consists of the following variables:
 
 | Variable    | Description                                              | Data Class |
-|-----------------|--------------------------------------|-----------------|
+|-------------|----------------------------------------------------------|------------|
 | review_id   | *Unique review id*                                       | Character  |
 | user_id     | *An unique character string as user id*                  | Character  |
 | business_id | *A unique character string for each individual business* | Character  |
