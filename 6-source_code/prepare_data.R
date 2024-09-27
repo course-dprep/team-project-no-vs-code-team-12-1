@@ -36,7 +36,6 @@ set.seed(90)
 sample_data <- merged_data %>% 
   slice_sample(n = 50000)
 
-
 ### Output ###
 
 # Write csv file
