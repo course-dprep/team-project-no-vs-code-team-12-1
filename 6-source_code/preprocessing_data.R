@@ -5,7 +5,7 @@ library(here)
 
 ### Input ###
 
-sample_data <- read_csv(here('2. temporary_data', 'sample_data.csv'))
+sample_data <- read_csv(here('2-temporary_data', 'sample_data.csv'))
 
 ### Transformation ###
 
@@ -149,7 +149,7 @@ takeout_data <- sample_data %>%
 # Remove attribute column
 takeout_data <- takeout_data %>% select(-attributes)
 
-dir.create(here("3. final_data"))
+dir.create(here("3-final_data"))
 
 ### Output ###
-write_csv(takeout_data, here("3. final_data", "takeout_data.csv"))
+write_csv(takeout_data, here("3-final_data", "takeout_data.csv"))

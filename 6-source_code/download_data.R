@@ -14,9 +14,9 @@ user_file_id <- '1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
 review_file_id <- '1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
 
 # Paths to save the files in the working directory
-business_file <- here("data", "business_data.csv")
-user_file <- here("data", "user_data.csv")
-review_file <- here("data", "review_data.csv")
+business_file <- here("2-temporary_data", "business_data.csv")
+user_file <- here("2-temporary_data", "user_data.csv")
+review_file <- here("2-temporary_data", "review_data.csv")
 
 # Download files using googledrive package
 drive_download(as_id(business_file_id), path = business_file, overwrite = TRUE)
