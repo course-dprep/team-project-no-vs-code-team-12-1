@@ -65,13 +65,22 @@ To explore these relationships, **regression analysis** will be employed as the 
 
 
 ## Repository Overview
-
+This repository contains a structured process to download, prepare, and preprocess data for the analysis of take-out restaurant ratings. The workflow is automated using a Makefile, ensuring that each step in the pipeline runs in sequence. Data is first downloaded, then prepared, and finally preprocessed into a final dataset for further analysis.
 
 ## Dependencies
 
 
 ## Running instructions
+1. **Clone the Repository:**
+    git clone <repository-url>
+    cd <repository-directory>
 
+2. **Run the Workflow:** This will download the business, user, and review data (heavy files), prepare and merge these datasets, and preprocess the data to generate the final dataset 3-final_data/takeout_data.csv.
+    make
+
+3. **Clean Temporary and Final Data:**
+    make clean
+   
 
 ## Authors
 This repository was created for the Data Preparation and Workflow Management course, taught by Hannes Datta at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
