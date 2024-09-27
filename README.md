@@ -67,6 +67,13 @@ To explore these relationships, **regression analysis** will be employed as the 
 ## Repository Overview
 This repository contains a structured process to download, prepare, and preprocess data for the analysis of take-out restaurant ratings. The workflow is automated using a Makefile, ensuring that each step in the pipeline runs in sequence. Data is first downloaded, then prepared, and finally preprocessed into a final dataset for further analysis.
 
+# Project Title
+
+## Repository Overview
+This repository contains a structured workflow for downloading, preparing, and preprocessing data to analyze take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
+
+### Project Structure
+```plaintext
 ├── README.md
 ├── makefile
 ├── updated-project
@@ -76,25 +83,26 @@ This repository contains a structured process to download, prepare, and preproce
 ├── 1-docs
 │   ├── Group Report
 ├── 2-temporary_data
-|  ├── cleaned_sample_data
-|  ├── sample_data_elite_encoder
-|  ├── business_data.csv
-|  ├── user_data.csv
-|  ├── review_data.csv
-|  ├── sample_data.csv
+│   ├── cleaned_sample_data
+│   ├── sample_data_elite_encoder
+│   ├── business_data.csv
+│   ├── user_data.csv
+│   ├── review_data.csv
+│   ├── sample_data.csv
 ├── 3-final_data
-|  ├── takeout_data.csv
+│   ├── takeout_data.csv
 ├── 4-testing_code
-|  ├── download_files_automatically.R
-|  ├── label_elite_users.R
-|  ├── matching_elite_format.R
-|  ├── tar_format_to_json_converter.R
+│   ├── download_files_automatically.R
+│   ├── label_elite_users.R
+│   ├── matching_elite_format.R
+│   ├── tar_format_to_json_converter.R
 ├── 5-external_code
-|  ├── json_to_csv_converter.py
+│   ├── json_to_csv_converter.py
 ├── 6-source_code
-|  ├── download_data.R
-|  ├── prepare_data.R
-|  ├── preprocessing_data.R
+│   ├── download_data.R
+│   ├── prepare_data.R
+│   ├── preprocessing_data.R
+```
 
 ## Dependencies
 
