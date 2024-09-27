@@ -95,9 +95,6 @@ This repository contains a structured process to download, prepare, and preproce
 |  ├── download_data.R
 |  ├── prepare_data.R
 |  ├── preprocessing_data.R
-|  ├── 
-├── 7-results
-|  ├── 
 
 ## Dependencies
 
