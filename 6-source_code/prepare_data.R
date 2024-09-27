@@ -3,9 +3,9 @@ library(tidyverse)
 library(here)
 
 ### Input ### 
-business_data <- read_csv(here('data', 'business_data.csv'))
-user_data <- read_csv(here('data', 'user_data.csv'))
-review_data <- read_csv(here('data', 'review_data.csv'))
+business_data <- read_csv(here('2-temporary_data', 'business_data.csv'))
+user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
+review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
 
 ### Transforming ###
 
@@ -40,4 +40,4 @@ sample_data <- merged_data %>%
 ### Output ###
 
 # Write csv file
-write_csv(sample_data, here("data", "sample_data.csv"))
+write_csv(sample_data, here("2-temporary_data", "sample_data.csv"))
