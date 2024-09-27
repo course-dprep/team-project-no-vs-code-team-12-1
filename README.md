@@ -35,6 +35,8 @@ This study aims to address the gap in the dynamics of online reviews, particular
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
 ### Conceptual Model
+
+
 ## Research Method and Results 
 ### Data Source
 From the Yelp database the business, user, and review data files are downloaded to answer the research question. 
@@ -63,11 +65,6 @@ To explore these relationships, **regression analysis** will be employed as the 
 
 ## Relevance of Analysis / Future Applications
 
-
-## Repository Overview
-This repository contains a structured process to download, prepare, and preprocess data for the analysis of take-out restaurant ratings. The workflow is automated using a Makefile, ensuring that each step in the pipeline runs in sequence. Data is first downloaded, then prepared, and finally preprocessed into a final dataset for further analysis.
-
-# Project Title
 
 ## Repository Overview
 This repository contains a structured workflow for downloading, preparing, preprocessing, and analyzing data to find insights about take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
