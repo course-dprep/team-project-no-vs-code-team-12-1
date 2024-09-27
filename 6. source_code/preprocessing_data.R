@@ -130,9 +130,6 @@ variable_na <- sample_data %>%
 
 View(variable_na)
 
-# Check attributes variable
-unique(sample_data$attributes)
-
 # Remove NA's in attributes data
 sample_data <- sample_data %>% 
   filter(!is.na(attributes))
@@ -145,10 +142,14 @@ sample_data <- sample_data %>%
                                       "'RestaurantsTakeOut'\\s*:\\s*'True'"),
                            1, 0))
 
-
 # Select only the take-out restaurants
 takeout_data <- sample_data %>%
   filter(take_out == 1)
 
+# Remove attribute column
+takeout_data <- takeout_data %>% select(-attributes)
+
+dir.create(here("3. final_data"))
+
 ### Output ###
-write_csv(takeout_data, here("3.final_data", "takeout_data.csv"))
+write_csv(takeout_data, here("3. final_data", "takeout_data.csv"))
