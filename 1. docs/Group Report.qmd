@@ -189,22 +189,22 @@ The first step after loading the data is to take a look at the different variabl
 
 The business data set consists of the following variables:
 
-| Variable     | Description                                                         | **Data class** |
-|---------------|------------------------------------------|---------------|
-| business_id  | *A unique character string for each business*                       | Character      |
-| name         | *The business name*                                                 | Character      |
-| address      | *The full address of the business*                                  | Character      |
-| city         | *The city name where the business is located*                       | Character      |
-| state        | *The state name where the business is located*                      | Character      |
-| postal_code  | *The postal code of the business*                                   | Character      |
-| latitude     | *The latitude of the business location*                             | Numeric        |
-| longitude    | *The longitude of the business location*                            | Numeric        |
-| stars        | *The average star rating rounded to half-stars*                     | Numeric        |
-| review_count | *The number of reviews*                                             | Numeric        |
-| is_open      | *Variable that shows with 0 or 1 if the business is closed or open* | Numeric        |
-| attributes   | *Business attributes to values*                                     | Character      |
-| categories   | *An array of different business categories*                         | Character      |
-| hours        | *An object of key day-to-value hours, hours are using a 24-hr clock*| Character      |
+| Variable     | Description                                                          | **Data class** |
+|-----------------|---------------------------------------|-----------------|
+| business_id  | *A unique character string for each business*                        | Character      |
+| name         | *The business name*                                                  | Character      |
+| address      | *The full address of the business*                                   | Character      |
+| city         | *The city name where the business is located*                        | Character      |
+| state        | *The state name where the business is located*                       | Character      |
+| postal_code  | *The postal code of the business*                                    | Character      |
+| latitude     | *The latitude of the business location*                              | Numeric        |
+| longitude    | *The longitude of the business location*                             | Numeric        |
+| stars        | *The average star rating rounded to half-stars*                      | Numeric        |
+| review_count | *The number of reviews*                                              | Numeric        |
+| is_open      | *Variable that shows with 0 or 1 if the business is closed or open*  | Numeric        |
+| attributes   | *Business attributes to values*                                      | Character      |
+| categories   | *An array of different business categories*                          | Character      |
+| hours        | *An object of key day-to-value hours, hours are using a 24-hr clock* | Character      |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
 
@@ -229,7 +229,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The user dataset consists of the following variables:
 
 | Variable           | Description                                            | Data Class |
-|---------------|------------------------------------------|---------------|
+|-----------------|---------------------------------------|-----------------|
 | user_id            | *A unique character string as user identification*     | Character  |
 | name               | *The user's first name*                                | Character  |
 | review_count       | *The number of reviews written by an individual user*  | Numeric    |
@@ -270,7 +270,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The review data consists of the following variables:
 
 | Variable    | Description                                              | Data Class |
-|----------------|----------------------------------------|----------------|
+|-----------------|--------------------------------------|-----------------|
 | review_id   | *Unique review id*                                       | Character  |
 | user_id     | *An unique character string as user id*                  | Character  |
 | business_id | *A unique character string for each individual business* | Character  |
@@ -527,9 +527,7 @@ View(variable_na)
 
 The "**variable_na**" table shows that "**elite**" contains 37669 NA values and that "**attributes**" contains 1331 NA values.
 
-To make it easier for analysis, we decided to encode the values in the "**elite**" column by creating a new column 'elite_label_encoder' to identify influential users. The logic is 
-  - If the 'elite' column is "NA" or an empty string, set 'elite_label_encoder' to 0 (not influential user)
-  - If the 'elite' column has a value, set 'elite_label_encoder' to 1 (influential user).
+To make it easier for analysis, we decided to encode the values in the "**elite**" column by creating a new column 'elite_label_encoder' to identify influential users. The logic is - If the 'elite' column is "NA" or an empty string, set 'elite_label_encoder' to 0 (not influential user) - If the 'elite' column has a value, set 'elite_label_encoder' to 1 (influential user).
 
 ```{r, echo=TRUE, eval=FALSE}
 # Check the unique values in the 'elite' column
@@ -553,4 +551,124 @@ cat("Number of non-influential users (elite_label_encoder == 1):", num_influenti
 
 # Remove the 'elite' column from the data frame
 data$elite <- NULL
+```
+
+Rather than analyzing each state and city individually, we **created a new variable called 'state_divisions'** which groups states into broader divisions. This approach helps **reduce noise and streamline the data set**, making it more manageable and logical to work with.
+
+```{r, echo=TRUE, eval=FALSE}
+# Step 1: Define the state_divisions vector
+state_divisions <- c(
+  # New England
+  'CT' = 'New England',
+  'ME' = 'New England',
+  'MA' = 'New England',
+  'NH' = 'New England',
+  'RI' = 'New England',
+  'VT' = 'New England',
+  
+  # Middle Atlantic
+  'NJ' = 'Middle Atlantic',
+  'NY' = 'Middle Atlantic',
+  'PA' = 'Middle Atlantic',
+  
+  # East North Central
+  'IL' = 'East North Central',
+  'IN' = 'East North Central',
+  'MI' = 'East North Central',
+  'OH' = 'East North Central',
+  'WI' = 'East North Central',
+  
+  # West North Central
+  'IA' = 'West North Central',
+  'KS' = 'West North Central',
+  'MN' = 'West North Central',
+  'MO' = 'West North Central',
+  'NE' = 'West North Central',
+  'ND' = 'West North Central',
+  'SD' = 'West North Central',
+  
+  # South Atlantic
+  'DE' = 'South Atlantic',
+  'DC' = 'South Atlantic',
+  'FL' = 'South Atlantic',
+  'GA' = 'South Atlantic',
+  'MD' = 'South Atlantic',
+  'NC' = 'South Atlantic',
+  'SC' = 'South Atlantic',
+  'VA' = 'South Atlantic',
+  'WV' = 'South Atlantic',
+  
+  # East South Central
+  'AB' = 'East South Central',
+  'KY' = 'East South Central',
+  'MS' = 'East South Central',
+  'TN' = 'East South Central',
+  
+  # West South Central
+  'AR' = 'West South Central',
+  'LA' = 'West South Central',
+  'OK' = 'West South Central',
+  'TX' = 'West South Central',
+  
+  # Mountain
+  'AZ' = 'Mountain',
+  'CO' = 'Mountain',
+  'ID' = 'Mountain',
+  'MT' = 'Mountain',
+  'NV' = 'Mountain',
+  'NM' = 'Mountain',
+  'UT' = 'Mountain',
+  'WY' = 'Mountain',
+  
+  # Pacific
+  'AK' = 'Pacific',
+  'CA' = 'Pacific',
+  'HI' = 'Pacific',
+  'OR' = 'Pacific',
+  'WA' = 'Pacific'
+)
+
+# Step 2: Map the states to divisions
+sample_data <- sample_data %>%
+  mutate(division = state_divisions[state])
+```
+
+Before dummy encoding the 'attributes' column to extract the 'RestaurantsTakeOut' value, we first address the NA values by removing them. Then, we use `str_detect` to identify the desired attribute and encode it as needed (1 for take-out restaurants, 0 for non-take-out restaurants).
+
+```{r, echo=TRUE, eval=FALSE}
+# Check for NA's in the data
+variable_na <- sample_data %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%
+  pivot_longer(
+    cols = everything(), 
+    names_to = "variable", 
+    values_to = "na_count"
+  )
+
+# Remove NA's in attributes data
+sample_data <- sample_data %>% 
+  filter(!is.na(attributes))
+
+# Create a take_out variable that contains 1 for take-out restaurants and
+# 0 for non take-out restaurants
+# Select only the take-out restaurants
+sample_data <- sample_data %>%
+  mutate(take_out = ifelse(str_detect(attributes, 
+                                      "'RestaurantsTakeOut'\\s*:\\s*'True'"),
+                           1, 0))
+
+# Select only the take-out restaurants
+takeout_data <- sample_data %>%
+  filter(take_out == 1)
+
+# Remove attribute column
+takeout_data <- takeout_data %>% select(-attributes)
+```
+
+**Save the finalized sample data**
+
+Finally, we save the data, which will be used for further analysis.
+
+```{r, echo=TRUE, eval=FALSE}
+write_csv(takeout_data, "takeout_data.csv")
 ```
