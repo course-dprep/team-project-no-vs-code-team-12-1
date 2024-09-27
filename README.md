@@ -70,9 +70,9 @@ This repository contains a structured process to download, prepare, and preproce
 # Project Title
 
 ## Repository Overview
-This repository contains a structured workflow for downloading, preparing, and preprocessing data to analyze take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
+This repository contains a structured workflow for downloading, preparing, preprocessing, and analyzing data to find insights about take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
 
-### Project Structure
+### Repository Structure
 ```plaintext
 ├── README.md
 ├── makefile
