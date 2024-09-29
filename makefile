@@ -19,12 +19,12 @@ packages: 6-source_code/0_install_packages.R
 3-final_data/takeout_data.csv: packages
 
 # Target to create all plots
-7-plots: 6-source_code/4_plot_data.R 3-final_data/takeout_data.csv | 7-plots
+7-plots: 6-source_code/4_plot_data.R 3-final_data/takeout_data.csv | 7-plots-dir
 	Rscript 6-source_code/4_plot_data.R
 
 # Create the directory for storing plots if it doesn't exist
-7-plots:
-	mkdir -p 7-plots
+7-plots-dir:
+	if not exist "7-plots" mkdir "7-plots"
 
 # Clean command to remove .csv files in specified directories
 clean:
