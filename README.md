@@ -119,8 +119,9 @@ import os
 
 For R, make sure you have installed the following packages:
 ```{r}
-
-
+library(tidyverse)
+library(here)
+library(googledrive)
 ```
 
 ## Running instructions
