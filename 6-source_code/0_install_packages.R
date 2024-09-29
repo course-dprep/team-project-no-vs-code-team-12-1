@@ -13,3 +13,6 @@ install.packages("reticulate")
 
 # ANALYSIS PACKAGES
 install.packages("ggcorrplot")
+
+# Install the gridExtra package
+install.packages("gridExtra")
