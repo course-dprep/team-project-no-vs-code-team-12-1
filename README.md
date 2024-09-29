@@ -102,7 +102,7 @@ This repository contains a structured workflow for downloading, preparing, prepr
 ```
 
 ## Dependencies
-Please follow the installation guides at: http://tilburgsciencehub.com/.
+Please follow the installation guides at [LINK](http://tilburgsciencehub.com/)
 - **Python**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/python/python/)
 - **R**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
 - **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
@@ -128,7 +128,7 @@ install.packages("reticulate")
 
 
 ## Running Instructions
-To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the Makefile by following these steps:
+To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the ```Makefile``` by following these steps:
 
 1. **Clone the Repository:**
    - Fork this repository and you will have the link ```https://github.com/{your username}/team-project-no-vs-code-team-12-1```
