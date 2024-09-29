@@ -53,7 +53,7 @@ python json_to_csv_converter.py yelp_academic_dataset.json
 ```
 
 To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
-- **Link R script:** https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/6-source_code/download_data.R 
+- **Link R script:** [LINK](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/6-source_code/download_data.R) 
 
 **Note:** Due to **limitations such as computational memory constraints and the focus on a manageable dataset for in-depth analysis**, we have decided to analyze a **reduced sample of 32,576 observations from the Yelp dataset**. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. **Future research can extend this work by examining the entire population of Yelp reviews**, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.
 
