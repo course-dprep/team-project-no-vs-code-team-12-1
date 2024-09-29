@@ -108,7 +108,7 @@ Please follow the installation guides at: http://tilburgsciencehub.com/.
 - **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 - **GitBash**: [Installation guide](https://git-scm.com/downloads)
 
-To knit RMarkdown documents, make sure you have installed Pandoc using the installation guide on their website.
+To knit RMarkdown documents, make sure you have installed the ```reticulate``` package in R to render Python code
 
 For Python, make sure you have installed the following packages:
 ```{}
@@ -123,28 +123,59 @@ For R, make sure you have installed the following packages:
 install.packages("tidyverse")
 install.packages("here")
 install.packages("googledrive")
+install.packages("reticulate")
 ```
 
 
-## Running instructions
+## Running Instructions
+To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the Makefile by following these steps:
+
 1. **Clone the Repository:**
-    git clone <repository-url>
-    cd <repository-directory>
+   - Fork this repository and you will have the link ```https://github.com/{your username}/team-project-no-vs-code-team-12-1```
+   - Open GitBash in your preferred file location
+   - Type
+```
+git clone https://github.com/{your username}/team-project-no-vs-code-team-12-1
+```
+2. **Set the Working Directory:**
+   - Type
+```
+cd team-project-no-vs-code-team-12-1
+```
+3. **Run the Workflow:**
+   - Open the Command Prompt (terminal) in the working directory
+   - Type
+```
+make
+```
+   - Wait approximately 40 - 50 minutes for the entire project to run
+4. **Clean Temporary and Final Data:**
+   - Type
+```
+make clean
+```
 
-2. **Run the Workflow:** This will download the business, user, and review data (heavy files), prepare and merge these datasets, and preprocess the data to generate the final dataset 3-final_data/takeout_data.csv.
-    make
+**Note:** If you want to run each source code separately, this should be done in the following order:
 
-3. **Clean Temporary and Final Data:**
-    make clean
-   
+1. download_data.R
+2. prepare_data.R
+3. preprocessing_data.R
+4. 
 
-## Authors
-This repository was created for the Data Preparation and Workflow Management course, taught by Hannes Datta at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
-- Kris Bruurs
-- Ly Ba Tho
-- Jelle de Bie
-- Zeynep Yavlal
-- Bart van de Mortel
+**Run the source code separately:**
+   - Open the Command Prompt (terminal) in the working directory
+   - Type
+```
+Rscript <file_name.R>
+```
+
+## Contributors
+This repository was created for the Data Preparation and Workflow Management course, taught by **Hannes Datta** at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
+- Kris Bruurs - k.bruurs@tilburguniversity.edu 
+- Ly Ba Tho - b.t.ly@tilburguniversity.edu
+- Jelle de Bie - j.debie@tilburguniversity.edu
+- Zeynep Yavlal - z.yavlal@tilburguniversity.edu
+- Bart van de Mortel - b.h.l.vdmortel@tilburguniversity.edu
 
 ## Research Reference
 - Agarwal, A.K., Pelullo, A.P. and Merchant, R.M., 2019. “Told”: the word most correlated to negative online hospital reviews. Journal of General Internal Medicine, 34, pp.1079-1080.
