@@ -106,6 +106,7 @@ Please follow the installation guides at: http://tilburgsciencehub.com/.
 - **Python**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/python/python/)
 - **R**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
 - **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+- **GitBash**: [Installation guide](https://git-scm.com/downloads)
 
 To knit RMarkdown documents, make sure you have installed Pandoc using the installation guide on their website.
 
@@ -123,6 +124,7 @@ library(tidyverse)
 library(here)
 library(googledrive)
 ```
+
 
 ## Running instructions
 1. **Clone the Repository:**
