@@ -110,6 +110,18 @@ Please follow the installation guides at: http://tilburgsciencehub.com/.
 To knit RMarkdown documents, make sure you have installed Pandoc using the installation guide on their website.
 
 For Python, make sure you have installed the following packages:
+```{}
+import argparse
+import csv
+import json
+import os
+```
+
+For R, make sure you have installed the following packages:
+```{r}
+
+
+```
 
 ## Running instructions
 1. **Clone the Repository:**
