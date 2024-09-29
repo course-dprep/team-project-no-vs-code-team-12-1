@@ -99,6 +99,7 @@ This repository contains a structured workflow for downloading, preparing, prepr
 │   ├── download_data.R
 │   ├── prepare_data.R
 │   ├── preprocessing_data.R
+├── 7-plots
 ```
 
 ## Dependencies
