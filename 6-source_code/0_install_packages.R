@@ -10,3 +10,6 @@ install.packages("dplyr")
 
 # R MARKDOWN RENDER
 install.packages("reticulate")
+
+# ANALYSIS PACKAGES
+install.packages("ggcorrplot")
