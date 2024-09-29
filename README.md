@@ -112,17 +112,17 @@ To knit RMarkdown documents, make sure you have installed Pandoc using the insta
 
 For Python, make sure you have installed the following packages:
 ```{}
-import argparse
-import csv
-import json
-import os
+pip install argparse
+pip install csv
+pip install json
+pip install os
 ```
 
 For R, make sure you have installed the following packages:
-```{r}
-library(tidyverse)
-library(here)
-library(googledrive)
+```{}
+install.packages("tidyverse")
+install.packages("here")
+install.packages("googledrive")
 ```
 
 
