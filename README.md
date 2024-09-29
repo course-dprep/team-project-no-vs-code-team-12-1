@@ -102,7 +102,14 @@ This repository contains a structured workflow for downloading, preparing, prepr
 ```
 
 ## Dependencies
+Please follow the installation guides at: http://tilburgsciencehub.com/.
+- **Python**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/python/python/)
+- **R**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+- **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 
+To knit RMarkdown documents, make sure you have installed Pandoc using the installation guide on their website.
+
+For Python, make sure you have installed the following packages:
 
 ## Running instructions
 1. **Clone the Repository:**
