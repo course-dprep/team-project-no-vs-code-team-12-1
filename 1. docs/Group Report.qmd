@@ -39,7 +39,7 @@ From the Yelp database the business, user, and review data files are downloaded 
 
 Install the archive package and load the necessary packages
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 library(tidyverse)
 ```
 
@@ -189,22 +189,22 @@ The first step after loading the data is to take a look at the different variabl
 
 The business data set consists of the following variables:
 
-| Variable     | Description                                                          | **Data class** |
-|-----------------|---------------------------------------|-----------------|
-| business_id  | *A unique character string for each business*                        | Character      |
-| name         | *The business name*                                                  | Character      |
-| address      | *The full address of the business*                                   | Character      |
-| city         | *The city name where the business is located*                        | Character      |
-| state        | *The state name where the business is located*                       | Character      |
-| postal_code  | *The postal code of the business*                                    | Character      |
-| latitude     | *The latitude of the business location*                              | Numeric        |
-| longitude    | *The longitude of the business location*                             | Numeric        |
-| stars        | *The average star rating rounded to half-stars*                      | Numeric        |
-| review_count | *The number of reviews*                                              | Numeric        |
-| is_open      | *Variable that shows with 0 or 1 if the business is closed or open*  | Numeric        |
-| attributes   | *Business attributes to values*                                      | Character      |
-| categories   | *An array of different business categories*                          | Character      |
-| hours        | *An object of key day-to-value hours, hours are using a 24-hr clock* | Character      |
+| Variable | Description | **Data class** |
+|----|----|----|
+| business_id | *A unique character string for each business* | Character |
+| name | *The business name* | Character |
+| address | *The full address of the business* | Character |
+| city | *The city name where the business is located* | Character |
+| state | *The state name where the business is located* | Character |
+| postal_code | *The postal code of the business* | Character |
+| latitude | *The latitude of the business location* | Numeric |
+| longitude | *The longitude of the business location* | Numeric |
+| stars | *The average star rating rounded to half-stars* | Numeric |
+| review_count | *The number of reviews* | Numeric |
+| is_open | *Variable that shows with 0 or 1 if the business is closed or open* | Numeric |
+| attributes | *Business attributes to values* | Character |
+| categories | *An array of different business categories* | Character |
+| hours | *An object of key day-to-value hours, hours are using a 24-hr clock* | Character |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
 
@@ -228,30 +228,30 @@ The different variables are evaluated and a selection of variables is chosen to 
 
 The user dataset consists of the following variables:
 
-| Variable           | Description                                            | Data Class |
-|-----------------|---------------------------------------|-----------------|
-| user_id            | *A unique character string as user identification*     | Character  |
-| name               | *The user's first name*                                | Character  |
-| review_count       | *The number of reviews written by an individual user*  | Numeric    |
-| yelping_since      | *Date when user joined Yelp*                           | Character  |
-| friends            | *An array of the user's friends as user id's*          | Character  |
-| useful             | *Number of 'useful' votes send by user*                | Numeric    |
-| funny              | *Number of 'funny' votes send by user*                 | Numeric    |
-| cool               | *Number of 'cool' votes send by user*                  | Numeric    |
-| fans               | *The number of fans a user has*                        | Numeric    |
-| elite              | *The years the user had an 'elite' status on Yelp*     | Numeric    |
-| average_stars      | *Average rating of all reviews*                        | Numeric    |
-| compliment_hot     | *Number of 'hot' compliments received by the user*     | Numeric    |
-| compliment_more    | *Number of 'more' compliments received by the user*    | Numeric    |
-| compliment_profile | *Number of 'profile' compliments received by the user* | Numeric    |
-| compliment_cute    | *Number of 'cute' compliments received by the user*    | Numeric    |
-| compliment_list    | *Number of 'list' compliments received by the user*    | Numeric    |
-| compliment_note    | *Number of 'note' compliments received by the user*    | Numeric    |
-| compliment_plain   | *Number of 'plain' compliments received by the user*   | Numeric    |
-| compliment_cool    | *Number of 'cool' compliments received by the user*    | Numeric    |
-| compliment_funny   | *Number of 'funny' compliments received by the user*   | Numeric    |
-| compliment_writer  | *Number of 'writer' compliments received by the user*  | Numeric    |
-| compliment_photo   | *Number of 'photo' compliments received by the user*   | Numeric    |
+| Variable | Description | Data Class |
+|----|----|----|
+| user_id | *A unique character string as user identification* | Character |
+| name | *The user's first name* | Character |
+| review_count | *The number of reviews written by an individual user* | Numeric |
+| yelping_since | *Date when user joined Yelp* | Character |
+| friends | *An array of the user's friends as user id's* | Character |
+| useful | *Number of 'useful' votes send by user* | Numeric |
+| funny | *Number of 'funny' votes send by user* | Numeric |
+| cool | *Number of 'cool' votes send by user* | Numeric |
+| fans | *The number of fans a user has* | Numeric |
+| elite | *The years the user had an 'elite' status on Yelp* | Numeric |
+| average_stars | *Average rating of all reviews* | Numeric |
+| compliment_hot | *Number of 'hot' compliments received by the user* | Numeric |
+| compliment_more | *Number of 'more' compliments received by the user* | Numeric |
+| compliment_profile | *Number of 'profile' compliments received by the user* | Numeric |
+| compliment_cute | *Number of 'cute' compliments received by the user* | Numeric |
+| compliment_list | *Number of 'list' compliments received by the user* | Numeric |
+| compliment_note | *Number of 'note' compliments received by the user* | Numeric |
+| compliment_plain | *Number of 'plain' compliments received by the user* | Numeric |
+| compliment_cool | *Number of 'cool' compliments received by the user* | Numeric |
+| compliment_funny | *Number of 'funny' compliments received by the user* | Numeric |
+| compliment_writer | *Number of 'writer' compliments received by the user* | Numeric |
+| compliment_photo | *Number of 'photo' compliments received by the user* | Numeric |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the dataset to help answer the research question. These variables in the user dataset are:
 
@@ -269,17 +269,17 @@ The different variables are evaluated and a selection of variables is chosen to 
 
 The review data consists of the following variables:
 
-| Variable    | Description                                              | Data Class |
-|-----------------|--------------------------------------|-----------------|
-| review_id   | *Unique review id*                                       | Character  |
-| user_id     | *An unique character string as user id*                  | Character  |
-| business_id | *A unique character string for each individual business* | Character  |
-| stars       | *Star rating of the review*                              | Numeric    |
-| date        | *Date of review, formatted YYYY-MM-DD*                   | Character  |
-| text        | *The review text*                                        | Character  |
-| useful      | *The number of 'useful' votes received*                  | Numeric    |
-| funny       | *The number of 'funny' votes received*                   | Numeric    |
-| Cool        | *The number of 'cool' votes received*                    | Numeric    |
+| Variable | Description | Data Class |
+|----|----|----|
+| review_id | *Unique review id* | Character |
+| user_id | *An unique character string as user id* | Character |
+| business_id | *A unique character string for each individual business* | Character |
+| stars | *Star rating of the review* | Numeric |
+| date | *Date of review, formatted YYYY-MM-DD* | Character |
+| text | *The review text* | Character |
+| useful | *The number of 'useful' votes received* | Numeric |
+| funny | *The number of 'funny' votes received* | Numeric |
+| Cool | *The number of 'cool' votes received* | Numeric |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the review data set are:
 
@@ -415,7 +415,7 @@ merge1 <- left_join(user_data, review_data, by = "user_id")
 
 After combining these two data files, another `left_join()` was executed to include the business data to the final data file by the **"business_id"** variable.
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 merged_data <- left_join(merge1, business_data, by = "business_id")
 ```
 
@@ -425,7 +425,7 @@ merged_data <- left_join(merge1, business_data, by = "business_id")
 
 Because we are working with large data files that take a long time to process, it is important to save and create csv files while preparing the code. This is done below with the `write_csv()` function.
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 write_csv(merged_data, here("data", "merged_data.csv"))
 ```
 
@@ -478,7 +478,7 @@ library(here)
 The saved sample data is loaded from the "data" folder using the `here` library
 
 ```{r, echo=TRUE, eval=FALSE}
-sample_data <- read_csv(here('data', 'sample_data.csv'))
+sample_data <- read_csv(here('2. temporary_data', 'sample_data.csv'))
 ```
 
 ------------------------------------------------------------------------
