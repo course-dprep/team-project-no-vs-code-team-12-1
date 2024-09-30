@@ -35,14 +35,16 @@ This study aims to address the gap in the dynamics of online reviews, particular
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
 ### Conceptual Model
+
+
 ## Research Method and Results 
 ### Data Source
 From the Yelp database the business, user, and review data files are downloaded to answer the research question. 
 - **Yelp Database:** https://www.yelp.com/dataset/download
 
 Since the file is in .tar format, we need to extract it into separate JSON files by using R. The next step is to convert the JSON files into CSV format using Python code.  You can find the R & Python code here:
-- **Extracting JSON files:** https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/tar_format_to_json_converter.R
-- **Converting CSV files:** https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/json_to_csv_converter.py
+- **Extracting JSON files:** [LINK](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/4-testing_code/tar_format_to_json_converter.R)
+- **Converting CSV files:** [LINK](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/5-external_code/json_to_csv_converter.py)
 
 Finally, run the script from your terminal with the following command and replace *yelp_academic_dataset.json* with the path to the JSON file you wish to convert. The script will generate a CSV file with the same name as your input JSON file, located in the same directory.
 
@@ -50,8 +52,8 @@ Finally, run the script from your terminal with the following command and replac
 python json_to_csv_converter.py yelp_academic_dataset.json
 ```
 
-To streamline the process, we've provided an R script that automatically downloads all the necessary data sets for this study. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the googledrive and tidyverse packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
-- **Link R script:** https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/download_files_automatically.R
+To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
+- **Link R script:** [LINK](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/6-source_code/download_data.R) 
 
 **Note:** Due to **limitations such as computational memory constraints and the focus on a manageable dataset for in-depth analysis**, we have decided to analyze a **reduced sample of 32,576 observations from the Yelp dataset**. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. **Future research can extend this work by examining the entire population of Yelp reviews**, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.
 
@@ -65,21 +67,116 @@ To explore these relationships, **regression analysis** will be employed as the 
 
 
 ## Repository Overview
+This repository contains a structured workflow for downloading, preparing, preprocessing, and analyzing data to find insights about take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
 
+### Repository Structure
+```plaintext
+├── README.md
+├── makefile
+├── updated-project
+├── .Rhistory
+├── .RData
+├── .gitignore
+├── 1-docs
+│   ├── Group Report
+├── 2-temporary_data
+│   ├── cleaned_sample_data
+│   ├── sample_data_elite_encoder
+│   ├── business_data.csv
+│   ├── user_data.csv
+│   ├── review_data.csv
+│   ├── sample_data.csv
+├── 3-final_data
+│   ├── takeout_data.csv
+├── 4-testing_code
+│   ├── download_files_automatically.R
+│   ├── label_elite_users.R
+│   ├── matching_elite_format.R
+│   ├── tar_format_to_json_converter.R
+├── 5-external_code
+│   ├── json_to_csv_converter.py
+├── 6-source_code
+│   ├── download_data.R
+│   ├── prepare_data.R
+│   ├── preprocessing_data.R
+├── 7-plots
+```
 
 ## Dependencies
+Please follow the installation guides at [LINK](http://tilburgsciencehub.com/)
+- **Python**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/python/python/)
+- **R**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+- **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+- **GitBash**: [Installation guide](https://git-scm.com/downloads)
+
+To knit RMarkdown documents, make sure you have installed the ```reticulate``` package in R to render Python code
+
+For Python, make sure you have installed the following packages:
+```{}
+pip install argparse
+pip install csv
+pip install json
+pip install os
+```
+
+For R, make sure you have installed the following packages:
+```{}
+install.packages("tidyverse")
+install.packages("here")
+install.packages("googledrive")
+install.packages("reticulate")
+```
 
 
-## Running instructions
+## Running Instructions
+To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the ```Makefile``` by following these steps:
 
+1. **Clone the Repository:**
+   - Fork this repository and you will have the link ```https://github.com/{your username}/team-project-no-vs-code-team-12-1```
+   - Open GitBash in your preferred file location
+   - Type
+```
+git clone https://github.com/{your username}/team-project-no-vs-code-team-12-1
+```
+2. **Set the Working Directory:**
+   - Type
+```
+cd team-project-no-vs-code-team-12-1
+```
+3. **Run the Workflow:**
+   - Open the Command Prompt (terminal) in the working directory
+   - Type
+```
+make
+```
+   - Wait approximately 40 - 50 minutes for the entire project to run
+4. **Clean Temporary and Final Data:**
+   - Type
+```
+make clean
+```
 
-## Authors
-This repository was created for the Data Preparation and Workflow Management course, taught by Hannes Datta at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
-- Kris Bruurs
-- Ly Ba Tho
-- Jelle de Bie
-- Zeynep Yavlal
-- Bart van de Mortel
+**Note:** If you want to run each source code separately, this should be done in the following order:
+
+1. download_data.R
+2. prepare_data.R
+3. preprocessing_data.R
+4. 
+
+**Run the source code separately:**
+   - Open the Command Prompt (terminal) in the working directory
+   - Type
+```
+Rscript <file_name.R>
+```
+
+## Contributors
+This repository was created for the Data Preparation and Workflow Management course, taught by **Hannes Datta** at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
+- Kris Bruurs - k.bruurs@tilburguniversity.edu 
+- Ly Ba Tho - b.t.ly@tilburguniversity.edu
+- Jelle de Bie - j.debie@tilburguniversity.edu
+- Zeynep Yavlal - z.yavlal@tilburguniversity.edu
+- Bart van de Mortel - b.h.l.vdmortel@tilburguniversity.edu
 
 ## Research Reference
 - Agarwal, A.K., Pelullo, A.P. and Merchant, R.M., 2019. “Told”: the word most correlated to negative online hospital reviews. Journal of General Internal Medicine, 34, pp.1079-1080.
