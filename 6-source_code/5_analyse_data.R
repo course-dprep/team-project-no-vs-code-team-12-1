@@ -18,11 +18,21 @@ head(takeout_data)
 takeout_data <- takeout_data %>% mutate(elite_review = as.factor(elite_review), division = as.factor(division))
 
 ### Run Two-Way ANOVA ###
-anova_results <- aov(stars_business ~ elite_review * division, data = takeout_data)
+anova_results <- aov(stars_user ~ elite_review * division, data = takeout_data)
+
+# Get ANOVA output
+anova_output <- summary(anova_results)
+anova_output
 
 # Save ANOVA Summary to a Text File ###
 anova_summary <- capture.output(summary(anova_results))
 writeLines(anova_summary, here('8-results', 'anova_summary.txt'))
+
+# Run ANOVA post hoc test
+anova_tukey <- TukeyHSD(anova_results)
+anova_tukey
+
+# plot post hoc
 
 # Save ANOVA Summary as an Image ###
 anova_summary_text <- paste(anova_summary, collapse = "\n")
