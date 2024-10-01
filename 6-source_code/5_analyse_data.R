@@ -32,6 +32,8 @@ writeLines(anova_summary, here('8-results', 'anova_summary.txt'))
 anova_tukey <- TukeyHSD(anova_results)
 anova_tukey
 
+# plot post hoc
+
 # Save ANOVA Summary as an Image ###
 anova_summary_text <- paste(anova_summary, collapse = "\n")
 anova_grob <- textGrob(anova_summary_text, x = 0, y = 1, just = c("left", "top"), gp = gpar(fontsize = 10))
