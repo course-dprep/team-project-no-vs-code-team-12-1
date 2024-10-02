@@ -148,7 +148,7 @@ state_regions <- c(
   'WI' = 'Midwest',
   
   # South
-  'AL' = 'South',
+  'AB' = 'South',
   'AR' = 'South',
   'DE' = 'South',
   'DC' = 'South',
