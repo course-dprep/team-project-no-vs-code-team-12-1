@@ -273,7 +273,7 @@ drive_auth()
 # File ID from Google Drive URLs
 business_file_id <- '12o5mGJV8ck_Kqi_x23WF1HbsNGIP70ru'
 user_file_id <- '1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
-review_file_id <- '1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
+review_file_id <- '1U5rSviYm-EfCxx23EiIAYqNH2JwHp3DT'
 
 # Paths to save the files in the working directory
 business_file <- here("2-temporary_data", "business_data.csv")
