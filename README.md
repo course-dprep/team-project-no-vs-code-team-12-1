@@ -64,7 +64,12 @@ To explore these relationships, **regression analysis** will be employed as the 
 
 
 ## Relevance of Analysis / Future Applications
+The analysis conducted in this study holds significant relevance for a diverse range of stakeholders, including take-out restaurant owners, online review platforms, consumers, and the academic community. By shedding light on the influence of elite Yelp users and the impact of location on restaurant ratings, the research addresses critical gaps in the current understanding of online consumer behavior within the niche of take-out dining.
 
+- **For Business Owners and Marketers:** Understanding that influential Yelp users wield disproportionate power over restaurant ratings enables take-out businesses to strategize more effectively. Restaurants can prioritize engaging with these users through exceptional service, personalized experiences, or targeted marketing campaigns. By recognizing the nuances of how location affects ratings, businesses can tailor their offerings to meet regional preferences and cultural tastes. This is especially pertinent in the post-pandemic era, where take-out services have surged, and competition is fierce. Insights from this study could inform menu development, promotional strategies, and customer engagement practices that resonate with local consumers and influential reviewers alike.
+- **For Online Review Platforms:** Platforms like Yelp could utilize the findings to refine their algorithms and user interface designs. By understanding the outsized impact of elite users, platforms might consider weighting systems that balance reviews more equitably or highlight a diversity of opinions. Additionally, recognizing location-based disparities in ratings could lead to the development of more localized review aggregation, helping users find the most relevant and accurate information based on their geographic context.
+- **For the Academic and Scientific Community:** The research contributes to the broader literature on online reviews, influencer impact, and consumer behavior in digital marketplaces. By focusing on a previously underexplored niche—take-out restaurants—and incorporating the variable of location, the study opens new avenues for scholarly inquiry. Future research can build upon the methodology and findings to explore other sectors or delve deeper into regional cultural influences on consumer behavior.
+- **Future Applications:** Given the increasing reliance on online platforms for consumer decision-making, the implications of this study are far-reaching. Businesses can develop strategies to engage with influential users proactively, potentially improving their ratings and attracting new customers. Online platforms might implement features that promote a more balanced representation of user opinions. Academics can use the study as a springboard for further exploration into the dynamics of online influence and regional consumer preferences.
 
 ## Repository Overview
 This repository contains a structured workflow for downloading, preparing, preprocessing, and analyzing data to find insights about take-out restaurant ratings. The process is automated using a Makefile, ensuring each step runs in sequence.
@@ -96,9 +101,12 @@ This repository contains a structured workflow for downloading, preparing, prepr
 ├── 5-external_code
 │   ├── json_to_csv_converter.py
 ├── 6-source_code
-│   ├── download_data.R
-│   ├── prepare_data.R
-│   ├── preprocessing_data.R
+│   ├── 0_install_packages.R
+│   ├── 1_download_data.R
+│   ├── 2_prepare_data.R
+│   ├── 3_preprocessing_data.R
+│   ├── 4_plot_data.R
+│   ├── 5_analyse_data.R
 ├── 7-plots
 ```
 
@@ -126,7 +134,6 @@ install.packages("here")
 install.packages("googledrive")
 install.packages("reticulate")
 ```
-
 
 ## Running Instructions
 To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the ```Makefile``` by following these steps:
@@ -158,10 +165,12 @@ make clean
 
 **Note:** If you want to run each source code separately, this should be done in the following order:
 
-1. download_data.R
-2. prepare_data.R
-3. preprocessing_data.R
-4. 
+1. 0_install_packages.R
+2. 1_download_data.R
+3. 2_prepare_data.R
+4. 3_preprocessing_data.R
+5. 4_plot_data.R
+6. 5_analyse_data.R
 
 **Run the source code separately:**
    - Open the Command Prompt (terminal) in the working directory
