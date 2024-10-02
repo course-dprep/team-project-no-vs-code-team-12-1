@@ -189,10 +189,6 @@ sample_data <- sample_data %>%
 # check region variable
 unique(sample_data$region)
 
-region_na <- sample_data %>% 
-  filter(region == NA)
-view(region_na)
-
 # Check for NA's in the data
 variable_na <- sample_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%
