@@ -10,7 +10,7 @@ packages: 6-source_code/0_install_packages.R
 	Rscript 6-source_code/1_download_data.R
 
 # Target to prepare data
-2-temporary_data/sample_data.csv: 6-source_code/2_prepare_data.R 2-temporary_data/business_data.csv 2-temporary_data/user_data.csv 2-temporary_data/review_data.csv | 2-temporary_data
+2-temporary_data/sample_data.csv: 6-source_code/2_prepare_data.R 2-temporary_data/business_data.csv 2-temporary_data/user_data.csv 2-temporary_data/review_data.csv
 	Rscript 6-source_code/2_prepare_data.R
 
 # Target to preprocess data
@@ -26,7 +26,7 @@ packages: 6-source_code/0_install_packages.R
 	Rscript 6-source_code/5_analyse_data.R
 
 # Target to knit the Quarto report
-1-docs/Group_Report.html: 1-docs/Group_Report.qmd 3-final_data/takeout_data.csv 7-plots 8-results
+1-docs/Group_Report.html: 1-docs/Group_Report.qmd 2-temporary_data/business_data.csv 2-temporary_data/user_data.csv 2-temporary_data/review_data.csv 2-temporary_data/sample_data.csv 3-final_data/takeout_data.csv 7-plots 8-results | 1-docs
 	quarto render "1-docs/Group_Report.qmd" --to html
 
 # Clean command to remove .csv files in specified directories
