@@ -2,8 +2,8 @@
 library(tidyverse)
 library(here)
 library(dplyr)
-library(grid)  # For text rendering as a plot
-library(gridExtra)  # For arranging the text as a grob
+library(grid)
+library(gridExtra)
 library(sjPlot)
 library(sjmisc)
 
@@ -14,78 +14,84 @@ if (!dir.exists(here('8-results'))) {
 
 ### Input ###
 takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
-head(takeout_data)
+
+# Remove rows with NA in 'region' column (if any)
+takeout_data <- takeout_data %>% drop_na(region)
 
 # Ensure the key variables are correctly formatted
-takeout_data <- takeout_data %>% mutate(elite_review = as.factor(elite_review), division = as.factor(division))
+takeout_data <- takeout_data %>%
+  mutate(
+    elite_review = as.factor(elite_review),
+    region = as.factor(region),
+    is_open = as.factor(is_open)
+  )
 
 ### Run Two-Way ANOVA ###
 anova_results <- aov(stars_user ~ elite_review * region, data = takeout_data)
-anova_results2 <- glm(stars_user ~ elite_review * region, data = takeout_data)
 
-# Get ANOVA output
-anova_output <- summary(anova_results)
-anova_output
+# Get ANOVA summary
+anova_summary <- summary(anova_results)
 
-anova_output2 <- summary(anova_results2)
-anova_output2
+# Save ANOVA Summary to a Text File
+anova_summary_text <- capture.output(anova_summary)
+writeLines(anova_summary_text, here('8-results', 'anova_summary.txt'))
 
-# Save ANOVA Summary to a Text File ###
-anova_summary <- capture.output(summary(anova_results))
-writeLines(anova_summary, here('8-results', 'anova_summary.txt'))
-
-anova_summary2 <- capture.output(summary(anova_results2))
-writeLines(anova_summary2, here ('8-results', 'anova_summary2.txt'))
-
-# Run ANOVA post hoc test
+# Run Tukey's HSD Post Hoc Test
 anova_tukey <- TukeyHSD(anova_results)
-anova_tukey
 
-pairwise.t.test(takeout_data$stars_user, takeout_data$region, p.adjust.method = "bonferroni")
+# Save Tukey HSD Results to a Text File
+tukey_summary_text <- capture.output(anova_tukey)
+writeLines(tukey_summary_text, here('8-results', 'tukey_hsd_summary.txt'))
 
+# Run Pairwise T-Test with Bonferroni Correction
+pairwise_results <- pairwise.t.test(takeout_data$stars_user, takeout_data$region, p.adjust.method = "bonferroni")
 
-# plot main effects
-ggplot()
+# Save Pairwise T-Test Results to a Text File
+pairwise_summary_text <- capture.output(pairwise_results)
+writeLines(pairwise_summary_text, here('8-results', 'pairwise_t_test_summary.txt'))
 
-# Save ANOVA Summary as an Image ###
-anova_summary_text <- paste(anova_summary, collapse = "\n")
-anova_grob <- textGrob(anova_summary_text, x = 0, y = 1, just = c("left", "top"), gp = gpar(fontsize = 10))
-anova_summary_image <- here('8-results', 'anova_summary.png')
-png(anova_summary_image, width = 800, height = 600)
-grid.draw(anova_grob)
-dev.off()
+### Save ANOVA Diagnostic Plots ###
 
-anova_summary_text2 <- paste(anova_summary2, collapse = "\n")
-anova_grob2 <- textGrob(anova_summary_text2, x = 0, y = 1, just = c("left", "top"), gp = gpar(fontsize = 10))
-anova_summary_image2 <- here('8-results', 'anova_summary.png')
-png(anova_summary_image2, width = 800, height = 600)
-grid.draw(anova_grob2)
-dev.off()
-
-# Save Normal Q-Q Plot ###
-qq_plot <- here('8-results', 'normal_qq_plot.png')
-png(qq_plot)
+# Save Normal Q-Q Plot
+qq_plot_file <- here('8-results', 'anova_normal_qq_plot.png')
+png(qq_plot_file)
 plot(anova_results, which = 2)  # Normal Q-Q plot
 dev.off()
 
-qq_plot2 <- here('8-results', 'normal_qq_plot2.png')
-png(qq_plot2)
-plot(anova_results2 , which = 2)
-
-# Save Scale-Location Plot ###
-scale_location_plot <- here('8-results', 'scale_location_plot.png')
-png(scale_location_plot)
-plot(anova_results, which = 3)  # Scale-Location plot for homogeneity of variance
+# Save Scale-Location Plot
+scale_location_plot_file <- here('8-results', 'anova_scale_location_plot.png')
+png(scale_location_plot_file)
+plot(anova_results, which = 3)  # Scale-Location plot
 dev.off()
 
-scale_location_plot2 <- here('8-results', 'scale_location_plot.png')
-png(scale_location_plot2)
-plot(anova_results2, which = 3)  # Scale-Location plot for homogeneity of variance
+### Run Regression Analysis ###
+takeout_regression <- glm(
+  stars_user ~ elite_review + review_count_user + fans + is_open + stars_business,
+  data = takeout_data
+)
+
+# Get Regression Summary
+regression_summary <- summary(takeout_regression)
+
+# Save Regression Summary to a Text File
+regression_summary_text <- capture.output(regression_summary)
+writeLines(regression_summary_text, here('8-results', 'regression_summary.txt'))
+
+### Save Regression Diagnostic Plots ###
+
+# Save Normal Q-Q Plot for Regression
+qq_plot_reg_file <- here('8-results', 'regression_normal_qq_plot.png')
+png(qq_plot_reg_file)
+qqnorm(residuals(takeout_regression))
+qqline(residuals(takeout_regression), col = "red")
 dev.off()
 
-
-### Run regression analysis ###
-takeout_regression <- glm(stars_user ~ elite_review + review_count_user + fans + is_open + stars_business, 
-                          data = takeout_data)
-summary(takeout_regression)
+# Save Residuals vs Fitted Plot
+residuals_plot_file <- here('8-results', 'regression_residuals_fitted_plot.png')
+png(residuals_plot_file)
+plot(takeout_regression$fitted.values, residuals(takeout_regression),
+     xlab = "Fitted Values", ylab = "Residuals",
+     main = "Residuals vs Fitted")
+abline(h = 0, col = "red")
+dev.off()
 
