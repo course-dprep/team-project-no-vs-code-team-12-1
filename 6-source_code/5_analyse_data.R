@@ -23,8 +23,8 @@ head(takeout_data)
 takeout_data <- takeout_data %>% mutate(elite_review = as.factor(elite_review), division = as.factor(division))
 
 ### Run Two-Way ANOVA ###
-anova_results <- aov(stars_user ~ elite_review * division, data = takeout_data)
-anova_results2 <- glm(stars_user ~ elite_review * division, data = takeout_data)
+anova_results <- aov(stars_user ~ elite_review * region, data = takeout_data)
+anova_results2 <- glm(stars_user ~ elite_review * region, data = takeout_data)
 
 # Get ANOVA output
 anova_output <- summary(anova_results)
@@ -44,7 +44,7 @@ writeLines(anova_summary2, here ('8-results', 'anova_summary2.txt'))
 anova_tukey <- TukeyHSD(anova_results)
 anova_tukey
 
-pairwise.t.test(takeout_data$stars_user, takeout_data$division, p.adjust.method = "bonferroni")
+pairwise.t.test(takeout_data$stars_user, takeout_data$region, p.adjust.method = "bonferroni")
 
 
 # plot main effects
@@ -88,7 +88,7 @@ dev.off()
 
 
 ### Run regression analysis ###
-takeout_regression <- glm(stars_user ~ elite_review + review_count_user + fans, 
+takeout_regression <- glm(stars_user ~ elite_review + review_count_user + fans + is_open + stars_business, 
                           data = takeout_data)
 summary(takeout_regression)
 
