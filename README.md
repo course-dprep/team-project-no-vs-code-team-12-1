@@ -61,6 +61,67 @@ To streamline the process, we've provided an R script that **automatically downl
 To explore these relationships, **regression analysis** will be employed as the primary research method. This method is well-suited for controlling multiple factors such as restaurant location, business attributes (e.g., parking, takeout options), and user metrics (e.g., yelping_since, fans, elite status). By using regression, we can isolate the effect of user influence on ratings and better understand the causal relationships at play. The analysis will focus on key variables like user profiles (including elite status, review count, and average stars), and business characteristics from the Yelp dataset. This approach will help to provide a clearer picture of how influential users impact the ratings of take-out restaurants compared to non-influential users.
 
 ### Result  
+#### Exploratory Analysis
+**Distribution of User Ratings by Elite Review Status**
+To understand how user ratings vary between elite and non-elite reviewers, we analyzed the distribution of stars_user across both groups. As shown in Figure 1 ("distribution_user_ratings_by_elite_review.png"), elite reviewers tend to give slightly higher ratings compared to non-elite reviewers. Specifically, around 3000 of elite reviews are 5-star ratings, whereas over 12,000 of non-elite reviews achieve the same. This suggests that non-elite users may have a more positive perception or are more generous in their evaluations.
+![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_user_ratings_by_elite_review.png)
+
+**Average User Rating by Division and Elite Review Status**
+Geographic location can influence consumer preferences and ratings. We calculated the average user rating (avg_rating) for each division, segmented by elite_review status. Figure 2 ("user_ratings_by_division_elite_review.png") illustrates that in divisions like the Pacific and New England, elite reviewers provide higher average ratings (4.5 stars) compared to non-elite reviewers (4.0 stars). Conversely, in the Midwest, both elite and non-elite reviewers give similar average ratings (4.2 stars), indicating regional differences in rating behaviors.
+![Figure 2](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/user_ratings_by_division_elite_review.png)
+
+**Impact of Business Open Status and Review Counts**
+We examined the review_count_business to see how it varies between open and closed businesses. Figure 3 ("distribution_review_count_business_by_is_open.png") shows that open businesses generally have higher review counts, with a peak around 500 reviews, while closed businesses peak at around 200 reviews. This could imply that higher engagement correlates with business longevity.
+![Figure 3](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_review_count_business_by_is_open.png)
+
+To explore whether the volume of reviews affects user ratings, we analyzed businesses with more than 1,000 reviews and those with fewer than 1,000 reviews.
+**High Review Counts (>1000):**
+Figure 4 ("avg_rating_gt_1000_by_division.png") reveals that for businesses with high review counts, elite reviewers consistently give higher average ratings across all divisions. For example, in the South Atlantic division, elite reviewers give an average rating of 4.7 stars, while non-elite reviewers give 4.3 stars.
+![Figure 4](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_gt_1000_by_division.png)
+
+Figure 5 ("avg_rating_gt_1000_by_is_open.png") indicates that open businesses receive higher average ratings from both elite (4.6 stars) and non-elite (4.4 stars) reviewers compared to closed businesses.
+![Figure 5](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_gt_1000_by_is_open.png)
+
+**Low Review Counts (<1000):**
+Figure 6 ("avg_rating_lt_1000_by_division.png") shows a smaller gap between elite and non-elite reviewers. In some divisions, non-elite reviewers even give slightly higher ratings.
+![Figure 6](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_lt_1000_by_division.png)
+
+Figure 7 ("avg_rating_lt_1000_by_is_open.png") suggests that for businesses with low review counts, the difference in average ratings between open and closed businesses is minimal, regardless of elite status.
+![Figure 7](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_lt_1000_by_is_open.png)
+
+These findings imply that elite reviewers tend to rate highly popular businesses more favorably, possibly due to better experiences or higher expectations met.
+
+**Average Rating by Elite Status**
+Focusing on take-out restaurants (take_out == 1), we assessed whether elite reviewers rate them differently. Figure 8 ("avg_rating_takeout_by_elite_status.png") shows that elite reviewers give an average rating of 4.5 stars, while non-elite reviewers give 4.2 stars. This indicates a positive bias from elite reviewers towards take-out establishments.
+
+**Distribution of User Ratings by Division and Elite Status**
+To delve deeper, we examined the distribution of user ratings for take-out restaurants across divisions.
+
+Figure 9 ("distribution_ratings_takeout_by_division_and_elite_status.png") presents boxplots of stars_user by division and elite_review. In divisions like the Mountain and Pacific, elite reviewers exhibit higher median ratings and less variability, suggesting consistent positive experiences.
+![Figure 9](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_division_and_elite_status.png)
+
+Figure 10 ("distribution_ratings_takeout_by_elite_status.png") consolidates this information, showing that elite reviewers generally provide higher ratings with fewer low-rating outliers compared to non-elite reviewers.
+![Figure 10](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_status.png)
+
+These observations reinforce the notion that elite reviewers perceive take-out restaurants more favorably, possibly due to selective dining choices or differing expectations.
+
+**Correlation Analysis**
+We computed the correlation matrix for numerical variables to identify potential relationships. Figure 11 ("correlation_matrix_heatmap.png") displays the heatmap of correlations.
+![Figure 11](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/correlation_matrix_heatmap.png)
+
+**Relationship Between Number of Fans and User Rating**
+We explored whether a user's popularity (fans) affects their ratings (stars_user), considering the business's open status and division.
+
+Figure 12 ("relationship_fans_user_rating_faceted_by_division.png") presents scatterplots of fans vs. stars_user, colored by is_open and faceted by division. The red regression lines indicate the trend within each division.
+![Figure 12](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/relationship_fans_user_rating_faceted_by_division.png)
+
+Observations include:
+
+- In most divisions, there is a slight positive trend, suggesting that users with more fans tend to give marginally higher ratings.
+- The trend is more pronounced in divisions like the Pacific and Middle Atlantic, where users with more fans give significantly higher ratings to open businesses.
+- Closed businesses do not exhibit a clear trend, possibly due to fewer data points or varying reasons for closure.
+
+#### Statistical Analysis
 
 
 ## Relevance of Analysis / Future Applications
