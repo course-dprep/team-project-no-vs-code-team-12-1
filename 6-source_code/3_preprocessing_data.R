@@ -118,6 +118,81 @@ sample_data <- sample_data %>%
 # Check division variable
 unique(sample_data$division)
 
+# Create new region variable
+
+# Step 1: Define the region vector
+state_regions <- c(
+  # Northeast
+  'CT' = 'Northeast',
+  'ME' = 'Northeast',
+  'MA' = 'Northeast',
+  'NH' = 'Northeast',
+  'NJ' = 'Northeast',
+  'NY' = 'Northeast',
+  'PA' = 'Northeast',
+  'RI' = 'Northeast',
+  'VT' = 'Northeast',
+  
+  # Midwest
+  'IL' = 'Midwest',
+  'IN' = 'Midwest',
+  'IA' = 'Midwest',
+  'KS' = 'Midwest',
+  'MI' = 'Midwest',
+  'MN' = 'Midwest',
+  'MO' = 'Midwest',
+  'NE' = 'Midwest',
+  'ND' = 'Midwest',
+  'OH' = 'Midwest',
+  'SD' = 'Midwest',
+  'WI' = 'Midwest',
+  
+  # South
+  'AL' = 'South',
+  'AR' = 'South',
+  'DE' = 'South',
+  'DC' = 'South',
+  'FL' = 'South',
+  'GA' = 'South',
+  'KY' = 'South',
+  'LA' = 'South',
+  'MD' = 'South',
+  'MS' = 'South',
+  'NC' = 'South',
+  'OK' = 'South',
+  'SC' = 'South',
+  'TN' = 'South',
+  'TX' = 'South',
+  'VA' = 'South',
+  'WV' = 'South',
+  
+  # West
+  'AK' = 'West',
+  'AZ' = 'West',
+  'CA' = 'West',
+  'CO' = 'West',
+  'HI' = 'West',
+  'ID' = 'West',
+  'MT' = 'West',
+  'NV' = 'West',
+  'NM' = 'West',
+  'OR' = 'West',
+  'UT' = 'West',
+  'WA' = 'West',
+  'WY' = 'West'
+)
+
+# Step 2: Map the states to regions
+sample_data <- sample_data %>%
+  mutate(region = state_regions[state])
+
+# check region variable
+unique(sample_data$region)
+
+region_na <- sample_data %>% 
+  filter(region == NA)
+view(region_na)
+
 # Check for NA's in the data
 variable_na <- sample_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%
