@@ -13,6 +13,8 @@ install.packages("reticulate")
 
 # ANALYSIS PACKAGES
 install.packages("ggcorrplot")
+install.packages("sjPlot")
+install.packages("sjmisc")
 
 # Install the gridExtra package
 install.packages("gridExtra")
