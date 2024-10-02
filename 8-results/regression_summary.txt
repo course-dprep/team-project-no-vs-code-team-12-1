@@ -5,20 +5,20 @@ glm(formula = stars_user ~ elite_review + review_count_user +
 
 Coefficients:
                     Estimate Std. Error t value Pr(>|t|)    
-(Intercept)        2.245e-01  4.356e-02   5.154 2.56e-07 ***
-elite_review1      1.771e-01  1.734e-02  10.210  < 2e-16 ***
-review_count_user -2.457e-05  2.431e-05  -1.011   0.3121    
-fans               1.756e-06  1.110e-04   0.016   0.9874    
-is_open1           3.364e-02  1.785e-02   1.885   0.0595 .  
-stars_business     9.190e-01  1.109e-02  82.872  < 2e-16 ***
+(Intercept)        0.2621312  0.0901358   2.908  0.00365 ** 
+elite_review1      0.1498047  0.0362694   4.130 3.66e-05 ***
+review_count_user -0.0000982  0.0000533  -1.842  0.06548 .  
+fans               0.0001224  0.0002294   0.534  0.59350    
+is_open1          -0.0036632  0.0363230  -0.101  0.91967    
+stars_business     0.9244637  0.0230043  40.187  < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for gaussian family taken to be 1.60383)
+(Dispersion parameter for gaussian family taken to be 1.584379)
 
-    Null deviance: 63746  on 32575  degrees of freedom
-Residual deviance: 52237  on 32570  degrees of freedom
-AIC: 107843
+    Null deviance: 14507  on 7495  degrees of freedom
+Residual deviance: 11867  on 7490  degrees of freedom
+AIC: 24730
 
 Number of Fisher Scoring iterations: 2
 
