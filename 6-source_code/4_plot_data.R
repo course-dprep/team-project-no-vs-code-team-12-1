@@ -9,10 +9,6 @@ library(ggplot2)
 
 takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
 
-# Remove rows with NA in 'region' column
-takeout_data <- takeout_data %>%
-  drop_na(region)
-
 # Convert 'elite_review' to a factor with labels "No" and "Yes"
 takeout_data <- takeout_data %>%
   mutate(elite_review = factor(elite_review, levels = c(0, 1), labels = c("No", "Yes")))

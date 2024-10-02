@@ -1,0 +1,11 @@
+
+	Pairwise comparisons using t tests with pooled SD 
+
+data:  takeout_data$stars_user and takeout_data$region 
+
+          Midwest Northeast South 
+Northeast 0.0105  -         -     
+South     1.0000  0.0039    -     
+West      1.0000  0.4831    1.0000
+
+P value adjustment method: bonferroni 
