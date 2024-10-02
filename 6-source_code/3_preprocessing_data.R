@@ -118,6 +118,17 @@ sample_data <- sample_data %>%
 # Check division variable
 unique(sample_data$division)
 
+# Check NA
+na_div <- sample_data %>% 
+  filter(is.na(division))
+na_div
+
+# Remove NA
+sample_data <- sample_data %>% 
+  filter(!is.na(division))
+
+# Check division variable 
+unique(sample_data$division)
 # Create new region variable
 
 # Step 1: Define the region vector
@@ -200,9 +211,13 @@ variable_na <- sample_data %>%
 
 View(variable_na)
 
-# Remove NA's in attributes data
+# Remove NA's in attributes, fans, and review count user data
 sample_data <- sample_data %>% 
-  filter(!is.na(attributes))
+  filter(!is.na(attributes),
+         !is.na(fans),
+         !is.na(review_count_user))
+
+
 
 # Create a take_out variable that contains 1 for take-out restaurants and
 # 0 for non take-out restaurants
