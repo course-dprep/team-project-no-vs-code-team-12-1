@@ -92,7 +92,8 @@ Figure 7 ("avg_rating_lt_1000_by_is_open.png") suggests that for businesses with
 These findings imply that elite reviewers tend to rate highly popular businesses more favorably, possibly due to better experiences or higher expectations met.
 
 **Average Rating by Elite Status**
-Focusing on take-out restaurants (take_out == 1), we assessed whether elite reviewers rate them differently. Figure 8 ("avg_rating_takeout_by_elite_status.png") shows that elite reviewers give an average rating of 4.5 stars, while non-elite reviewers give 4.2 stars. This indicates a positive bias from elite reviewers towards take-out establishments.
+Focusing on take-out restaurants (take_out == 1), we assessed whether elite reviewers rate them differently. Figure 8 ("avg_rating_takeout_by_elite_review.png") shows that elite reviewers give an average rating of 4.5 stars, while non-elite reviewers give 4.2 stars. This indicates a positive bias from elite reviewers towards take-out establishments.
+![Figure 8](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_review.png)
 
 **Distribution of User Ratings by Region and Elite Status**
 To delve deeper, we examined the distribution of user ratings for take-out restaurants across regions.
