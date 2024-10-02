@@ -315,7 +315,7 @@ The first step after loading the data is to take a look at the different variabl
 The **business_data** set consists of the following variables:
 
 |   Variable   |                            Description                             | Data Type |
-|:------------:|:---------------------------------------------:|:----------:|
+|:------------:|:------------------------------------------------------------------:|:---------:|
 | business_id  |            A unique character string for each business             | Character |
 |     name     |                         The business name                          | Character |
 |   address    |                  The full address of the business                  | Character |
@@ -352,7 +352,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:-------------:|:------------------------------------------:|:-----------:|
+|:------------------:|:----------------------------------------------------:|:---------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -391,7 +391,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:-----------:|:----------------------------------------------:|:----------:|
+|:-----------:|:------------------------------------------------------:|:---------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -966,18 +966,16 @@ Based on our exploratory analysis, we identified several key insights into how u
 
     -   Open businesses receive higher ratings from both elite and non-elite users compared to closed businesses. For closed businesses, elite users give much lower ratings (3.1 stars) compared to non-elite users (4.2 stars), implying that elite reviews may influence business survival.
 
-```{=html}
 <!-- -->
-```
+
 -   **Low Review Counts (\<1000)**:
 
     -   Elite users tend to rate businesses with fewer reviews more favorably than non-elite users across all regions. This may indicate elite reviewers having better experiences, meeting higher expectations, or possible sponsorships.
 
     -   The difference in average ratings between open and closed businesses is minimal for businesses with low review counts, regardless of elite status.
 
-```{=html}
 <!-- -->
-```
+
 -   **Relationship Between Number of Fans and User Rating**: There is a high correlation between the number of fans a user has and the ratings they give, particularly in the Midwest and West regions. This suggests that more popular users may be more inclined to rate businesses favorably, which could reflect their influence on user engagement.
 
 #### 2.3.2 Statistical Data Analysis

@@ -3,9 +3,9 @@
 
 data:  takeout_data$stars_user and takeout_data$region 
 
-          Midwest Northeast South 
-Northeast 0.0105  -         -     
-South     1.0000  0.0039    -     
-West      1.0000  0.4831    1.0000
+          Midwest Northeast South  
+Northeast 0.03244 -         -      
+South     1.00000 0.00029   -      
+West      1.00000 0.02423   1.00000
 
 P value adjustment method: bonferroni 
