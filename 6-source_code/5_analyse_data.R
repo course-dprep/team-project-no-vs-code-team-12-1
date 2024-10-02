@@ -4,9 +4,6 @@ library(here)
 library(dplyr)
 library(grid)  # For text rendering as a plot
 library(gridExtra)  # For arranging the text as a grob
-
-install.packages("sjPlot")
-install.packages("sjmisc")
 library(sjPlot)
 library(sjmisc)
 
