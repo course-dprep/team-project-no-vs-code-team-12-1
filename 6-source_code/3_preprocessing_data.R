@@ -166,7 +166,7 @@ state_regions <- c(
   'VA' = 'South',
   'WV' = 'South',
   
-  # West
+  # West region
   'AK' = 'West',
   'AZ' = 'West',
   'CA' = 'West',
