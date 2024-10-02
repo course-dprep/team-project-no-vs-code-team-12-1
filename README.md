@@ -67,11 +67,11 @@ To understand how user ratings vary between elite and non-elite reviewers, we an
 ![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_user_ratings_by_elite_review.png)
 
 **Average User Rating by Region and Elite Review Status**
-GGeographic location can influence consumer preferences and ratings. We calculated the average user rating (avg_rating) for each region, segmented by elite_review status. Figure 2 ("user_ratings_by_region_elite_review.png") illustrates that in regions like the Pacific and New England, elite reviewers provide higher average ratings (4.5 stars) compared to non-elite reviewers (4.0 stars). Conversely, in the Midwest, both elite and non-elite reviewers give similar average ratings (4.2 stars), indicating regional differences in rating behaviors.
+Geographic location can influence consumer preferences and ratings. We calculated the average user rating (avg_rating) for each region, segmented by elite_review status. Figure 2 ("user_ratings_by_region_elite_review.png") illustrates that in regions like the Pacific and New England, elite reviewers provide higher average ratings (4.5 stars) compared to non-elite reviewers (4.0 stars). Conversely, in the Midwest, both elite and non-elite reviewers give similar average ratings (4.2 stars), indicating regional differences in rating behaviors.
 ![Figure 2](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/user_ratings_by_region_elite_review.png)
 
 **Impact of Business Open Status and Review Counts**
-We examined the review_count_business to see how it varies between open and closed businesses. Figure 3 ("distribution_review_count_business_by_is_open.png") shows that open businesses generally have higher review counts, with a peak around 500 reviews, while closed businesses peak at around 200 reviews. This could imply that higher engagement correlates with business longevity.
+We examined the review_count_business to see how it varies between open and closed businesses. Figure 3 ("distribution_review_count_business_by_is_open.png") shows that open businesses generally have higher review counts, with a peak of around 500 reviews, while closed businesses peak at around 200 reviews. This could imply that higher engagement correlates with business longevity.
 ![Figure 3](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_review_count_business_by_is_open.png)
 
 To explore whether the volume of reviews affects user ratings, we analyzed businesses with more than 1,000 reviews and those with fewer than 1,000 reviews.
@@ -92,16 +92,17 @@ Figure 7 ("avg_rating_lt_1000_by_is_open.png") suggests that for businesses with
 These findings imply that elite reviewers tend to rate highly popular businesses more favorably, possibly due to better experiences or higher expectations met.
 
 **Average Rating by Elite Status**
-Focusing on take-out restaurants (take_out == 1), we assessed whether elite reviewers rate them differently. Figure 8 ("avg_rating_takeout_by_elite_status.png") shows that elite reviewers give an average rating of 4.5 stars, while non-elite reviewers give 4.2 stars. This indicates a positive bias from elite reviewers towards take-out establishments.
+Focusing on take-out restaurants (take_out == 1), we assessed whether elite reviewers rate them differently. Figure 8 ("avg_rating_takeout_by_elite_review.png") shows that elite reviewers give an average rating of 4.5 stars, while non-elite reviewers give 4.2 stars. This indicates a positive bias from elite reviewers towards take-out establishments.
+![Figure 8](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_review.png)
 
 **Distribution of User Ratings by Region and Elite Status**
 To delve deeper, we examined the distribution of user ratings for take-out restaurants across regions.
 
-Figure 9 ("distribution_ratings_takeout_by_region_and_elite_status.png") presents boxplots of stars_user by region and elite_review. In regions like the Mountain and Pacific, elite reviewers exhibit higher median ratings and less variability, suggesting consistent positive experiences.
-![Figure 9](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_region_and_elite_status.png)
+Figure 9 ("distribution_ratings_takeout_by_region_and_elite_review.png") presents boxplots of stars_user by region and elite_review. In regions like the Mountain and Pacific, elite reviewers exhibit higher median ratings and less variability, suggesting consistent positive experiences.
+![Figure 9](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_region_and_elite_review.png)
 
-Figure 10 ("distribution_ratings_takeout_by_elite_status.png") consolidates this information, showing that elite reviewers generally provide higher ratings with fewer low-rating outliers compared to non-elite reviewers.
-![Figure 10](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_status.png)
+Figure 10 ("distribution_ratings_takeout_by_elite_review.png") consolidates this information, showing that elite reviewers generally provide higher ratings with fewer low-rating outliers compared to non-elite reviewers.
+![Figure 10](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_review.png)
 
 These observations reinforce the notion that elite reviewers perceive take-out restaurants more favorably, possibly due to selective dining choices or differing expectations.
 
