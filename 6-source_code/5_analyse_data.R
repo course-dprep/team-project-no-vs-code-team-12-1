@@ -15,9 +15,6 @@ if (!dir.exists(here('8-results'))) {
 ### Input ###
 takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
 
-# Remove rows with NA in 'region' column (if any)
-takeout_data <- takeout_data %>% drop_na(region)
-
 # Ensure the key variables are correctly formatted
 takeout_data <- takeout_data %>%
   mutate(
