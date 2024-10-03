@@ -35,6 +35,13 @@ This study aims to address the gap in the dynamics of online reviews, particular
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
 ### Conceptual Model
+![Figure 1](../3-final_data/ANOVA.jpeg)
+**Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
+- This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
+
+**Quasi-Moderator (State Region): Midwest, Northeast, South, West**
+- The state region acts as a quasi-moderator in the model. It includes four categories: Midwest, Northeast, South, and West. The main effect of this quasi-moderator is on the star rating of take-out restaurants, allowing us to determine how different regions influence the overall ratings.
+- Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
 
 ## Research Method and Results 
@@ -55,14 +62,14 @@ python json_to_csv_converter.py yelp_academic_dataset.json
 To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
 - **Link R script:** [LINK](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/6-source_code/download_data.R) 
 
-**Note:** Due to **limitations such as computational memory constraints and the focus on a manageable dataset for in-depth analysis**, we have decided to analyze a **reduced sample of 32,576 observations from the Yelp dataset**. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. **Future research can extend this work by examining the entire population of Yelp reviews**, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.
+**Note:** Due to **limitations such as computational memory constraints and the focus on a manageable dataset for in-depth analysis**, we have decided to analyze a **reduced sample of 323,856 observations from the Yelp dataset**. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. **Future research can extend this work by examining the entire population of Yelp reviews**, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.
 
 ### Research Method
-To explore these relationships, **regression analysis** will be employed as the primary research method. This method is well-suited for controlling multiple factors such as restaurant location, business attributes (e.g., parking, takeout options), and user metrics (e.g., yelping_since, fans, elite status). By using regression, we can isolate the effect of user influence on ratings and better understand the causal relationships at play. The analysis will focus on key variables like user profiles (including elite status, review count, and average stars), and business characteristics from the Yelp dataset. This approach will help to provide a clearer picture of how influential users impact the ratings of take-out restaurants compared to non-influential users.
+To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as review_id, user_id, business_id, stars_user, review_count_user, fans, state, city, stars_business, review_count_business, is_open, elite_review, division, region, and take_out. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
 
 ### Result  
 #### Exploratory Analysis
-**Distribution of User Ratings by Elite Review Status:** To understand how user ratings vary between elite and non-elite reviewers, we analyzed the distribution of stars_user across both groups. As shown in Figure 1, non-elite reviewers give significantly higher ratings than elite reviewers. Specifically, around 3000 elite reviews have 5-star ratings, whereas over 12,000 non-elite reviews achieve the same. This suggests that non-elite users may have a more positive perception or are more generous in their evaluations.
+**Distribution of User Ratings by Elite Review Status:** To understand how user ratings vary between elite and non-elite reviewers, we analyzed the distribution of stars_user across both groups. As shown in Figure 1, non-elite reviewers give significantly higher ratings than elite reviewers. Specifically, around 30,000 elite reviews have 5-star ratings, whereas over 100,000 non-elite reviews achieve the same. This suggests that non-elite users may have a more positive perception or are more generous in their evaluations.
 
 ![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_user_ratings_by_elite_review.png)
 
@@ -70,33 +77,33 @@ To explore these relationships, **regression analysis** will be employed as the 
 
 ![Figure 2](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_ratings_takeout_by_elite_review.png)
 
-**Distribution of User Ratings by Region and Elite Status:** From our perspective, geographic location can influence consumer preferences and ratings. In order to examine this, we examined the average ratings of user ratings for take-out restaurants across regions by calculating the average user rating (avg_rating) for each region, segmented by elite_review status. Figure 3 illustrates that for all regions, elite users tend to give more generous ratings, especially in the Midwest (4.0 stars). Conversely, non-elite reviewers tend to give similar average ratings (3.7 stars), indicating behavioral differences in rating behaviors between 2 parties.
+**Distribution of User Ratings by Region and Elite Status:** From our perspective, geographic location can influence consumer preferences and ratings. In order to examine this, we examined the average ratings of user ratings for take-out restaurants across regions by calculating the average user rating (avg_rating) for each region, segmented by elite_review status. Figure 3 illustrates that for all regions, elite users tend to give more generous ratings, especially in the South (3.95 stars). Conversely, non-elite reviewers tend to give similar average ratings (3.7 stars), indicating behavioral differences in rating behaviors between 2 parties.
 
 ![Figure 3](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/user_ratings_by_region_elite_review.png)
 
-**Impact of Business Open Status and Review Counts:** Furthermore, we examined the review_count_business to see how it varies between open and closed businesses. Figure 4 shows that open businesses generally have higher review counts, with a peak of around 7500 reviews, while closed businesses peak at around 900 reviews. This could imply that higher engagement correlates with business longevity.
+**Impact of Business Open Status and Review Counts:** Furthermore, we examined the review_count_business to see how it varies between open and closed businesses. Figure 4 shows that open businesses generally have higher review counts, with a peak of around 7500 reviews, while closed businesses peak at around 200-500 reviews. This could imply that higher engagement correlates with business longevity.
 
 ![Figure 4](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_review_count_business_by_is_open.png)
 
 To explore whether the volume of reviews affects user ratings, we analyzed businesses with more than 1,000 reviews and those with fewer than 1,000 reviews to have a general overview.
 
-**High Review Counts (>1000):** Figure 5 reveals that for businesses with high review counts, non-elite reviewers consistently give higher average ratings across all regions, except the South. For example, in the West region, elite reviewers give an average rating of 3.98 stars, while non-elite reviewers give 4.2 stars.
+**High Review Counts (>1000):** Figure 5 reveals that for businesses with high review counts, elite reviewers consistently give higher average ratings across all regions, except the Midwest. For example, in the West region, elite reviewers give an average rating of 4.2 stars, while non-elite reviewers give 3.98 stars.
 
 ![Figure 5](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_gt_1000_by_region.png)
 
-Figure 6 indicates that open businesses receive higher average ratings from both elite (4.0 stars) and non-elite (4.1 stars) reviewers compared to closed businesses. However, the interesting thing is that for closed businesses, the average ratings rated by elite users were very low, around 3.1 stars meanwhile non-elite users scored around 4.2 stars. To some extent, it implies the influence of elite users on the survival of businesses
+Figure 6 indicates that open businesses receive higher average ratings from both elite (4.0 stars) and non-elite (4.1 stars) reviewers compared to closed businesses. However, the interesting thing is that for closed businesses, the average ratings rated by elite users were nearly similar to the surviving businesses, around 4.0 stars. To some extent, it implies the influence of elite users on the survival of businesses is not significant.
 
 ![Figure 6](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_gt_1000_by_is_open.png)
 
-**Low Review Counts (<1000):** On the contrary, for businesses that have lower reviews, Figure 7 shows a more consistently significant gap between elite and non-elite reviewers, for which elite users rate those businesses higher compared to their non-elite peers across all regions. These findings imply that elite reviewers tend to rate unpopular businesses more favorably, possibly due to better experiences, higher expectations met, or simply because of sponsorships.
+**Low Review Counts (<1000):** Similarly, for businesses that have lower reviews, Figure 7 shows a more consistently significant gap between elite and non-elite reviewers, for which elite users rate those businesses higher compared to their non-elite peers across all regions. These findings imply that elite reviewers tend to rate unpopular businesses more favorably, possibly due to better experiences, higher expectations met, or simply because of sponsorships.
 
 ![Figure 7](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_lt_1000_by_region.png)
 
-Figure 8 suggests that for businesses with low review counts, the difference in average ratings between open and closed businesses is minimal, regardless of elite status.
+Figure 8 suggests that for businesses with low review counts, the difference in average ratings between open and closed businesses is more dramatical, regardless of elite status.
 
 ![Figure 8](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/avg_rating_lt_1000_by_is_open.png)
 
-**Relationship Between Number of Fans and User Rating:** We explored whether a user's popularity (fans) affects their ratings (stars_user), considering the business's open status and region. Figure 9 presents scatterplots of fans vs. stars_user, colored by is_open and faceted by region. The red regression lines indicate the trend within each region. From these plots, we can see that there is a high correlation between the number of fans and users' ratings. This relationship is dramatically demonstrated in the Midwest and West regions.
+**Relationship Between Number of Fans and User Rating:** We explored whether a user's popularity (fans) affects their ratings (stars_user), considering the business's open status and region. Figure 9 presents scatterplots of fans vs. stars_user, colored by is_open and faceted by region. The red regression lines indicate the trend within each region. From these plots, we can see that there is a high correlation between the number of fans and users' ratings. This relationship is dramatically demonstrated in all 4 regions.
 
 ![Figure 9](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/relationship_fans_user_rating_faceted_by_region.png)
 
