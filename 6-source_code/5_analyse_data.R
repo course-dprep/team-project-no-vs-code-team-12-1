@@ -168,4 +168,5 @@ plot(takeout_regression$fitted.values, residuals(takeout_regression),
 abline(h = 0, col = "red")
 dev.off()
 
+# Space for extra plots
 

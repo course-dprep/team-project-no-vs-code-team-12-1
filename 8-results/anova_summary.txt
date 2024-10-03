@@ -1,7 +1,7 @@
-                      Df Sum Sq Mean Sq F value   Pr(>F)    
-elite_review           1     37   37.25  19.330 1.12e-05 ***
-region                 3     36   11.87   6.159 0.000354 ***
-elite_review:region    3      2    0.81   0.423 0.736766    
-Residuals           7488  14431    1.93                     
+                        Df Sum Sq Mean Sq F value   Pr(>F)    
+elite_review             1   2749  2748.6 1419.98  < 2e-16 ***
+region                   3    417   139.0   71.79  < 2e-16 ***
+elite_review:region      3     71    23.8   12.29 4.94e-08 ***
+Residuals           323848 626851     1.9                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
