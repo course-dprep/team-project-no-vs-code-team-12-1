@@ -1,6 +1,6 @@
 ---
 title: "Group_Report_v2"
-format: pdf
+format: html
 editor: visual
 ---
 
@@ -30,7 +30,7 @@ Since its launch in 2004, Yelp, as one of the largest online review platforms, h
 
 In competitive sectors like the food industry, where reputation can make or break a business, understanding the impact of these influential users is essential, as evidenced in a study conducted by *Nakayama and Wan (2018)* about one-third of customers rely on online reviews when choosing a restaurant and over half of 18-to-34-year-olds factor reviews into their dining decisions. Moreover, while the food industry on Yelp has been extensively studied (*Anderson and Magruder, 2012*) because of its tremendous impacts on business outcomes (*Luca, 2016*), the take-out restaurant niche has received minimal attention. The majority of existing studies on take-out restaurants emphasize negative aspects such as health risks, obesity, and food safety concerns (*Jeffery et al., 2006; Baek et al., 2022*). These studies tend to focus on the health implications of frequent take-out consumption but fail to address the consumer dynamics on platforms like Yelp, where reviews have the power to influence public perception and business success (*Jiménez, et al. 2013*). Additionally, location, particularly in terms of region, state, and city, plays a pivotal role in how take-out restaurants are rated on Yelp (*Tayeen, et al., 2019*). Regional preferences can influence the types of cuisines that receive higher ratings, with some regions showing a stronger preference for local or niche food options (*Rahimi, et al., 2018*). State-level factors such as regulations, food safety laws, and even cultural food trends may also impact how users perceive and rate take-out establishments. Additionally, within cities, neighborhood dynamics like the level of urbanization, socio-economic status, and competition with nearby restaurants can lead to significant variations in ratings (*Tayeen, et al., 2021*). Influential Yelp users in major metropolitan areas may also drive more reviews and higher visibility for restaurants, skewing ratings compared to those in smaller cities or rural areas. **This gap in the literature calls for a deeper investigation into how influential users interact with take-out restaurants, especially as take-out has become increasingly important in the post-pandemic dining landscape.**
 
-The accessibility and usefulness of the output from this study significantly benefit other students and the larger scientific community. By **developing an automated and reproducible workflow using open-source tools like R**, this research provides a template that others can easily adapt for similar analyses. **The study's findings and the associated code** can be shared on public platforms like GitHub, making them readily available for educational purposes and further research. The workflow includes data extraction, cleaning, transformation, and modeling processes, all documented and scripted to ensure transparency and repeatability. Moreover, the **comprehensive PDF report** serves as a valuable resource that clearly communicates the research methods, analyses, and findings. It can be used as a teaching tool in academic settings, demonstrating how to approach complex data analyses and interpret results within a real-world context.
+The accessibility and usefulness of the output from this study significantly benefit other students and the larger scientific community. By **developing an automated and reproducible workflow using open-source tools like R**, this research provides a template that others can easily adapt for similar analyses. **The study's findings and the associated code** can be shared on public platforms like GitHub, making them readily available for educational purposes and further research. The workflow includes data extraction, cleaning, transformation, and modeling processes, all documented and scripted to ensure transparency and repeatability. Moreover, the **comprehensive HTML report** serves as a valuable resource that clearly communicates the research methods, analyses, and findings. It can be used as a teaching tool in academic settings, demonstrating how to approach complex data analyses and interpret results within a real-world context.
 
 ### 1.2 Research Question
 
@@ -105,7 +105,7 @@ Before starting the research, it is advisable to install all the necessary packa
 
 -   gridExtra
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Set a CRAN mirror
 options(repos = c(CRAN = "https://cran.rstudio.com"))
 
@@ -254,7 +254,7 @@ if __name__ == '__main__':
 
 To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
 library(tidyverse)
 library(here)
@@ -315,7 +315,7 @@ The first step after loading the data is to take a look at the different variabl
 The **business_data** set consists of the following variables:
 
 |   Variable   |                            Description                             | Data Type |
-|:-----------:|:--------------------------------------------:|:-----------:|
+|:----------------:|:-----------------------------------:|:----------------:|
 | business_id  |            A unique character string for each business             | Character |
 |     name     |                         The business name                          | Character |
 |   address    |                  The full address of the business                  | Character |
@@ -352,7 +352,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:-------------:|:----------------------------------------:|:-------------:|
+|:----------------:|:----------------------------------:|:----------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -391,7 +391,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:------------:|:-------------------------------------------:|:------------:|
+|:----------------:|:-----------------------------------:|:----------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -422,7 +422,7 @@ Given the **large size** of the three data files and the presence of **many colu
 
 We began by **thoroughly examining** the three large data sets to understand their **structure, content**, and potential issues such as **missing values** or **inconsistencies**.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
 library(tidyverse)
 library(here)
@@ -450,7 +450,7 @@ str(review_data)
 
 To **focus on relevant information** and **reduce computational complexity**, we **selected only the variables necessary** for our study. This involved **identifying and retaining columns** that contribute directly to our **research objectives** while **discarding irrelevant or redundant data**.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # ndefinedSelecting variables/columns of interest
 business_data <- business_data %>% 
   select(business_id, name, state, city, stars, review_count, is_open,
@@ -467,13 +467,13 @@ review_data <- review_data %>%
 
 After **selecting the necessary columns** in each individual data set, we **merged them based on common keys**. This integration allowed us to have a **comprehensive view of the data**, combining **user information, business details, and review content** into a single data set.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Combining the data
 merge1 <- left_join(user_data, review_data, by = "user_id")
 merged_data <- left_join(merge1, business_data, by = "business_id")
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Take sample of 50.000
 
 set.seed(90)
@@ -481,16 +481,16 @@ sample_data <- merged_data %>%
   slice_sample(n = 50000)
 ```
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
+```{r, eval=TRUE, echo=TRUE,results='markup'}
 ### Output ###
 head(sample_data)
 ```
 
 #### 2.2.4 Data Transformation
 
-To **prepare the new data set** for subsequent use, we **transformed the data** by **renaming the columns** to have **meaningful and easily trackable names**.
+To **prepare the new data set** for subsequent use, we **transformed the data** by **renaming the columns** to have **meaningful and easily traceable names**.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
 library(tidyverse)
 library(here)
@@ -531,7 +531,7 @@ head(sample_data)
 
 To thoroughly extract meaningful insights from the data set and address our research question comprehensively, we enhanced the data set by creating additional columns, specifically `state_divisions` and `state_regions`. The purpose of these new columns is to **categorize the data more effectively** based on **geographic attributes**, enabling us to conduct a **more granular analysis**. By **segmenting the data set** into distinct **state divisions and regions**, we can **capture the influence of geographical variations** on user ratings, thus **diversifying and deepening our analysis**. This approach allows us to **identify patterns and trends** that might differ across various locations, providing a **more nuanced understanding** of how influential users rate take-out restaurants.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Create new division variable
 
 # Step 1: Define the state_divisions vector
@@ -614,7 +614,7 @@ sample_data <- sample_data %>%
 unique(sample_data$division)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Create new region variable
 
 # Step 1: Define the region vector
@@ -689,7 +689,7 @@ unique(sample_data$region)
 
 In the subsequent step, we conduct a **thorough examination** to determine whether our dataset contains any **missing values**, represented as **'NA'**. **Identifying and addressing these 'NA' values** is crucial to **maintaining the quality and integrity** of our analysis. Once detected, we proceed to **remove these missing values** to prevent them from **skewing our results** or **introducing biases** in the analysis. By **eliminating incomplete data**, we ensure that our data set remains **consistent**, allowing us to **derive accurate insights** and **maintain the robustness** of our statistical models.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Check for NA's in the data
 variable_na <- sample_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%
@@ -698,8 +698,6 @@ variable_na <- sample_data %>%
     names_to = "variable", 
     values_to = "na_count"
   )
-
-View(variable_na)
 
 # Remove NA's in attributes data
 sample_data <- sample_data %>% 
@@ -710,7 +708,7 @@ To facilitate the analysis of take-out versus non-take-out restaurants, we creat
 
 After defining this variable, we filter our data set to include only those rows where `take_out` is equal to `1`. By **focusing exclusively on take-out restaurants**, we can **delve deeper** into the **behaviors, characteristics, and ratings** associated specifically with this subset of businesses, thereby providing **more relevant insights** in relation to our research question. This **filtering step** ensures that our analysis remains **focused on the intended subject**, **eliminating any noise** that non-take-out restaurants might introduce.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Create a take_out variable that contains 1 for take-out restaurants and
 # 0 for non take-out restaurants
 # Select only the take-out restaurants
@@ -738,7 +736,7 @@ head(takeout_data)
 
 In this stage, we use various **visualization techniques** such as **bar charts, scatter plots, box plots, and histograms** to **explore relationships** between variables, **uncover patterns**, and **highlight trends** within the data set. Effective data visualization enables us to **quickly identify outliers, distributions, and correlations** that might not be apparent from numerical summaries alone.
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
 library(tidyverse)
 library(here)
@@ -767,6 +765,8 @@ rating_distribution_plot <- ggplot(takeout_data, aes(x = stars_user, fill = elit
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+![Figure 1](images/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
+
 **Plot 2: Distribution of User Ratings for Take-Out Restaurants by Elite Status**
 
 The "**Distribution of User Ratings for Take-Out Restaurants by Elite Status**" plot shows how **ratings vary between elite and non-elite users** specifically for take-out restaurants. This comparison allows us to **assess whether elite users**, who may have **higher expectations or more experience**, **rate take-out establishments differently** than non-elite users. By visualizing these distributions, we can better understand any **distinctions in rating behavior** linked to **elite status** within the context of **take-out dining**.
@@ -778,6 +778,8 @@ boxplot_elite <- ggplot(takeout_data %>% filter(take_out == 1), aes(x = elite_re
        x = "Elite Status", y = "User Rating", fill = "Elite Status") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+![Figure 2](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
 
 **Plot 3: Average User Rating by Region and Elite Status**
 
@@ -797,6 +799,8 @@ avg_rating_region_plot <- ggplot(avg_rating_region, aes(x = reorder(region, -avg
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
+
 **Plot 4: Distribution of Review Count by Business Open Status**
 
 The "**Distribution of Review Count by Business Open Status**" plot shows how the **number of reviews** is distributed between **businesses that are currently open** versus those that are **closed**. This comparison allows us to **examine whether businesses that are still operating** tend to have more or fewer reviews compared to those that have closed, providing **insights into customer engagement** and potential **correlations between review volume and business success** or longevity.
@@ -809,6 +813,8 @@ review_count_histogram_open <- ggplot(takeout_data, aes(x = review_count_busines
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_fill_manual(values = c("0" = "orange", "1" = "green"), labels = c("Closed", "Open"))
 ```
+
+![Figure 4](images/distribution_review_count_business_by_is_open.png){fig-align="center"}
 
 **Plot 5: Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**
 
@@ -829,6 +835,8 @@ avg_rating_gt_1000_region_plot <- ggplot(data_gt_1000_region, aes(x = reorder(re
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+![Figure 5](images/avg_rating_gt_1000_by_region.png){fig-align="center"}
+
 **Plot 6: Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses that have received **over 1,000 reviews**, segmented by whether the **business is currently open or closed**, and by **user elite status**. This visualization helps us **determine if there is a difference** in how **elite and non-elite users rate highly-reviewed businesses** based on their **open status**, providing **insights** into whether ratings might reflect a **business's success or its likelihood of remaining open**.
@@ -847,6 +855,8 @@ avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(i
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 ```
+
+![Figure 6](images/avg_rating_gt_1000_by_is_open-01.png){fig-align="center"}
 
 **Plot 7: Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**
 
@@ -867,9 +877,13 @@ avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(re
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
+
 **Plot 8: Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
+
+![Figure 8](images/avg_rating_lt_1000_by_is_open-02.png){fig-align="center"}
 
 ```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 data_lt_1000_is_open <- takeout_data %>%
@@ -901,6 +915,8 @@ scatter_fans_rating_plot <- ggplot(takeout_data, aes(x = fans, y = stars_user, c
   scale_color_manual(values = c("0" = "orange", "1" = "green"), labels = c("Closed", "Open"))
 ```
 
+![Figure 9](images/relationship_fans_user_rating_faceted_by_region-01.png){fig-align="center"}
+
 Based on our exploratory analysis, we identified several key insights into how user ratings vary based on elite status, geographic region, business status, and user influence.
 
 -   **Distribution of User Ratings by Elite Status**: Non-elite reviewers are more likely to give higher ratings compared to elite reviewers, with significantly more 5-star ratings coming from non-elite users. This suggests a more generous evaluation pattern among non-elite reviewers.
@@ -927,7 +943,7 @@ Based on our exploratory analysis, we identified several key insights into how u
 
 #### 2.3.2 Statistical Data Analysis
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
 library(tidyverse)
 library(here)
