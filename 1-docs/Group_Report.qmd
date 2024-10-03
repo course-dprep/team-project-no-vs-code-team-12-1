@@ -107,30 +107,6 @@ Before starting the research, it is advisable to install all the necessary packa
 
 -   gridExtra
 
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-# Set a CRAN mirror
-options(repos = c(CRAN = "https://cran.rstudio.com"))
-
-# WORKING DIRECTORY SETTING PACKAGES
-suppressMessages(suppressWarnings(install.packages("here", quiet = TRUE)))
-suppressMessages(suppressWarnings(install.packages("rstudioapi", quiet = TRUE)))
-
-# GENERAL PACKAGES
-suppressMessages(suppressWarnings(install.packages(c("tidyverse", "googledrive", "readr", "dplyr"), quiet = TRUE)))
-
-# R MARKDOWN RENDER
-suppressMessages(suppressWarnings(install.packages("reticulate", quiet = TRUE)))
-suppressMessages(suppressWarnings(install.packages("knitr", quiet = TRUE)))
-
-# ANALYSIS PACKAGES
-suppressMessages(suppressWarnings(install.packages("ggcorrplot", quiet = TRUE)))
-suppressMessages(suppressWarnings(install.packages("sjPlot", quiet = TRUE)))
-suppressMessages(suppressWarnings(install.packages("sjmisc", quiet = TRUE)))
-
-# Install the gridExtra package
-suppressMessages(suppressWarnings(install.packages("gridExtra", quiet = TRUE)))
-```
-
 #### 2.1.1 Data Download
 
 From the Yelp database the business, user, and review data files are downloaded to answer the research question.
@@ -264,11 +240,6 @@ library(googledrive)
 library(knitr)
 
 ### Authentication ###
-options(
-  gargle_oauth_email = "lyba.tho2412@gmail.com",
-  gargle_oauth_cache = here(".secrets")
-)
-
 drive_auth()
 
 ### Input ### 
@@ -306,27 +277,6 @@ user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
 review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
 ```
 
-**business data**
-
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# View the first few rows of business_data
-kable(head(business_data), caption = "First Few Rows of Business Data")
-```
-
-**user data**
-
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# View the first few rows of user_data
-kable(head(user_data), caption = "First Few Rows of User Data")
-```
-
-**review data**
-
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# View the first few rows of review_data
-kable(head(review_data), caption = "First Few Rows of Review Data")
-```
-
 #### 2.1.2 Data Inspection
 
 The first step after loading the data is to take a look at the different variables that are included in the three different data files.
@@ -352,28 +302,12 @@ The **business_data** set consists of the following variables:
 |  categories  |    An array of different business categories    | Character |
 |    hours     |       An object of key day-to-value hours       | Character |
 
-The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
-
--   business_id
-
--   city
-
--   state
-
--   stars
-
--   review_count
-
--   is_open
-
--   attributes
-
 ##### 2.1.2.2 user_data
 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:----------------:|:---------------------------------:|:----------------:|
+|:-----------------:|:--------------------------------:|:-----------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -397,22 +331,12 @@ The **user_data** consists of the following variables:
 | compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
 |  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
 
-The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
-
--   user_id
-
--   review_count
-
--   fans
-
--   elite
-
 ##### 2.1.2.3 review_data
 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:-----------------:|:---------------------------------:|:-----------------:|
+|:-----------------:|:--------------------------------:|:-----------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -422,16 +346,6 @@ The **review_data** set consists of the following variables:
 |   useful    |         The number of 'useful' votes received          |  Numeric  |
 |    funny    |          The number of 'funny' votes received          |  Numeric  |
 |    Cool     |          The number of 'cool' votes received           |  Numeric  |
-
-The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the review data set are:
-
--   user_id
-
--   business_id
-
--   review_id
-
--   stars
 
 ### 2.2 **Data Processing**
 
@@ -453,12 +367,14 @@ glimpse(business_data)
 **user data**
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Inspecting the data
 glimpse(user_data)
 ```
 
 **review data**
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Inspecting the data
 glimpse(review_data)
 ```
 
@@ -479,20 +395,43 @@ review_data <- review_data %>%
   select(review_id, user_id, business_id, stars)
 ```
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# Displaying the first few rows of the selected business_data
-kable(head(business_data), caption = "First Few Rows of Selected Business Data")
-```
+The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question.
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# Displaying the first few rows of the selected user_data
-kable(head(user_data), caption = "First Few Rows of Selected User Data")
-```
+These variables in the **business data** **set** include:
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# Displaying the first few rows of the selected review_data
-kable(head(review_data), caption = "First Few Rows of Selected Review Data")
-```
+-   business_id
+
+-   city
+
+-   state
+
+-   stars
+
+-   review_count
+
+-   is_open
+
+-   attributes
+
+These variables in the **user data set** include:
+
+-   user_id
+
+-   review_count
+
+-   fans
+
+-   elite
+
+These variables in the **review data set** are:
+
+-   user_id
+
+-   business_id
+
+-   review_id
+
+-   stars
 
 #### 2.2.3 Data Merging
 
@@ -519,7 +458,7 @@ kable(head(sample_data), caption = "First Few Rows of Selected Sample Data")
 
 #### 2.2.4 Data Transformation
 
-To **prepare the new data set** for subsequent use, we **transformed the data** by **renaming the columns** to have **meaningful and easily traceable names**.
+To **prepare the new data set** for subsequent use, we **transformed the data** by **renaming the columns** to have **meaningful and easily traceable names**. For example, stars.x -\> stars_user, stars.y -\> stars_business.
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
@@ -552,11 +491,6 @@ sample_data <- sample_data %>%
 
 # Remove elite column
 sample_data <- sample_data %>% select(-elite)
-```
-
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-# Displaying the first few rows of the selected sample_data
-kable(head(sample_data), caption = "First Few Rows of Selected Sample Data")
 ```
 
 To thoroughly extract meaningful insights from the data set and address our research question comprehensively, we enhanced the data set by creating additional columns, specifically `state_divisions` and `state_regions`. The purpose of these new columns is to **categorize the data more effectively** based on **geographic attributes**, enabling us to conduct a **more granular analysis**. By **segmenting the data set** into distinct **state divisions and regions**, we can **capture the influence of geographical variations** on user ratings, thus **diversifying and deepening our analysis**. This approach allows us to **identify patterns and trends** that might differ across various locations, providing a **more nuanced understanding** of how influential users rate take-out restaurants.
@@ -781,55 +715,55 @@ takeout_data <- takeout_data %>%
 
 The "**Distribution of User Ratings by Elite Status**" plot illustrates how **ratings differ between elite and non-elite users**. By **comparing the distribution** of ratings across these groups, we aim to determine whether **elite users**, who are often more **experienced or influential**, tend to **rate businesses differently** compared to regular users. This visualization helps us **identify any biases or tendencies** in rating behavior based on **elite status**, providing **insights** into how influential users perceive take-out restaurants compared to non-influential ones.
 
-![Figure 1](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
+![Figure 1](../7-plots/distribution_user_ratings_by_elite_review.png){fig-align="center"}
 
 **Plot 2: Distribution of User Ratings for Take-Out Restaurants by Elite Status**
 
 The "**Distribution of User Ratings for Take-Out Restaurants by Elite Status**" plot shows how **ratings vary between elite and non-elite users** specifically for take-out restaurants. This comparison allows us to **assess whether elite users**, who may have **higher expectations or more experience**, **rate take-out establishments differently** than non-elite users. By visualizing these distributions, we can better understand any **distinctions in rating behavior** linked to **elite status** within the context of **take-out dining**.
 
-![Figure 2](images/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
+![Figure 2](../7-plots/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
 
 **Plot 3: Average User Rating by Region and Elite Status**
 
 The "**Average User Rating by Region and Elite Status**" plot displays the **average ratings given by users**, segmented by both **region and elite status**. This plot helps us explore whether **elite and non-elite users rate take-out restaurants differently** across various regions. By analyzing these averages, we can **identify regional patterns** in **user satisfaction** and understand if **elite users consistently rate higher or lower** compared to non-elite users in different geographic areas, revealing potential **regional biases or differences in rating behavior**.
 
-![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
+![Figure 3](../7-plots/user_ratings_by_region_elite_review.png){fig-align="center"}
 
 **Plot 4: Distribution of Review Count by Business Open Status**
 
 The "**Distribution of Review Count by Business Open Status**" plot shows how the **number of reviews** is distributed between **businesses that are currently open** versus those that are **closed**. This comparison allows us to **examine whether businesses that are still operating** tend to have more or fewer reviews compared to those that have closed, providing **insights into customer engagement** and potential **correlations between review volume and business success** or longevity.
 
-![Figure 4](images/distribution_review_count_business_by_is_open.png){fig-align="center"}
+![Figure 4](../7-plots/distribution_review_count_business_by_is_open.png){fig-align="center"}
 
 **Plot 5: Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses that have accumulated **more than 1,000 reviews**, segmented by **region and user elite status**. This plot aims to assess whether **businesses with high engagement** are rated differently by **elite versus non-elite users** across different regions, helping us **identify potential regional variations** in **user satisfaction** for **highly popular establishments** and whether **elite users consistently provide higher or lower ratings** compared to non-elite users.
 
-![Figure 5](images/avg_rating_gt_1000_by_region.png){fig-align="center"}
+![Figure 5](../7-plots/avg_rating_gt_1000_by_region.png){fig-align="center"}
 
 **Plot 6: Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses that have received **over 1,000 reviews**, segmented by whether the **business is currently open or closed**, and by **user elite status**. This visualization helps us **determine if there is a difference** in how **elite and non-elite users rate highly-reviewed businesses** based on their **open status**, providing **insights** into whether ratings might reflect a **business's success or its likelihood of remaining open**.
 
-![Figure 6](images/avg_rating_gt_1000_by_is_open.png){fig-align="center"}
+![Figure 6](../7-plots/avg_rating_gt_1000_by_is_open.png){fig-align="center"}
 
 **Plot 7: Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by **region and user elite status**. This plot helps us understand how **elite and non-elite users rate less popular businesses** across different regions, revealing potential **differences in rating behavior** based on **elite status and geographic location**, as well as **regional factors** that might influence **user satisfaction** for businesses with **lower engagement**.
 
-![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
+![Figure 7](../7-plots/avg_rating_lt_1000_by_region.png)
 
 **Plot 8: Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
 
-![Figure 8](images/avg_rating_lt_1000_by_is_open.png){fig-align="center"}
+![Figure 8](../7-plots/avg_rating_lt_1000_by_is_open.png)
 
 **Plot 9: Relationship Between Number of Fans and User Rating by Region and Open Status**
 
 The "**Relationship Between Number of Fans and User Rating by Region and Open Status**" plot visualizes how the **number of fans** a user has **correlates with their ratings** of businesses, segmented by both **regions** and whether the **business is open or closed**. This plot helps us understand if **users with more fans**, who may be more **influential**, tend to give **different ratings** based on **regional factors** and the **current status** of the business, providing **insights** into whether **user popularity affects rating behavior** and how this varies by **location and business longevity**.
 
-![Figure 9](images/distribution_review_count_business_by_is_open-01.png){fig-align="center"}
+![Figure 9](../7-plots/relationship_fans_user_rating_faceted_by_region.png)
 
 Based on our exploratory analysis, we identified several key insights into how user ratings vary based on elite status, geographic region, business status, and user influence.
 
