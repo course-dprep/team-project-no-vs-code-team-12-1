@@ -88,16 +88,36 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="research-question">1.2 Research Question</h3>
 <p>This study aims to address the gap in the dynamics of online reviews, particularly from influential Yelp users, by asking: <strong>Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how does the factor of location affect these ratings?</strong> This research is critical for several reasons. First, understanding the behavior of influential users could help businesses better manage their online reputations, particularly in a niche market like take-out dining. Second, examining how location—whether at the regional, state, or city level—impacts ratings can provide valuable insights into consumer preferences. Location-specific factors, such as regional food trends, city demographics, and neighborhood characteristics, may influence how users perceive and rate businesses. For take-out restaurants operating in highly competitive environments, especially those without an established offline presence, this research could offer practical strategies for improving ratings and attracting new customers by understanding how geographic context shapes consumer perceptions.</p>
 </section>
+<section id="conceptual-model" class="level3">
+<h3 class="anchored" data-anchor-id="conceptual-model">1.3 Conceptual Model</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../3-final_data/ANOVA.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figure 1</figcaption>
+</figure>
+</div>
+<p><strong>Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review</strong></p>
+<ul>
+<li>This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.</li>
+</ul>
+<p><strong>Quasi-Moderator (State Region): Midwest, Northeast, South, West</strong></p>
+<ul>
+<li><p>The state region acts as a quasi-moderator in the model. It includes four categories: Midwest, Northeast, South, and West. The main effect of this quasi-moderator is on the star rating of take-out restaurants, allowing us to determine how different regions influence the overall ratings.</p></li>
+<li><p>Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.</p></li>
+</ul>
+<p>To explore these relationships, <strong>ANOVA</strong> will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs.&nbsp;non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as <code>review_id</code>, <code>user_id</code>, <code>business_id</code>, <code>stars_user</code>, <code>review_count_user</code>, <code>fans</code>, <code>state</code>, <code>city</code>, <code>stars_business</code>, <code>review_count_business</code>, <code>is_open</code>, <code>elite_review</code>, <code>division</code>, <code>region</code>, and <code>take_out</code>. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.</p>
+</section>
 <section id="repository-structure-and-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="repository-structure-and-documentation">1.3 Repository Structure and Documentation</h3>
+<h3 class="anchored" data-anchor-id="repository-structure-and-documentation">1.4 Repository Structure and Documentation</h3>
 <pre class="plaintext"><code>├── README.md
 ├── makefile
-├── updated-project.Rproj
+├── updated-project
 ├── .Rhistory
 ├── .RData
 ├── .gitignore
 ├── 1-docs
-│   ├── Group Report
+│   ├── Group Report.Rproj
+│   ├── Group Report.HTML
 ├── 2-temporary_data
 │   ├── cleaned_sample_data
 │   ├── sample_data_elite_encoder
@@ -124,7 +144,6 @@ ul.task-list li input[type="checkbox"] {
 ├── 7-plots
 ├── 8-results
 ├── 9-shiny_app</code></pre>
-<hr>
 </section>
 </section>
 <section id="data-preparation-analysis" class="level2">
@@ -589,7 +608,7 @@ review_data &lt;- read_csv(review_file)</code></pre>
 </section>
 <section id="data-processing" class="level3">
 <h3 class="anchored" data-anchor-id="data-processing">2.2 <strong>Data Processing</strong></h3>
-<p>Due to <strong>limitations such as computational memory constraints and the focus on a manageable data set for in-depth analysis</strong>, we have decided to analyze a <strong>reduced sample of 50,000 observations from the Yelp data set</strong>. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. <strong>Future research can extend this work by examining the entire population of Yelp reviews</strong>, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.</p>
+<p>Due to <strong>limitations such as computational memory constraints and the focus on a manageable data set for in-depth analysis</strong>, we have decided to analyze a <strong>reduced sample of 323,856 observations from the Yelp data set</strong>. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. <strong>Future research can extend this work by examining the entire population of Yelp reviews</strong>, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.</p>
 <p>Given the <strong>large size</strong> of the three data files and the presence of <strong>many columns not pertinent</strong> to our study, we first <strong>filtered the data sets</strong> to retain only the <strong>necessary variables</strong> before merging them. This step <strong>reduced the data</strong> to a manageable size and ensured that only <strong>relevant information</strong> was included in the subsequent analysis.</p>
 <section id="data-inspection-1" class="level4">
 <h4 class="anchored" data-anchor-id="data-inspection-1">2.2.1 Data Inspection</h4>
