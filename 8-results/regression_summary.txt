@@ -1,24 +1,23 @@
 
 Call:
-glm(formula = stars_user ~ elite_review + review_count_user + 
-    fans + is_open + stars_business, data = takeout_data)
+lm(formula = stars_user ~ elite_review + review_count_user + 
+    fans + is_open, data = takeout_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.1115 -0.7812  0.2299  1.2258  2.4592 
 
 Coefficients:
                     Estimate Std. Error t value Pr(>|t|)    
-(Intercept)        1.609e-01  1.375e-02  11.704  < 2e-16 ***
-elite_review1      1.666e-01  5.563e-03  29.949  < 2e-16 ***
-review_count_user -5.165e-05  8.186e-06  -6.309 2.82e-10 ***
-fans               1.075e-04  2.829e-05   3.799 0.000145 ***
-is_open1           1.114e-02  5.564e-03   2.002 0.045334 *  
-stars_business     9.452e-01  3.513e-03 269.084  < 2e-16 ***
+(Intercept)        3.592e+00  5.681e-03 632.379  < 2e-16 ***
+elite_review1      2.315e-01  6.148e-03  37.655  < 2e-16 ***
+review_count_user -8.680e-05  9.054e-06  -9.587  < 2e-16 ***
+fans               1.787e-04  3.129e-05   5.711 1.12e-08 ***
+is_open1           1.824e-01  6.114e-03  29.829  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for gaussian family taken to be 1.578339)
-
-    Null deviance: 630087  on 323855  degrees of freedom
-Residual deviance: 511145  on 323850  degrees of freedom
-AIC: 1066871
-
-Number of Fisher Scoring iterations: 2
+Residual standard error: 1.39 on 323851 degrees of freedom
+Multiple R-squared:  0.007397,	Adjusted R-squared:  0.007385 
+F-statistic: 603.4 on 4 and 323851 DF,  p-value: < 2.2e-16
 
