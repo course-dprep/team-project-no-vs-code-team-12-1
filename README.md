@@ -123,7 +123,8 @@ This repository contains a structured workflow for downloading, preparing, prepr
 ├── .RData
 ├── .gitignore
 ├── 1-docs
-│   ├── Group Report
+│   ├── Group Report.Rproj
+│   ├── Group Report.HTML
 ├── 2-temporary_data
 │   ├── cleaned_sample_data
 │   ├── sample_data_elite_encoder
@@ -148,6 +149,8 @@ This repository contains a structured workflow for downloading, preparing, prepr
 │   ├── 4_plot_data.R
 │   ├── 5_analyse_data.R
 ├── 7-plots
+├── 8-results
+├── 9-shiny_app
 ```
 
 ## Dependencies
@@ -156,8 +159,9 @@ Please follow the installation guides at [LINK](http://tilburgsciencehub.com/)
 - **R**: [Installation guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
 - **Make**: [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 - **GitBash**: [Installation guide](https://git-scm.com/downloads)
+- **Quarto**: [Installation guide](https://quarto.org/docs/download/)
 
-To knit RMarkdown documents, make sure you have installed the ```reticulate``` package in R to render Python code
+**To knit Quarto documents, make sure you have installed the Quarto software and set PATH in the environment variables**
 
 For Python, make sure you have installed the following packages:
 ```{}
@@ -196,7 +200,7 @@ cd team-project-no-vs-code-team-12-1
 ```
 make
 ```
-   - Wait approximately 40 - 50 minutes for the entire project to run
+   - Wait approximately 20 - 30 minutes for the entire project to run
 4. **Clean Temporary and Final Data:**
    - Type
 ```
