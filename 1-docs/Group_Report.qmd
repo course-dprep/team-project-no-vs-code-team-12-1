@@ -373,7 +373,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:---------------:|:----------------------------------:|:----------------:|
+|:----------------:|:---------------------------------:|:----------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -412,7 +412,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:----------------:|:----------------------------------:|:----------------:|
+|:-----------------:|:---------------------------------:|:-----------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -546,9 +546,6 @@ sample_data <- sample_data %>%
 Next, we encoded the `elite` column using the **dummy encoding method** to convert it into a **binary variable**. This transformation allowed us to represent the 'elite' status numerically, assigning a value of **1** to **elite users** and **0** to **non-elite users**. By doing so, we made the `elite` variable suitable for statistical analysis and modeling techniques that require numerical input. This encoding is essential for including categorical variables in regression models, correlation analyses, and other quantitative methods. It enabled us to examine the **impact of a user's elite status** on various outcomes, such as their **rating behavior** or **influence within the platform**. **Converting categorical data into a numerical format** ensures that the algorithms can **process the information effectively**, leading to **more accurate and meaningful insights** in our analysis.
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-# Check elite variable
-unique(sample_data$elite)
-
 # Change user to elite users indicated by 1 and non-elite users indicated by 0
 sample_data <- sample_data %>%
   mutate(elite_review = if_else(is.na(elite), 0, 1))
@@ -784,51 +781,17 @@ takeout_data <- takeout_data %>%
 
 The "**Distribution of User Ratings by Elite Status**" plot illustrates how **ratings differ between elite and non-elite users**. By **comparing the distribution** of ratings across these groups, we aim to determine whether **elite users**, who are often more **experienced or influential**, tend to **rate businesses differently** compared to regular users. This visualization helps us **identify any biases or tendencies** in rating behavior based on **elite status**, providing **insights** into how influential users perceive take-out restaurants compared to non-influential ones.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
-rating_distribution_plot <- ggplot(takeout_data, aes(x = stars_user, fill = elite_review)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Distribution of User Ratings by Elite Status",
-       x = "User Rating", y = "Count", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-![Figure 1](images/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
+![Figure 1](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
 
 **Plot 2: Distribution of User Ratings for Take-Out Restaurants by Elite Status**
 
 The "**Distribution of User Ratings for Take-Out Restaurants by Elite Status**" plot shows how **ratings vary between elite and non-elite users** specifically for take-out restaurants. This comparison allows us to **assess whether elite users**, who may have **higher expectations or more experience**, **rate take-out establishments differently** than non-elite users. By visualizing these distributions, we can better understand any **distinctions in rating behavior** linked to **elite status** within the context of **take-out dining**.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
-boxplot_elite <- ggplot(takeout_data %>% filter(take_out == 1), aes(x = elite_review, y = stars_user, fill = elite_review)) +
-  geom_boxplot() +
-  labs(title = "Distribution of User Ratings for Take-Out Restaurants by Elite Status",
-       x = "Elite Status", y = "User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-![Figure 2](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
-
-![Figure 2](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
+![Figure 2](images/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
 
 **Plot 3: Average User Rating by Region and Elite Status**
 
 The "**Average User Rating by Region and Elite Status**" plot displays the **average ratings given by users**, segmented by both **region and elite status**. This plot helps us explore whether **elite and non-elite users rate take-out restaurants differently** across various regions. By analyzing these averages, we can **identify regional patterns** in **user satisfaction** and understand if **elite users consistently rate higher or lower** compared to non-elite users in different geographic areas, revealing potential **regional biases or differences in rating behavior**.
-
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
-avg_rating_region <- takeout_data %>%
-  group_by(region, elite_review) %>%
-  summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
-  ungroup()
-
-avg_rating_region_plot <- ggplot(avg_rating_region, aes(x = reorder(region, -avg_rating), y = avg_rating, fill = elite_review)) +
-  geom_col(position = "dodge") +
-  coord_flip() +
-  labs(title = "Average User Rating by Region and Elite Status",
-       x = "Region", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
 
 ![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
 
@@ -836,37 +799,11 @@ avg_rating_region_plot <- ggplot(avg_rating_region, aes(x = reorder(region, -avg
 
 The "**Distribution of Review Count by Business Open Status**" plot shows how the **number of reviews** is distributed between **businesses that are currently open** versus those that are **closed**. This comparison allows us to **examine whether businesses that are still operating** tend to have more or fewer reviews compared to those that have closed, providing **insights into customer engagement** and potential **correlations between review volume and business success** or longevity.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
-review_count_histogram_open <- ggplot(takeout_data, aes(x = review_count_business, fill = factor(is_open))) +
-  geom_histogram(binwidth = 50, color = "black", position = "stack") +
-  labs(title = "Distribution of Review Count by Business (Open vs. Closed)",
-       x = "Review Count", y = "Frequency", fill = "Is Open") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  scale_fill_manual(values = c("0" = "orange", "1" = "green"), labels = c("Closed", "Open"))
-```
-
 ![Figure 4](images/distribution_review_count_business_by_is_open.png){fig-align="center"}
 
 **Plot 5: Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses that have accumulated **more than 1,000 reviews**, segmented by **region and user elite status**. This plot aims to assess whether **businesses with high engagement** are rated differently by **elite versus non-elite users** across different regions, helping us **identify potential regional variations** in **user satisfaction** for **highly popular establishments** and whether **elite users consistently provide higher or lower ratings** compared to non-elite users.
-
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-data_gt_1000_region <- takeout_data %>%
-  filter(review_count_business > 1000) %>%
-  group_by(region, elite_review) %>%
-  summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
-  ungroup()
-```
-
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
-avg_rating_gt_1000_region_plot <- ggplot(data_gt_1000_region, aes(x = reorder(region, -avg_rating), y = avg_rating, fill = elite_review)) +
-  geom_col(position = "dodge") +
-  coord_flip() +
-  labs(title = "Average User Rating of Businesses with Review Count > 1000 by Region and Elite Status",
-       x = "Region", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
 
 ![Figure 5](images/avg_rating_gt_1000_by_region.png){fig-align="center"}
 
@@ -874,42 +811,11 @@ avg_rating_gt_1000_region_plot <- ggplot(data_gt_1000_region, aes(x = reorder(re
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses that have received **over 1,000 reviews**, segmented by whether the **business is currently open or closed**, and by **user elite status**. This visualization helps us **determine if there is a difference** in how **elite and non-elite users rate highly-reviewed businesses** based on their **open status**, providing **insights** into whether ratings might reflect a **business's success or its likelihood of remaining open**.
 
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-data_gt_1000_is_open <- takeout_data %>%
-  filter(review_count_business > 1000) %>%
-  group_by(is_open, elite_review %>%
-  summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
-  ungroup()
-
-avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(is_open), y = avg_rating, fill = elite_review)) +
-  geom_col(position = "dodge") +
-  labs(title = "Average User Rating of Businesses with Review Count > 1000 by Open Status and Elite Status",
-       x = "Is Open", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
-```
-
 ![Figure 6](images/avg_rating_gt_1000_by_is_open.png){fig-align="center"}
 
 **Plot 7: Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by **region and user elite status**. This plot helps us understand how **elite and non-elite users rate less popular businesses** across different regions, revealing potential **differences in rating behavior** based on **elite status and geographic location**, as well as **regional factors** that might influence **user satisfaction** for businesses with **lower engagement**.
-
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-data_lt_1000_region <- takeout_data %>%
-  filter(review_count_business < 1000) %>%
-  group_by(region, elite_review) %>%
-  summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
-  ungroup()
-```
-
-```{r, eval=TRUE, echo=FALSE,fig.show='hide'}
-avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(region, -avg_rating), y = avg_rating, fill = elite_review)) +
-  geom_col(position = "dodge") +
-  coord_flip() +  labs(title = "Average User Rating of Businesses with Review Count < 1000 by Region and Elite Status",
-       x = "Region", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
 
 ![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
 
@@ -917,41 +823,13 @@ avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(re
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
 
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-data_lt_1000_is_open <- takeout_data %>%
-  filter(review_count_business < 1000) %>%
-  group_by(is_open, elite_review) %>%
-  summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
-  ungroup()
-```
-
-```{r, eval=TRUE, echo=FALSE,fig.show = "hide"}
-avg_rating_lt_1000_is_open_plot <- ggplot(data_lt_1000_is_open, aes(x = factor(is_open), y = avg_rating, fill = elite_review)) +
-  geom_col(position = "dodge") +
-  labs(title = "Average User Rating of Businesses with Review Count < 1000 by Open Status and Elite Status",
-       x = "Is Open", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
-```
-
 ![Figure 8](images/avg_rating_lt_1000_by_is_open.png){fig-align="center"}
 
 **Plot 9: Relationship Between Number of Fans and User Rating by Region and Open Status**
 
 The "**Relationship Between Number of Fans and User Rating by Region and Open Status**" plot visualizes how the **number of fans** a user has **correlates with their ratings** of businesses, segmented by both **regions** and whether the **business is open or closed**. This plot helps us understand if **users with more fans**, who may be more **influential**, tend to give **different ratings** based on **regional factors** and the **current status** of the business, providing **insights** into whether **user popularity affects rating behavior** and how this varies by **location and business longevity**.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "hide"}
-scatter_fans_rating_plot <- ggplot(takeout_data, aes(x = fans, y = stars_user, color = factor(is_open))) +
-  geom_point(alpha = 0.5) +
-  geom_smooth(method = "lm", se = FALSE, color = "red") +
-  facet_wrap(~ region, scales = "free") +
-  labs(title = "Relationship Between Number of Fans and User Rating by Region and Open Status",
-       x = "Number of Fans", y = "User Rating", color = "Is Open") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("0" = "orange", "1" = "green"), labels = c("Closed", "Open"))
-```
-
-![Figure 9](images/relationship_fans_user_rating_faceted_by_region.png){fig-align="center"}
+![Figure 9](images/distribution_review_count_business_by_is_open-01.png){fig-align="center"}
 
 Based on our exploratory analysis, we identified several key insights into how user ratings vary based on elite status, geographic region, business status, and user influence.
 
