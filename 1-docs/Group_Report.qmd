@@ -1,5 +1,5 @@
 ---
-title: "Group_Report_v2"
+title: "Group_Report"
 format: html
 editor: visual
 ---
@@ -315,7 +315,7 @@ The first step after loading the data is to take a look at the different variabl
 The **business_data** set consists of the following variables:
 
 |   Variable   |                            Description                             | Data Type |
-|:----------------:|:-----------------------------------:|:----------------:|
+|:-------------:|:----------------------------------------:|:-------------:|
 | business_id  |            A unique character string for each business             | Character |
 |     name     |                         The business name                          | Character |
 |   address    |                  The full address of the business                  | Character |
@@ -352,7 +352,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:----------------:|:----------------------------------:|:----------------:|
+|:---------------:|:-------------------------------------:|:---------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -391,7 +391,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:----------------:|:-----------------------------------:|:----------------:|
+|:--------------:|:---------------------------------------:|:--------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -781,6 +781,8 @@ boxplot_elite <- ggplot(takeout_data %>% filter(take_out == 1), aes(x = elite_re
 
 ![Figure 2](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
 
+![Figure 2](images/distribution_user_ratings_by_elite_review.png){fig-align="center"}
+
 **Plot 3: Average User Rating by Region and Elite Status**
 
 The "**Average User Rating by Region and Elite Status**" plot displays the **average ratings given by users**, segmented by both **region and elite status**. This plot helps us explore whether **elite and non-elite users rate take-out restaurants differently** across various regions. By analyzing these averages, we can **identify regional patterns** in **user satisfaction** and understand if **elite users consistently rate higher or lower** compared to non-elite users in different geographic areas, revealing potential **regional biases or differences in rating behavior**.
@@ -798,6 +800,8 @@ avg_rating_region_plot <- ggplot(avg_rating_region, aes(x = reorder(region, -avg
        x = "Region", y = "Average User Rating", fill = "Elite Status") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
 
 ![Figure 3](images/user_ratings_by_region_elite_review.png){fig-align="center"}
 
@@ -856,7 +860,7 @@ avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(i
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 ```
 
-![Figure 6](images/avg_rating_gt_1000_by_is_open-01.png){fig-align="center"}
+![Figure 6](images/avg_rating_gt_1000_by_is_open.png){fig-align="center"}
 
 **Plot 7: Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**
 
@@ -879,11 +883,13 @@ avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(re
 
 ![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
 
+![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
+
 **Plot 8: Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
 
-![Figure 8](images/avg_rating_lt_1000_by_is_open-02.png){fig-align="center"}
+![Figure 8](images/avg_rating_lt_1000_by_is_open.png){fig-align="center"}
 
 ```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 data_lt_1000_is_open <- takeout_data %>%
@@ -914,6 +920,8 @@ scatter_fans_rating_plot <- ggplot(takeout_data, aes(x = fans, y = stars_user, c
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_color_manual(values = c("0" = "orange", "1" = "green"), labels = c("Closed", "Open"))
 ```
+
+![Figure 9](images/relationship_fans_user_rating_faceted_by_region.png){fig-align="center"}
 
 ![Figure 9](images/relationship_fans_user_rating_faceted_by_region-01.png){fig-align="center"}
 
