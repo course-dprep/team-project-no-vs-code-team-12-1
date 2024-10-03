@@ -26,17 +26,18 @@ review_data <- review_data %>%
   select(review_id, user_id, business_id, stars)
 
 # Combining the data
-merge1 <- left_join(user_data, review_data, by = "user_id")
+merge1 <- left_join(review_data, user_data, by = "user_id")
 
 merged_data <- left_join(merge1, business_data, by = "business_id")
 
 # Take sample of 50.000
 
-set.seed(90)
-sample_data <- merged_data %>% 
-  slice_sample(n = 50000)
+#set.seed(90)
+#sample_data <- merged_data %>% 
+#  slice_sample(n = 50000)
 
 ### Output ###
 
 # Write csv file
-write_csv(sample_data, here("2-temporary_data", "sample_data.csv"))
+write_csv(merged_data, here("2-temporary_data", "sample_data.csv"))
+
