@@ -10,6 +10,7 @@ install.packages(c("tidyverse", "googledrive", "readr", "dplyr"))
 
 # R MARKDOWN RENDER
 install.packages("reticulate")
+install.packages("knitr")
 
 # ANALYSIS PACKAGES
 install.packages("ggcorrplot")

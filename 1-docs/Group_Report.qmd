@@ -97,6 +97,8 @@ Before starting the research, it is advisable to install all the necessary packa
 
 -   reticulate
 
+-   knitr
+
 -   ggcorrplot
 
 -   sjPlot
@@ -110,23 +112,23 @@ Before starting the research, it is advisable to install all the necessary packa
 options(repos = c(CRAN = "https://cran.rstudio.com"))
 
 # WORKING DIRECTORY SETTING PACKAGES
-install.packages("here")
-install.packages("rstudioapi")
+suppressMessages(suppressWarnings(install.packages("here", quiet = TRUE)))
+suppressMessages(suppressWarnings(install.packages("rstudioapi", quiet = TRUE)))
 
 # GENERAL PACKAGES
-install.packages(c("tidyverse", "googledrive", "readr", "dplyr"))
+suppressMessages(suppressWarnings(install.packages(c("tidyverse", "googledrive", "readr", "dplyr"), quiet = TRUE)))
 
 # R MARKDOWN RENDER
-install.packages("reticulate")
+suppressMessages(suppressWarnings(install.packages("reticulate", quiet = TRUE)))
+suppressMessages(suppressWarnings(install.packages("knitr", quiet = TRUE)))
 
 # ANALYSIS PACKAGES
-install.packages("ggcorrplot")
-install.packages("sjPlot")
-install.packages("sjmisc")
-
+suppressMessages(suppressWarnings(install.packages("ggcorrplot", quiet = TRUE)))
+suppressMessages(suppressWarnings(install.packages("sjPlot", quiet = TRUE)))
+suppressMessages(suppressWarnings(install.packages("sjmisc", quiet = TRUE)))
 
 # Install the gridExtra package
-install.packages("gridExtra")
+suppressMessages(suppressWarnings(install.packages("gridExtra", quiet = TRUE)))
 ```
 
 #### 2.1.1 Data Download
@@ -259,6 +261,7 @@ To streamline the process, we've provided an R script that **automatically downl
 library(tidyverse)
 library(here)
 library(googledrive)
+library(knitr)
 
 ### Authentication ###
 options(
@@ -291,19 +294,25 @@ user_data <- read_csv(user_file)
 review_data <- read_csv(review_file)
 ```
 
+**business data**
+
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 # View the first few rows of business_data
-head(business_data)
+kable(head(business_data), caption = "First Few Rows of Business Data")
 ```
+
+**user data**
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 # View the first few rows of user_data
-head(user_data)
+kable(head(user_data), caption = "First Few Rows of User Data")
 ```
 
+**review data**
+
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
-# View the first few rows of review
-head(review_data)
+# View the first few rows of review_data
+kable(head(review_data), caption = "First Few Rows of Review Data")
 ```
 
 #### 2.1.2 Data Inspection
@@ -315,7 +324,7 @@ The first step after loading the data is to take a look at the different variabl
 The **business_data** set consists of the following variables:
 
 |   Variable   |                            Description                             | Data Type |
-|:-------------:|:----------------------------------------:|:-------------:|
+|:---------------:|:-------------------------------------:|:---------------:|
 | business_id  |            A unique character string for each business             | Character |
 |     name     |                         The business name                          | Character |
 |   address    |                  The full address of the business                  | Character |
@@ -352,7 +361,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:---------------:|:-------------------------------------:|:---------------:|
+|:----------------:|:-----------------------------------:|:----------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -391,7 +400,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:--------------:|:---------------------------------------:|:--------------:|
+|:---------------:|:------------------------------------:|:---------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -433,17 +442,23 @@ user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
 review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
 ```
 
+**business data**
+
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 # Inspecting the data
-str(business_data) 
+glimpse(business_data)
 ```
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
-str(user_data)
-```
+**user data**
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
-str(review_data)
+glimpse(user_data)
+```
+
+**review data**
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+glimpse(review_data)
 ```
 
 #### 2.2.2 Variable Selection
@@ -461,6 +476,21 @@ user_data <- user_data %>%
 
 review_data <- review_data %>% 
   select(review_id, user_id, business_id, stars)
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected business_data
+kable(head(business_data), caption = "First Few Rows of Selected Business Data")
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected user_data
+kable(head(user_data), caption = "First Few Rows of Selected User Data")
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected review_data
+kable(head(review_data), caption = "First Few Rows of Selected Review Data")
 ```
 
 #### 2.2.3 Data Merging
@@ -481,9 +511,9 @@ sample_data <- merged_data %>%
   slice_sample(n = 50000)
 ```
 
-```{r, eval=TRUE, echo=TRUE,results='markup'}
-### Output ###
-head(sample_data)
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected sample_data
+kable(head(sample_data), caption = "First Few Rows of Selected Sample Data")
 ```
 
 #### 2.2.4 Data Transformation
@@ -514,7 +544,7 @@ sample_data <- sample_data %>%
 
 Next, we encoded the `elite` column using the **dummy encoding method** to convert it into a **binary variable**. This transformation allowed us to represent the 'elite' status numerically, assigning a value of **1** to **elite users** and **0** to **non-elite users**. By doing so, we made the `elite` variable suitable for statistical analysis and modeling techniques that require numerical input. This encoding is essential for including categorical variables in regression models, correlation analyses, and other quantitative methods. It enabled us to examine the **impact of a user's elite status** on various outcomes, such as their **rating behavior** or **influence within the platform**. **Converting categorical data into a numerical format** ensures that the algorithms can **process the information effectively**, leading to **more accurate and meaningful insights** in our analysis.
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Check elite variable
 unique(sample_data$elite)
 
@@ -524,9 +554,11 @@ sample_data <- sample_data %>%
 
 # Remove elite column
 sample_data <- sample_data %>% select(-elite)
+```
 
-# Check elite_user variable
-head(sample_data)
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected sample_data
+kable(head(sample_data), caption = "First Few Rows of Selected Sample Data")
 ```
 
 To thoroughly extract meaningful insights from the data set and address our research question comprehensively, we enhanced the data set by creating additional columns, specifically `state_divisions` and `state_regions`. The purpose of these new columns is to **categorize the data more effectively** based on **geographic attributes**, enabling us to conduct a **more granular analysis**. By **segmenting the data set** into distinct **state divisions and regions**, we can **capture the influence of geographical variations** on user ratings, thus **diversifying and deepening our analysis**. This approach allows us to **identify patterns and trends** that might differ across various locations, providing a **more nuanced understanding** of how influential users rate take-out restaurants.
@@ -609,9 +641,6 @@ state_divisions <- c(
 # Step 2: Map the states to divisions
 sample_data <- sample_data %>%
   mutate(division = state_divisions[state])
-
-# Check division variable
-unique(sample_data$division)
 ```
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
@@ -682,9 +711,6 @@ state_regions <- c(
 # Step 2: Map the states to regions
 sample_data <- sample_data %>%
   mutate(region = state_regions[state])
-
-# check region variable
-unique(sample_data$region)
 ```
 
 In the subsequent step, we conduct a **thorough examination** to determine whether our dataset contains any **missing values**, represented as **'NA'**. **Identifying and addressing these 'NA' values** is crucial to **maintaining the quality and integrity** of our analysis. Once detected, we proceed to **remove these missing values** to prevent them from **skewing our results** or **introducing biases** in the analysis. By **eliminating incomplete data**, we ensure that our data set remains **consistent**, allowing us to **derive accurate insights** and **maintain the robustness** of our statistical models.
@@ -726,8 +752,8 @@ takeout_data <- takeout_data %>% select(-attributes)
 ```
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
-### Output ###
-head(takeout_data)
+# Displaying the first few rows of the selected takeout_data
+kable(head(takeout_data), caption = "First Few Rows of Selected Takeout Data")
 ```
 
 ### 2.3 **Analysis and Deployment**
@@ -824,13 +850,15 @@ review_count_histogram_open <- ggplot(takeout_data, aes(x = review_count_busines
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses that have accumulated **more than 1,000 reviews**, segmented by **region and user elite status**. This plot aims to assess whether **businesses with high engagement** are rated differently by **elite versus non-elite users** across different regions, helping us **identify potential regional variations** in **user satisfaction** for **highly popular establishments** and whether **elite users consistently provide higher or lower ratings** compared to non-elite users.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 data_gt_1000_region <- takeout_data %>%
   filter(review_count_business > 1000) %>%
   group_by(region, elite_review) %>%
   summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
   ungroup()
+```
 
+```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 avg_rating_gt_1000_region_plot <- ggplot(data_gt_1000_region, aes(x = reorder(region, -avg_rating), y = avg_rating, fill = elite_review)) +
   geom_col(position = "dodge") +
   coord_flip() +
@@ -845,13 +873,15 @@ avg_rating_gt_1000_region_plot <- ggplot(data_gt_1000_region, aes(x = reorder(re
 
 The "**Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses that have received **over 1,000 reviews**, segmented by whether the **business is currently open or closed**, and by **user elite status**. This visualization helps us **determine if there is a difference** in how **elite and non-elite users rate highly-reviewed businesses** based on their **open status**, providing **insights** into whether ratings might reflect a **business's success or its likelihood of remaining open**.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 data_gt_1000_is_open <- takeout_data %>%
   filter(review_count_business > 1000) %>%
-  group_by(is_open, elite_review) %>%
+  group_by(is_open, elite_review %>%
   summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
   ungroup()
+```
 
+```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(is_open), y = avg_rating, fill = elite_review)) +
   geom_col(position = "dodge") +
   labs(title = "Average User Rating of Businesses with Review Count > 1000 by Open Status and Elite Status",
@@ -866,22 +896,21 @@ avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(i
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by **region and user elite status**. This plot helps us understand how **elite and non-elite users rate less popular businesses** across different regions, revealing potential **differences in rating behavior** based on **elite status and geographic location**, as well as **regional factors** that might influence **user satisfaction** for businesses with **lower engagement**.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 data_lt_1000_region <- takeout_data %>%
   filter(review_count_business < 1000) %>%
   group_by(region, elite_review) %>%
   summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
   ungroup()
+```
 
+```{r, eval=TRUE, echo=FALSE,fig.show='hide'}
 avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(region, -avg_rating), y = avg_rating, fill = elite_review)) +
   geom_col(position = "dodge") +
-  coord_flip() +
-  labs(title = "Average User Rating of Businesses with Review Count < 1000 by Region and Elite Status",
+  coord_flip() +  labs(title = "Average User Rating of Businesses with Review Count < 1000 by Region and Elite Status",
        x = "Region", y = "Average User Rating", fill = "Elite Status") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
-
-![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
 
 ![Figure 7](images/avg_rating_lt_1000_by_region.png){fig-align="center"}
 
@@ -889,15 +918,15 @@ avg_rating_lt_1000_region_plot <- ggplot(data_lt_1000_region, aes(x = reorder(re
 
 The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
 
-![Figure 8](images/avg_rating_lt_1000_by_is_open.png){fig-align="center"}
-
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 data_lt_1000_is_open <- takeout_data %>%
   filter(review_count_business < 1000) %>%
   group_by(is_open, elite_review) %>%
   summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
   ungroup()
+```
 
+```{r, eval=TRUE, echo=FALSE,fig.show = "hide"}
 avg_rating_lt_1000_is_open_plot <- ggplot(data_lt_1000_is_open, aes(x = factor(is_open), y = avg_rating, fill = elite_review)) +
   geom_col(position = "dodge") +
   labs(title = "Average User Rating of Businesses with Review Count < 1000 by Open Status and Elite Status",
@@ -906,11 +935,13 @@ avg_rating_lt_1000_is_open_plot <- ggplot(data_lt_1000_is_open, aes(x = factor(i
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 ```
 
+![Figure 8](images/avg_rating_lt_1000_by_is_open.png){alt="Figure 8" fig-align="center"}
+
 **Plot 9: Relationship Between Number of Fans and User Rating by Region and Open Status**
 
 The "**Relationship Between Number of Fans and User Rating by Region and Open Status**" plot visualizes how the **number of fans** a user has **correlates with their ratings** of businesses, segmented by both **regions** and whether the **business is open or closed**. This plot helps us understand if **users with more fans**, who may be more **influential**, tend to give **different ratings** based on **regional factors** and the **current status** of the business, providing **insights** into whether **user popularity affects rating behavior** and how this varies by **location and business longevity**.
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+```{r, eval=TRUE, echo=FALSE,fig.show = "hide"}
 scatter_fans_rating_plot <- ggplot(takeout_data, aes(x = fans, y = stars_user, color = factor(is_open))) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
@@ -922,8 +953,6 @@ scatter_fans_rating_plot <- ggplot(takeout_data, aes(x = fans, y = stars_user, c
 ```
 
 ![Figure 9](images/relationship_fans_user_rating_faceted_by_region.png){fig-align="center"}
-
-![Figure 9](images/relationship_fans_user_rating_faceted_by_region-01.png){fig-align="center"}
 
 Based on our exploratory analysis, we identified several key insights into how user ratings vary based on elite status, geographic region, business status, and user influence.
 
