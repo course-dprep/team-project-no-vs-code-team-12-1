@@ -256,7 +256,7 @@ if __name__ == '__main__':
 
 To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
 
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+``` plaintext
 ### Libraries ###
 library(tidyverse)
 library(here)
@@ -294,6 +294,18 @@ user_data <- read_csv(user_file)
 review_data <- read_csv(review_file)
 ```
 
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+### Libraries ###
+library(tidyverse)
+library(here)
+library(googledrive)
+library(knitr)
+
+business_data <- read_csv(here('2-temporary_data', 'business_data.csv'))
+user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
+review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
+```
+
 **business data**
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
@@ -323,22 +335,22 @@ The first step after loading the data is to take a look at the different variabl
 
 The **business_data** set consists of the following variables:
 
-|   Variable   |                            Description                             | Data Type |
-|:---------------:|:-------------------------------------:|:---------------:|
-| business_id  |            A unique character string for each business             | Character |
-|     name     |                         The business name                          | Character |
-|   address    |                  The full address of the business                  | Character |
-|     city     |            The city name where the business is located             | Character |
-|    state     |            The state name where the business is located            | Character |
-| postal_code  |                  The postal code of the business                   | Character |
-|   latitude   |               The latitude of the business location                |  Numeric  |
-|  longitude   |               The longitude of the business location               |  Numeric  |
-|    stars     |           The average star rating rounded to half-stars            |  Numeric  |
-| review_count |                       The number of reviews                        |  Numeric  |
-|   is_open    | Variable that shows with 0 or 1 if the business is closed or open  |  Numeric  |
-|  attributes  |                   Business attributes to values                    | Character |
-|  categories  |             An array of different business categories              | Character |
-|    hours     | An object of key day-to-value hours, hours are using a 24-hr clock | Character |
+|   Variable   |                   Description                   | Data Type |
+|:------------:|:-----------------------------------------------:|:---------:|
+| business_id  |   A unique character string for each business   | Character |
+|     name     |                The business name                | Character |
+|   address    |        The full address of the business         | Character |
+|     city     |   The city name where the business is located   | Character |
+|    state     |  The state name where the business is located   | Character |
+| postal_code  |         The postal code of the business         | Character |
+|   latitude   |      The latitude of the business location      |  Numeric  |
+|  longitude   |     The longitude of the business location      |  Numeric  |
+|    stars     |  The average star rating rounded to half-stars  |  Numeric  |
+| review_count |              The number of reviews              |  Numeric  |
+|   is_open    | Variable that shows with 0 (closed) or 1 (open) |  Numeric  |
+|  attributes  |          Business attributes to values          | Character |
+|  categories  |    An array of different business categories    | Character |
+|    hours     |       An object of key day-to-value hours       | Character |
 
 The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
 
@@ -361,7 +373,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **user_data** consists of the following variables:
 
 |      Variable      |                     Description                      | Data Type |
-|:----------------:|:-----------------------------------:|:----------------:|
+|:---------------:|:----------------------------------:|:----------------:|
 |      user_id       |   A unique character string as user identification   | Character |
 |        name        |                The user's first name                 | Character |
 |    review_count    | The number of reviews written by an individual user  |  Numeric  |
@@ -400,7 +412,7 @@ The different variables are evaluated and a selection of variables is chosen to 
 The **review_data** set consists of the following variables:
 
 |  Variable   |                      Description                       | Data Type |
-|:---------------:|:------------------------------------:|:---------------:|
+|:----------------:|:----------------------------------:|:----------------:|
 |  review_id  |                    Unique review id                    | Character |
 |   user_id   |         An unique character string as user id          | Character |
 | business_id | A unique character string for each individual business | Character |
@@ -430,17 +442,6 @@ Given the **large size** of the three data files and the presence of **many colu
 #### 2.2.1 Data Inspection
 
 We began by **thoroughly examining** the three large data sets to understand their **structure, content**, and potential issues such as **missing values** or **inconsistencies**.
-
-```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
-### Libraries ###
-library(tidyverse)
-library(here)
-
-### Input ### 
-business_data <- read_csv(here('2-temporary_data', 'business_data.csv'))
-user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
-review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
-```
 
 **business data**
 
@@ -879,9 +880,7 @@ data_gt_1000_is_open <- takeout_data %>%
   group_by(is_open, elite_review %>%
   summarise(avg_rating = mean(stars_user, na.rm = TRUE)) %>%
   ungroup()
-```
 
-```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(is_open), y = avg_rating, fill = elite_review)) +
   geom_col(position = "dodge") +
   labs(title = "Average User Rating of Businesses with Review Count > 1000 by Open Status and Elite Status",
@@ -935,7 +934,7 @@ avg_rating_lt_1000_is_open_plot <- ggplot(data_lt_1000_is_open, aes(x = factor(i
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 ```
 
-![Figure 8](images/avg_rating_lt_1000_by_is_open.png){alt="Figure 8" fig-align="center"}
+![Figure 8](images/avg_rating_lt_1000_by_is_open.png){fig-align="center"}
 
 **Plot 9: Relationship Between Number of Fans and User Rating by Region and Open Status**
 
