@@ -13,6 +13,11 @@ takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
 takeout_data <- takeout_data %>%
   mutate(elite_review = factor(elite_review, levels = c(0, 1), labels = c("No", "Yes")))
 
+### Create directory if it doesn't exist ###
+if (!dir.exists("7-plots")) {
+  dir.create("7-plots", recursive = TRUE)
+}
+
 #------------------------------------------
 # Plot 1: Distribution of User Ratings by Elite Status
 #------------------------------------------
@@ -106,7 +111,7 @@ avg_rating_gt_1000_is_open_plot <- ggplot(data_gt_1000_is_open, aes(x = factor(i
   geom_col(position = "dodge") +
   labs(title = "Average User Rating of Businesses with Review Count > 1000 by Open Status and Elite Status",
        x = "Is Open", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(hjust = 0.2)) +
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 
 # Save the plot
@@ -146,7 +151,7 @@ avg_rating_lt_1000_is_open_plot <- ggplot(data_lt_1000_is_open, aes(x = factor(i
   geom_col(position = "dodge") +
   labs(title = "Average User Rating of Businesses with Review Count < 1000 by Open Status and Elite Status",
        x = "Is Open", y = "Average User Rating", fill = "Elite Status") +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(hjust = 0.2)) +
   scale_x_discrete(labels = c("0" = "Closed", "1" = "Open"))
 
 # Save the plot

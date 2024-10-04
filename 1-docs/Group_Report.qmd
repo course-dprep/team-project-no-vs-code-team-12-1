@@ -1,92 +1,173 @@
 ---
-title: "Group_Project"
-author: "Group 12"
-format: pdf
+title: "Group_Report"
+format: html
 editor: visual
 ---
 
 # Deliverable Group 12
 
-# 1. Motivation
+This report was created for the Data Preparation and Workflow Management course, taught by **Hannes Datta** at the Tilburg School of Economics and Management, as part of the Master's program in Marketing Analytics. It is a collaboration by Team 12, consisting of:
 
-## 1.1 Research Motivation
+-   **Kris Bruurs** - k.bruurs\@tilburguniversity.edu
+
+-   **Ly Ba Tho** - b.t.ly\@tilburguniversity.edu
+
+-   **Jelle de Bie** - j.debie\@tilburguniversity.edu
+
+-   **Zeynep Yavlal** - z.yavlal\@tilburguniversity.edu
+
+-   **Bart van de Mortel** - b.h.l.vdmortel\@tilburguniversity.edu
+
+## Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how does the factor of location affect these ratings?
+
+------------------------------------------------------------------------
+
+## 1. Introduction
 
 Since its launch in 2004, Yelp, as one of the largest online review platforms, has played a crucial role in shaping the reputations of businesses, particularly in the food industry. While there is an abundance of research analyzing Yelp reviews (*Agarwal, Pelullo, & Merchant 2019; Arthur, Etzioni, & Schwartz, 2019*), most studies focus on general patterns of consumer behavior (*Fogel, J. and Zachariah, S., 2017*), sentiment analysis (*Guerreiro & Rita, 2020*), or the detection of fake reviews (*Lee, Ham, Yang, & Koo, 2018*). What these studies largely overlook, however, is the significant role that influential users—those with elite status, numerous followers, or high review counts—play in shaping business ratings (*Pranata, I. and Susilo, W., 2016*). These users wield disproportionate influence on the platform, and their ratings are often perceived as more credible and trustworthy than those of regular users (*Tucker, T., 2011*).
 
-In competitive sectors like the food industry, where reputation can make or break a business, understanding the impact of these influential users is essential, as evidenced in a study conducted by  *Nakayama and Wan (2018)* about one-third of customers rely on online reviews when choosing a restaurant and over half of 18-to-34-year-olds factor reviews into their dining decisions. Moreover, while the food industry on Yelp has been extensively studied (*Anderson and Magruder, 2012*) because of its tremendous impacts on business outcomes (*Luca, 2016*), the take-out restaurant niche has received minimal attention. The majority of existing studies on take-out restaurants emphasize negative aspects such as health risks, obesity, and food safety concerns (*Jeffery et al., 2006; Baek et al., 2022*). These studies tend to focus on the health implications of frequent take-out consumption but fail to address the consumer dynamics on platforms like Yelp, where reviews have the power to influence public perception and business success (_Jiménez, et al. 2013_). Additionally, location, particularly in terms of region, state, and city, plays a pivotal role in how take-out restaurants are rated on Yelp (_Tayeen, et al., 2019_). Regional preferences can influence the types of cuisines that receive higher ratings, with some regions showing a stronger preference for local or niche food options (_Rahimi, et al., 2018_). State-level factors such as regulations, food safety laws, and even cultural food trends may also impact how users perceive and rate take-out establishments. Additionally, within cities, neighborhood dynamics like the level of urbanization, socio-economic status, and competition with nearby restaurants can lead to significant variations in ratings (_Tayeen, et al., 2021_). Influential Yelp users in major metropolitan areas may also drive more reviews and higher visibility for restaurants, skewing ratings compared to those in smaller cities or rural areas. This gap in the literature calls for a deeper investigation into how influential users interact with take-out restaurants, especially as take-out has become increasingly important in the post-pandemic dining landscape.
+### 1.1 Research Motivation
 
-The accessibility and usefulness of the output from this study significantly benefit other students and the larger scientific community. By **developing an automated and reproducible workflow using open-source tools like R**, this research provides a template that others can easily adapt for similar analyses. **The study's findings and the associated code** can be shared on public platforms like GitHub, making them readily available for educational purposes and further research. The workflow includes data extraction, cleaning, transformation, and modeling processes, all documented and scripted to ensure transparency and repeatability. Moreover, the **comprehensive PDF report** serves as a valuable resource that clearly communicates the research methods, analyses, and findings. It can be used as a teaching tool in academic settings, demonstrating how to approach complex data analyses and interpret results within a real-world context.
+In competitive sectors like the food industry, where reputation can make or break a business, understanding the impact of these influential users is essential, as evidenced in a study conducted by *Nakayama and Wan (2018)* about one-third of customers rely on online reviews when choosing a restaurant and over half of 18-to-34-year-olds factor reviews into their dining decisions. Moreover, while the food industry on Yelp has been extensively studied (*Anderson and Magruder, 2012*) because of its tremendous impacts on business outcomes (*Luca, 2016*), the take-out restaurant niche has received minimal attention. The majority of existing studies on take-out restaurants emphasize negative aspects such as health risks, obesity, and food safety concerns (*Jeffery et al., 2006; Baek et al., 2022*). These studies tend to focus on the health implications of frequent take-out consumption but fail to address the consumer dynamics on platforms like Yelp, where reviews have the power to influence public perception and business success (*Jiménez, et al. 2013*). Additionally, location, particularly in terms of region, state, and city, plays a pivotal role in how take-out restaurants are rated on Yelp (*Tayeen, et al., 2019*). Regional preferences can influence the types of cuisines that receive higher ratings, with some regions showing a stronger preference for local or niche food options (*Rahimi, et al., 2018*). State-level factors such as regulations, food safety laws, and even cultural food trends may also impact how users perceive and rate take-out establishments. Additionally, within cities, neighborhood dynamics like the level of urbanization, socio-economic status, and competition with nearby restaurants can lead to significant variations in ratings (*Tayeen, et al., 2021*). Influential Yelp users in major metropolitan areas may also drive more reviews and higher visibility for restaurants, skewing ratings compared to those in smaller cities or rural areas. **This gap in the literature calls for a deeper investigation into how influential users interact with take-out restaurants, especially as take-out has become increasingly important in the post-pandemic dining landscape.**
 
-## 1.2 Research Question
+The accessibility and usefulness of the output from this study significantly benefit other students and the larger scientific community. By **developing an automated and reproducible workflow using open-source tools like R**, this research provides a template that others can easily adapt for similar analyses. **The study's findings and the associated code** can be shared on public platforms like GitHub, making them readily available for educational purposes and further research. The workflow includes data extraction, cleaning, transformation, and modeling processes, all documented and scripted to ensure transparency and repeatability. Moreover, the **comprehensive HTML report** serves as a valuable resource that clearly communicates the research methods, analyses, and findings. It can be used as a teaching tool in academic settings, demonstrating how to approach complex data analyses and interpret results within a real-world context.
+
+### 1.2 Research Question
 
 This study aims to address the gap in the dynamics of online reviews, particularly from influential Yelp users, by asking: **Do influential Yelp users give higher ratings to take-out restaurants compared to non-influential users, and how does the factor of location affect these ratings?** This research is critical for several reasons. First, understanding the behavior of influential users could help businesses better manage their online reputations, particularly in a niche market like take-out dining. Second, examining how location—whether at the regional, state, or city level—impacts ratings can provide valuable insights into consumer preferences. Location-specific factors, such as regional food trends, city demographics, and neighborhood characteristics, may influence how users perceive and rate businesses. For take-out restaurants operating in highly competitive environments, especially those without an established offline presence, this research could offer practical strategies for improving ratings and attracting new customers by understanding how geographic context shapes consumer perceptions.
 
-## 1.2 Repository Structure and Documentation
+### 1.3 Conceptual Model
 
-## 1.3 Breadth of Contributions and Way-of-Working
+![Figure 1](../3-final_data/ANOVA.jpeg)
 
-# 2. Data Preparation & Analysis
+**Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 
-## 2.1 Data Exploration
+-   This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
+
+**Quasi-Moderator (State Region): Midwest, Northeast, South, West**
+
+-   The state region acts as a quasi-moderator in the model. It includes four categories: Midwest, Northeast, South, and West. The main effect of this quasi-moderator is on the star rating of take-out restaurants, allowing us to determine how different regions influence the overall ratings.
+
+-   Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
+
+To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as `review_id`, `user_id`, `business_id`, `stars_user`, `review_count_user`, `fans`, `state`, `city`, `stars_business`, `review_count_business`, `is_open`, `elite_review`, `division`, `region`, and `take_out`. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
+
+### 1.4 Repository Structure and Documentation
+
+``` plaintext
+├── README.md
+├── makefile
+├── updated-project
+├── .Rhistory
+├── .RData
+├── .gitignore
+├── 1-docs
+│   ├── Group Report.Rproj
+│   ├── Group Report.HTML
+├── 2-temporary_data
+│   ├── cleaned_sample_data
+│   ├── sample_data_elite_encoder
+│   ├── business_data.csv
+│   ├── user_data.csv
+│   ├── review_data.csv
+│   ├── sample_data.csv
+├── 3-final_data
+│   ├── takeout_data.csv
+├── 4-testing_code
+│   ├── download_files_automatically.R
+│   ├── label_elite_users.R
+│   ├── matching_elite_format.R
+│   ├── tar_format_to_json_converter.R
+├── 5-external_code
+│   ├── json_to_csv_converter.py
+├── 6-source_code
+│   ├── 0_install_packages.R
+│   ├── 1_download_data.R
+│   ├── 2_prepare_data.R
+│   ├── 3_preprocessing_data.R
+│   ├── 4_plot_data.R
+│   ├── 5_analyse_data.R
+├── 7-plots
+├── 8-results
+├── 9-shiny_app
+```
+
+## 2. Data Preparation & Analysis
+
+### 2.1 Data Exploration
+
+Before starting the research, it is advisable to install all the necessary packages that will be used in the study to streamline the workflow.
+
+-   here
+
+-   rstudioapi
+
+-   rstudioapi
+
+-   googledrive
+
+-   readr
+
+-   dplyr
+
+-   reticulate
+
+-   knitr
+
+-   ggcorrplot
+
+-   sjPlot
+
+-   sjmisc
+
+-   gridExtra
+
+#### 2.1.1 Data Download
 
 From the Yelp database the business, user, and review data files are downloaded to answer the research question.
 
-------------------------------------------------------------------------
+-   **Yelp Database:** <https://www.yelp.com/dataset/download>
 
-### 2.1.1 Extract a Yelp dataset in .tar format to separate JSON files
+Since the data set is provided in a `.tar` archive, we need to extract the individual JSON files using R. After extraction, the next step is to convert these JSON files into CSV format using Python scripts. Although we've included R and Python code for these processes, we recommend skipping sections **2.1.1.1** and **2.1.1.2**. Instead, proceed directly to **Section 2.1.1.3**, where we introduce code that can automatically download all the necessary files used in this research.
 
-Install the archive package and load the necessary packages
+##### 2.1.1.1 Extract a Yelp dataset in .tar format to separate JSON files
 
-```{r, echo=TRUE, eval=TRUE}
+``` plaintext
+# Install the archive package
+install.packages("archive")
+
+# Load the archive package
+library(archive)
 library(tidyverse)
-```
 
-Specify the path to your .tar file and verify if R can see the file
+# Specify the path to your .rar file
+rar_file <- "yelp_dataset.tar"
 
-```{r, echo=TRUE, eval=FALSE}
-tar_file <- "data/yelp_dataset.tar"
-file.exists(tar_file)
-```
+# Verify if R can see the file
+file.exists(rar_file)
 
-List the contents of the .tar file
-
-```{r, echo=TRUE, eval=FALSE}
-contents <- archive::archive(tar_file)
+# List the contents of the .rar file
+contents <- archive::archive(rar_file)
 print(contents)
-```
 
-Specify the extraction directory (make sure it is a directory)
-
-```{r, echo=TRUE, eval=FALSE}
+# Specify the extraction directory (make sure it is a directory)
 extract_dir <- "extracted_files"
-```
 
-Create the directory if it doesn't exist
-
-```{r, echo=TRUE, eval=FALSE}
+# Create the directory if it doesn't exist
 if (!dir.exists(extract_dir)) {
   dir.create(extract_dir)
 }
-```
 
-Extract the files
-
-```{r, echo=TRUE, eval=FALSE}
-extracted_files <- archive::archive_extract(tar_file, dir = extract_dir)
+# Extract the files
+extracted_files <- archive::archive_extract(rar_file, dir = extract_dir)
 print(extracted_files)
 ```
 
-------------------------------------------------------------------------
+##### 2.1.1.2 Extract Yelp datasets in .JSON format to CSV files
 
-### 2.1.2 Extract Yelp datasets in .JSON format to CSV files
+``` plaintext
+# -*- coding: utf-8 -*-
 
-This step involves using a different language, Python, to convert all the materials into the required format. The code below is written in Python:
-
-**Coding: uft-8**
-
-Convert the Yelp Dataset Challenge data set from json format to csv. For more information on the Yelp Dataset Challenge please visit <http://yelp.com/dataset_challenge>
-
-```{python, echo=TRUE, eval=FALSE}
 import argparse
 import csv
 import json
@@ -101,7 +182,7 @@ def read_and_write_file(json_file, csv_file, column_names):
             data = json.loads(line)
             writer.writerow(data)
     print(f"CSV file '{csv_file}' has been created successfully.")
-    
+
 def get_superset_of_column_names_from_file(json_file):
     column_names = set()
     with open(json_file, 'r', encoding='utf-8') as f:
@@ -109,6 +190,7 @@ def get_superset_of_column_names_from_file(json_file):
             data = json.loads(line)
             column_names.update(data.keys())
     return list(column_names)
+
 
 def process_line(line_value):
     row = []
@@ -161,243 +243,18 @@ if __name__ == '__main__':
     print("Conversion process completed.")
 ```
 
-Finally, run the script from your terminal with the following command and replace yelp_academic_dataset.json with the path to the JSON file you wish to convert. The script will generate a CSV file with the same name as your input JSON file, located in the same directory
+##### 2.1.1.3 Download Yelp Data directly from Google Drive
 
-python json_to_csv_converter.py yelp_academic_dataset.json
+To streamline the process, we've provided an R script that **automatically downloads all the necessary data sets for this study only**. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
 
-------------------------------------------------------------------------
-
-### 2.1.3 Download Yelp Data directly from Google Drive
-
-To streamline the process, we've provided an ***R script that automatically downloads all the necessary data sets for this study***. Simply copy and run the code, and it will retrieve all required files directly into your working directory. However, please be aware that for the code to function properly, you’ll need to install both the **googledrive** and **tidyverse** packages. These packages are crucial, especially when dealing with large files, as they ensure smooth data handling and integration within your R environment.
-
-Particularly, the **googledrive** package enables direct interaction with Google Drive, allowing for seamless downloading of files, while **tidyverse** provides essential tools for data manipulation and analysis. Automating the download process saves time and minimizes manual errors during setup, allowing you to focus on the analysis.
-
-------------------------------------------------------------------------
-
-### 2.1.4 Inspect Yelp Data
-
-**Inspecting the data**
-
-The first step after loading the data is to take a look at the different variables that are included in the three different data files.
-
-------------------------------------------------------------------------
-
-***Business_data***
-
-The business data set consists of the following variables:
-
-<<<<<<< HEAD:1. docs/Group Report.qmd
-| Variable | Description | **Data class** |
-|----|----|----|
-| business_id | *A unique character string for each business* | Character |
-| name | *The business name* | Character |
-| address | *The full address of the business* | Character |
-| city | *The city name where the business is located* | Character |
-| state | *The state name where the business is located* | Character |
-| postal_code | *The postal code of the business* | Character |
-| latitude | *The latitude of the business location* | Numeric |
-| longitude | *The longitude of the business location* | Numeric |
-| stars | *The average star rating rounded to half-stars* | Numeric |
-| review_count | *The number of reviews* | Numeric |
-| is_open | *Variable that shows with 0 or 1 if the business is closed or open* | Numeric |
-| attributes | *Business attributes to values* | Character |
-| categories | *An array of different business categories* | Character |
-| hours | *An object of key day-to-value hours, hours are using a 24-hr clock* | Character |
-=======
-| Variable     | Description                                                          | **Data class** |
-|--------------|---------------------------------------------|--------------|
-| business_id  | *A unique character string for each business*                        | Character      |
-| name         | *The business name*                                                  | Character      |
-| address      | *The full address of the business*                                   | Character      |
-| city         | *The city name where the business is located*                        | Character      |
-| state        | *The state name where the business is located*                       | Character      |
-| postal_code  | *The postal code of the business*                                    | Character      |
-| latitude     | *The latitude of the business location*                              | Numeric        |
-| longitude    | *The longitude of the business location*                             | Numeric        |
-| stars        | *The average star rating rounded to half-stars*                      | Numeric        |
-| review_count | *The number of reviews*                                              | Numeric        |
-| is_open      | *Variable that shows with 0 or 1 if the business is closed or open*  | Numeric        |
-| attributes   | *Business attributes to values*                                      | Character      |
-| categories   | *An array of different business categories*                          | Character      |
-| hours        | *An object of key day-to-value hours, hours are using a 24-hr clock* | Character      |
->>>>>>> 2cfdcf77804fb90ca496c36f6fc84b16c1c4dcf5:1-docs/Group Report.qmd
-
-The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the business data set include:
-
--   **business_id**
-
--   **city**
-
--   **state**
-
--   **stars**
-
--   **review_count**
-
--   **is_open**
-
--   **attributes**
-
-------------------------------------------------------------------------
-
-***User_data***
-
-The user dataset consists of the following variables:
-
-<<<<<<< HEAD:1. docs/Group Report.qmd
-| Variable | Description | Data Class |
-|----|----|----|
-| user_id | *A unique character string as user identification* | Character |
-| name | *The user's first name* | Character |
-| review_count | *The number of reviews written by an individual user* | Numeric |
-| yelping_since | *Date when user joined Yelp* | Character |
-| friends | *An array of the user's friends as user id's* | Character |
-| useful | *Number of 'useful' votes send by user* | Numeric |
-| funny | *Number of 'funny' votes send by user* | Numeric |
-| cool | *Number of 'cool' votes send by user* | Numeric |
-| fans | *The number of fans a user has* | Numeric |
-| elite | *The years the user had an 'elite' status on Yelp* | Numeric |
-| average_stars | *Average rating of all reviews* | Numeric |
-| compliment_hot | *Number of 'hot' compliments received by the user* | Numeric |
-| compliment_more | *Number of 'more' compliments received by the user* | Numeric |
-| compliment_profile | *Number of 'profile' compliments received by the user* | Numeric |
-| compliment_cute | *Number of 'cute' compliments received by the user* | Numeric |
-| compliment_list | *Number of 'list' compliments received by the user* | Numeric |
-| compliment_note | *Number of 'note' compliments received by the user* | Numeric |
-| compliment_plain | *Number of 'plain' compliments received by the user* | Numeric |
-| compliment_cool | *Number of 'cool' compliments received by the user* | Numeric |
-| compliment_funny | *Number of 'funny' compliments received by the user* | Numeric |
-| compliment_writer | *Number of 'writer' compliments received by the user* | Numeric |
-| compliment_photo | *Number of 'photo' compliments received by the user* | Numeric |
-=======
-| Variable           | Description                                            | Data Class |
-|---------------|------------------------------------------|---------------|
-| user_id            | *A unique character string as user identification*     | Character  |
-| name               | *The user's first name*                                | Character  |
-| review_count       | *The number of reviews written by an individual user*  | Numeric    |
-| yelping_since      | *Date when user joined Yelp*                           | Character  |
-| friends            | *An array of the user's friends as user id's*          | Character  |
-| useful             | *Number of 'useful' votes send by user*                | Numeric    |
-| funny              | *Number of 'funny' votes send by user*                 | Numeric    |
-| cool               | *Number of 'cool' votes send by user*                  | Numeric    |
-| fans               | *The number of fans a user has*                        | Numeric    |
-| elite              | *The years the user had an 'elite' status on Yelp*     | Numeric    |
-| average_stars      | *Average rating of all reviews*                        | Numeric    |
-| compliment_hot     | *Number of 'hot' compliments received by the user*     | Numeric    |
-| compliment_more    | *Number of 'more' compliments received by the user*    | Numeric    |
-| compliment_profile | *Number of 'profile' compliments received by the user* | Numeric    |
-| compliment_cute    | *Number of 'cute' compliments received by the user*    | Numeric    |
-| compliment_list    | *Number of 'list' compliments received by the user*    | Numeric    |
-| compliment_note    | *Number of 'note' compliments received by the user*    | Numeric    |
-| compliment_plain   | *Number of 'plain' compliments received by the user*   | Numeric    |
-| compliment_cool    | *Number of 'cool' compliments received by the user*    | Numeric    |
-| compliment_funny   | *Number of 'funny' compliments received by the user*   | Numeric    |
-| compliment_writer  | *Number of 'writer' compliments received by the user*  | Numeric    |
-| compliment_photo   | *Number of 'photo' compliments received by the user*   | Numeric    |
->>>>>>> 2cfdcf77804fb90ca496c36f6fc84b16c1c4dcf5:1-docs/Group Report.qmd
-
-The different variables are evaluated and a selection of variables is chosen to keep in the dataset to help answer the research question. These variables in the user dataset are:
-
--   **user_id**
-
--   **review_count**
-
--   **fans**
-
--   **elite**
-
-------------------------------------------------------------------------
-
-***review_data***
-
-The review data consists of the following variables:
-
-<<<<<<< HEAD:1. docs/Group Report.qmd
-| Variable | Description | Data Class |
-|----|----|----|
-| review_id | *Unique review id* | Character |
-| user_id | *An unique character string as user id* | Character |
-| business_id | *A unique character string for each individual business* | Character |
-| stars | *Star rating of the review* | Numeric |
-| date | *Date of review, formatted YYYY-MM-DD* | Character |
-| text | *The review text* | Character |
-| useful | *The number of 'useful' votes received* | Numeric |
-| funny | *The number of 'funny' votes received* | Numeric |
-| Cool | *The number of 'cool' votes received* | Numeric |
-=======
-| Variable    | Description                                              | Data Class |
-|--------------|--------------------------------------------|--------------|
-| review_id   | *Unique review id*                                       | Character  |
-| user_id     | *An unique character string as user id*                  | Character  |
-| business_id | *A unique character string for each individual business* | Character  |
-| stars       | *Star rating of the review*                              | Numeric    |
-| date        | *Date of review, formatted YYYY-MM-DD*                   | Character  |
-| text        | *The review text*                                        | Character  |
-| useful      | *The number of 'useful' votes received*                  | Numeric    |
-| funny       | *The number of 'funny' votes received*                   | Numeric    |
-| Cool        | *The number of 'cool' votes received*                    | Numeric    |
->>>>>>> 2cfdcf77804fb90ca496c36f6fc84b16c1c4dcf5:1-docs/Group Report.qmd
-
-The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question. These variables in the review data set are:
-
--   **user_id**
-
--   **business_id**
-
--   **review_id**
-
--   **stars**
-
-------------------------------------------------------------------------
-
-## 2.2 Data Preparation
-
-Because of the size of the Yelp data files and the time it takes to handle large data files, the decision has been made to prepare the data in two different phases.
-
-[*Phase 1 data preparation consists of:*]{.underline}
-
-1.  Downloading the Yelp data files from the internet.
-2.  Loading these Yelp data files into the Rstudio environment.
-3.  Inspecting data and selecting variables of interest.
-4.  Merging the three data files into one merged file.
-5.  Take a sample of the data called "sample_data" that will be used for cleaning and analysis.
-
-[*Phase 2 data cleaning consists of:*]{.underline}
-
-1.  Loading the sample data into a new R script
-2.  Clean data
-3.  Create new variables
-
-------------------------------------------------------------------------
-
-### 2.2.1 Preparing Data
-
-**Loading libraries**
-
-The first step of preparing the data is loading it into the required R libraries.
-
-```{r, echo=TRUE, eval=FALSE}
-library(tidyverse) 
-library(here)
-```
-
-------------------------------------------------------------------------
-
-**Download data**
-
-```{r, echo=TRUE, eval=FALSE}
+``` plaintext
 ### Libraries ###
 library(tidyverse)
 library(here)
 library(googledrive)
+library(knitr)
 
 ### Authentication ###
-options(
-  gargle_oauth_email = "lyba.tho2412@gmail.com",
-  gargle_oauth_cache = here(".secrets")
-)
-
 drive_auth()
 
 ### Input ### 
@@ -405,7 +262,7 @@ drive_auth()
 # File ID from Google Drive URLs
 business_file_id <- '12o5mGJV8ck_Kqi_x23WF1HbsNGIP70ru'
 user_file_id <- '1g-Sy1IMEqrPtPtcc1t2U78iR9Eh8EMtC'
-review_file_id <- '1nlI5cioa3Q6uZhzEdD5ZvXq_FlvsM1wL'
+review_file_id <- '1U5rSviYm-EfCxx23EiIAYqNH2JwHp3DT'
 
 # Paths to save the files in the working directory
 business_file <- here("2-temporary_data", "business_data.csv")
@@ -423,207 +280,239 @@ user_data <- read_csv(user_file)
 review_data <- read_csv(review_file)
 ```
 
-------------------------------------------------------------------------
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+### Libraries ###
+library(tidyverse)
+library(here)
+library(googledrive)
+library(knitr)
 
-**Load data**
-
-The first step is to load the different data files. To load these files, the libraries "tidyverse" and "here" were installed.
-
-*Currently, the original Yelp data sets are loaded. This will later be changed to from the internet downloaded data sets*
-
-```{r, echo=TRUE, eval=FALSE}
-business_data <- read_csv(business_file)
-user_data <- read_csv(user_file)
-review_data <- read_csv(review_file)
-
-# View the first few rows
-head(business_data)
-head(user_data)
-head(review_data)
+business_data <- read_csv(here('2-temporary_data', 'business_data.csv'))
+user_data <- read_csv(here('2-temporary_data', 'user_data.csv'))
+review_data <- read_csv(here('2-temporary_data', 'review_data.csv'))
 ```
 
-------------------------------------------------------------------------
+#### 2.1.2 Data Inspection
 
-**Filtering and Selecting Variables of interest in Data**
+The first step after loading the data is to take a look at the different variables that are included in the three different data files.
 
-Because of the size of the three data files, with almost seven million observations in the review data, the files are filtered on usable variables before merging the data.
+##### 2.1.2.1 business_data
 
-First, the business data file is filtered to remove unnecessary variables. This is done by using the `select()` function from the tidyverse library.
+The **business_data** set consists of the following variables:
 
-```{r, echo=TRUE, eval=FALSE}
+|   Variable   |                   Description                   | Data Type |
+|:------------:|:-----------------------------------------------:|:---------:|
+| business_id  |   A unique character string for each business   | Character |
+|     name     |                The business name                | Character |
+|   address    |        The full address of the business         | Character |
+|     city     |   The city name where the business is located   | Character |
+|    state     |  The state name where the business is located   | Character |
+| postal_code  |         The postal code of the business         | Character |
+|   latitude   |      The latitude of the business location      |  Numeric  |
+|  longitude   |     The longitude of the business location      |  Numeric  |
+|    stars     |  The average star rating rounded to half-stars  |  Numeric  |
+| review_count |              The number of reviews              |  Numeric  |
+|   is_open    | Variable that shows with 0 (closed) or 1 (open) |  Numeric  |
+|  attributes  |          Business attributes to values          | Character |
+|  categories  |    An array of different business categories    | Character |
+|    hours     |       An object of key day-to-value hours       | Character |
+
+##### 2.1.2.2 user_data
+
+The **user_data** consists of the following variables:
+
+|      Variable      |                     Description                      | Data Type |
+|:-----------------:|:--------------------------------:|:-----------------:|
+|      user_id       |   A unique character string as user identification   | Character |
+|        name        |                The user's first name                 | Character |
+|    review_count    | The number of reviews written by an individual user  |  Numeric  |
+|   yelping_since    |              Date when user joined Yelp              | Character |
+|      friends       |     An array of the user's friends as user id's      | Character |
+|       useful       |        Number of 'useful' votes send by user         |  Numeric  |
+|       funny        |         Number of 'funny' votes send by user         |  Numeric  |
+|        cool        |         Number of 'cool' votes send by user          |  Numeric  |
+|        fans        |            The number of fans a user has             |  Numeric  |
+|       elite        |   The years the user had an 'elite' status on Yelp   |  Numeric  |
+|   average_stars    |            Average rating of all reviews             |  Numeric  |
+|   compliment_hot   |   Number of 'hot' compliments received by the user   |  Numeric  |
+|  compliment_more   |  Number of 'more' compliments received by the user   |  Numeric  |
+| compliment_profile | Number of 'profile' compliments received by the user |  Numeric  |
+|  compliment_cute   |  Number of 'cute' compliments received by the user   |  Numeric  |
+|  compliment_list   |  Number of 'list' compliments received by the user   |  Numeric  |
+|  compliment_note   |  Number of 'note' compliments received by the user   |  Numeric  |
+|  compliment_plain  |  Number of 'plain' compliments received by the user  |  Numeric  |
+|  compliment_cool   |  Number of 'cool' compliments received by the user   |  Numeric  |
+|  compliment_funny  |  Number of 'funny' compliments received by the user  |  Numeric  |
+| compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
+|  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
+
+##### 2.1.2.3 review_data
+
+The **review_data** set consists of the following variables:
+
+|  Variable   |                      Description                       | Data Type |
+|:-----------------:|:--------------------------------:|:-----------------:|
+|  review_id  |                    Unique review id                    | Character |
+|   user_id   |         An unique character string as user id          | Character |
+| business_id | A unique character string for each individual business | Character |
+|    stars    |               Star rating of the review                |  Numeric  |
+|    date     |          Date of review, formatted YYYY-MM-DD          | Character |
+|    text     |                    The review text                     | Character |
+|   useful    |         The number of 'useful' votes received          |  Numeric  |
+|    funny    |          The number of 'funny' votes received          |  Numeric  |
+|    Cool     |          The number of 'cool' votes received           |  Numeric  |
+
+### 2.2 **Data Processing**
+
+Due to **limitations such as computational memory constraints and the focus on a manageable data set for in-depth analysis**, we have decided to analyze a **reduced sample of 323,856 observations from the Yelp data set**. This sample size allows us to perform comprehensive statistical analyses while maintaining computational efficiency. **Future research can extend this work by examining the entire population of Yelp reviews**, which could validate our findings on a larger scale and potentially reveal additional insights into the behavior of influential users in the context of take-out restaurants.
+
+Given the **large size** of the three data files and the presence of **many columns not pertinent** to our study, we first **filtered the data sets** to retain only the **necessary variables** before merging them. This step **reduced the data** to a manageable size and ensured that only **relevant information** was included in the subsequent analysis.
+
+#### 2.2.1 Data Inspection
+
+We began by **thoroughly examining** the three large data sets to understand their **structure, content**, and potential issues such as **missing values** or **inconsistencies**.
+
+**business data**
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Inspecting the data
+glimpse(business_data)
+```
+
+**user data**
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Inspecting the data
+glimpse(user_data)
+```
+
+**review data**
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Inspecting the data
+glimpse(review_data)
+```
+
+#### 2.2.2 Variable Selection
+
+To **focus on relevant information** and **reduce computational complexity**, we **selected only the variables necessary** for our study. This involved **identifying and retaining columns** that contribute directly to our **research objectives** while **discarding irrelevant or redundant data**.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# ndefinedSelecting variables/columns of interest
 business_data <- business_data %>% 
-  select(business_id, name, city, state, stars, review_count, is_open,
+  select(business_id, name, state, city, stars, review_count, is_open,
          attributes)
-```
 
-Second, the user data file is filtered to remove unnecessary variables. This is done by using the `select()` function from the tidyverse library.
-
-```{r, echo=TRUE, eval=FALSE}
 user_data <- user_data %>% 
-  select(user_id, name, review_count, yelping_since, fans, elite)
-```
+  select(user_id, review_count, fans, elite)
 
-Third, the review data file is filtered to remove unnecessary variables. This is done by using the `select()` function from the tidyverse library.
-
-```{r, echo=TRUE, eval=FALSE}
 review_data <- review_data %>% 
   select(review_id, user_id, business_id, stars)
-
 ```
 
-------------------------------------------------------------------------
+The different variables are evaluated and a selection of variables is chosen to keep in the data set to help answer the research question.
 
-**Merging the data files**
+These variables in the **business data** **set** include:
 
-To combine the three different filtered data files, first, a `left_join()` was executed to combine the user data with the review data by the **"user_id"** variable.
+-   business_id
 
-```{r, echo=TRUE, eval=FALSE}
+-   city
+
+-   state
+
+-   stars
+
+-   review_count
+
+-   is_open
+
+-   attributes
+
+These variables in the **user data set** include:
+
+-   user_id
+
+-   review_count
+
+-   fans
+
+-   elite
+
+These variables in the **review data set** are:
+
+-   user_id
+
+-   business_id
+
+-   review_id
+
+-   stars
+
+#### 2.2.3 Data Merging
+
+After **selecting the necessary columns** in each individual data set, we **merged them based on common keys**. This integration allowed us to have a **comprehensive view of the data**, combining **user information, business details, and review content** into a single data set.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# Combining the data
 merge1 <- left_join(user_data, review_data, by = "user_id")
-```
-
-After combining these two data files, another `left_join()` was executed to include the business data to the final data file by the **"business_id"** variable.
-
-```{r, echo=TRUE, eval=FALSE}
 merged_data <- left_join(merge1, business_data, by = "business_id")
 ```
 
-------------------------------------------------------------------------
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# Take sample of 50.000
 
-**Saving the merged data set**
-
-Because we are working with large data files that take a long time to process, it is important to save and create csv files while preparing the code. This is done below with the `write_csv()` function.
-
-```{r, echo=TRUE, eval=FALSE}
-write_csv(merged_data, here("data", "merged_data.csv"))
-```
-
-------------------------------------------------------------------------
-
-**Taking a sample of the merged data**
-
-Because of the large size of the merged data, with almost seven million observations, a sample of 50.000 observations is taken. This sample will be cleaned in the next phase.
-
-To take make sure each sample that will be taken from the data set is identical, the seed is set to 90 using `set.seed()`.
-
-```{r, echo=TRUE, eval=FALSE}
 set.seed(90)
-```
-
-For the next step, `slice_sample()` was used to take the sample of 50.000 observations.
-
-```{r, echo=TRUE, eval=FALSE}
 sample_data <- merged_data %>% 
   slice_sample(n = 50000)
 ```
 
-------------------------------------------------------------------------
-
-**Save the sample data**
-
-To speed up the data handling process, a file called "sample_data.csv" is saved in the "data" file. This file will be opened in a new R script where the data will be cleaned for analysis.
-
-```{r, echo=TRUE, eval=FALSE}
-write_csv(sample_data, "sample_data.csv")
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected sample_data
+kable(head(sample_data), caption = "First Few Rows of Selected Sample Data")
 ```
 
-------------------------------------------------------------------------
+#### 2.2.4 Data Transformation
 
-### 2.2.2 Cleaning Data
+To **prepare the new data set** for subsequent use, we **transformed the data** by **renaming the columns** to have **meaningful and easily traceable names**. For example, stars.x -\> stars_user, stars.y -\> stars_business.
 
-**Loading libraries**
-
-The first step of cleaning the data is loading it into the required R libraries.
-
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+### Libraries ###
 library(tidyverse)
 library(here)
-```
 
-------------------------------------------------------------------------
+### Input ###
 
-**Loading data**
+sample_data <- read_csv(here('2-temporary_data', 'sample_data.csv'))
 
-The saved sample data is loaded from the "data" folder using the `here` library
+### Transformation ###
 
-```{r, echo=TRUE, eval=FALSE}
-sample_data <- read_csv(here('2. temporary_data', 'sample_data.csv'))
-```
-
-------------------------------------------------------------------------
-
-**Inspecting variable names in the data set**
-
-The `colnames()` function was used to check the different variable names.
-
-```{r, echo=TRUE, eval=FALSE}
-colnames(sample_data)
-```
-
-After running the code, it became clear that two of the variables were similar in different data sets. These were the "**stars**" and "**review_count**" variables. These variables were differentiated with a "**.x**" and "**.y**" at the end. In addition, the "**name**" variable seemed unclear about what its name indicated.
-
-To separate the "**stars**" and "**review_count**", The variables were changed by using the `rename()` function to "**stars_user**", "**stars_business**", "**review_count_user**", and "**review_count_business**". To make clear what the "**name**" variable indicates, the variable name was changed to "**username**".
-
-```{r, echo=TRUE, echo=FALSE}
+# Change column names
 sample_data <- sample_data %>% 
-  rename(stars_user = stars.x,
-         stars_business = stars.y,
-         review_count_user = review_count.x,
-         review_count_business = review_count.y,
-         username = name)
+  rename(
+    stars_user = stars.x,
+    stars_business = stars.y,
+    review_count_user = review_count.x,
+    review_count_business = review_count.y,
+    username = name
+  )
 ```
 
-Checking if the variable names are changed correctly
+Next, we encoded the `elite` column using the **dummy encoding method** to convert it into a **binary variable**. This transformation allowed us to represent the 'elite' status numerically, assigning a value of **1** to **elite users** and **0** to **non-elite users**. By doing so, we made the `elite` variable suitable for statistical analysis and modeling techniques that require numerical input. This encoding is essential for including categorical variables in regression models, correlation analyses, and other quantitative methods. It enabled us to examine the **impact of a user's elite status** on various outcomes, such as their **rating behavior** or **influence within the platform**. **Converting categorical data into a numerical format** ensures that the algorithms can **process the information effectively**, leading to **more accurate and meaningful insights** in our analysis.
 
-```{r, echo=TRUE, eval=FALSE}
-colnames(sample_data)
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# Change user to elite users indicated by 1 and non-elite users indicated by 0
+sample_data <- sample_data %>%
+  mutate(elite_review = if_else(is.na(elite), 0, 1))
+
+# Remove elite column
+sample_data <- sample_data %>% select(-elite)
 ```
 
-------------------------------------------------------------------------
+To thoroughly extract meaningful insights from the data set and address our research question comprehensively, we enhanced the data set by creating additional columns, specifically `state_divisions` and `state_regions`. The purpose of these new columns is to **categorize the data more effectively** based on **geographic attributes**, enabling us to conduct a **more granular analysis**. By **segmenting the data set** into distinct **state divisions and regions**, we can **capture the influence of geographical variations** on user ratings, thus **diversifying and deepening our analysis**. This approach allows us to **identify patterns and trends** that might differ across various locations, providing a **more nuanced understanding** of how influential users rate take-out restaurants.
 
-**Checking for NA values**
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# Create new division variable
 
-To check if there are any NA's in one of the variables the "**variable_na**" data set is created as an overview of which variables include NA values.
-
-```{r, echo=TRUE, eval=FALSE}
-variable_na <- sample_data %>%
-  summarise(across(everything(), ~ sum(is.na(.)))) %>%
-  pivot_longer(cols = everything(), 
-               names_to = "variable", values_to = "na_count")
-
-View(variable_na)
-```
-
-The "**variable_na**" table shows that "**elite**" contains 37669 NA values and that "**attributes**" contains 1331 NA values.
-
-To make it easier for analysis, we decided to encode the values in the "**elite**" column by creating a new column 'elite_label_encoder' to identify influential users. The logic is - If the 'elite' column is "NA" or an empty string, set 'elite_label_encoder' to 0 (not influential user) - If the 'elite' column has a value, set 'elite_label_encoder' to 1 (influential user).
-
-```{r, echo=TRUE, eval=FALSE}
-# Check the unique values in the 'elite' column
-unique_elite_values <- unique(data$elite)
-print(unique_elite_values)
-
-# Ensure that the 'elite' column is of character type
-data$elite <- as.character(data$elite)
-
-# Create 'elite_label_encoder' column:
-# - If 'elite' is "nan", then set to 0 (non-influential user)
-# - Otherwise, set to 1 (influential user)
-
-data$elite_label_encoder <- ifelse(data$elite == "nan", 0, 1)
-
-num_non_influential <- sum(data$elite_label_encoder == 0)
-cat("Number of non-influential users (elite_label_encoder == 0):", num_non_influential, "\n")
-
-num_influential <- sum(data$elite_label_encoder == 1)
-cat("Number of non-influential users (elite_label_encoder == 1):", num_influential, "\n")
-
-# Remove the 'elite' column from the data frame
-data$elite <- NULL
-```
-
-Rather than analyzing each state and city individually, we **created a new variable called 'state_divisions'** which groups states into broader divisions. This approach helps **reduce noise and streamline the data set**, making it more manageable and logical to work with.
-
-```{r, echo=TRUE, eval=FALSE}
 # Step 1: Define the state_divisions vector
 state_divisions <- c(
   # New England
@@ -701,9 +590,79 @@ sample_data <- sample_data %>%
   mutate(division = state_divisions[state])
 ```
 
-Before dummy encoding the 'attributes' column to extract the 'RestaurantsTakeOut' value, we first address the NA values by removing them. Then, we use `str_detect` to identify the desired attribute and encode it as needed (1 for take-out restaurants, 0 for non-take-out restaurants).
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+# Create new region variable
 
-```{r, echo=TRUE, eval=FALSE}
+# Step 1: Define the region vector
+state_regions <- c(
+  # Northeast
+  'CT' = 'Northeast',
+  'ME' = 'Northeast',
+  'MA' = 'Northeast',
+  'NH' = 'Northeast',
+  'NJ' = 'Northeast',
+  'NY' = 'Northeast',
+  'PA' = 'Northeast',
+  'RI' = 'Northeast',
+  'VT' = 'Northeast',
+  
+  # Midwest
+  'IL' = 'Midwest',
+  'IN' = 'Midwest',
+  'IA' = 'Midwest',
+  'KS' = 'Midwest',
+  'MI' = 'Midwest',
+  'MN' = 'Midwest',
+  'MO' = 'Midwest',
+  'NE' = 'Midwest',
+  'ND' = 'Midwest',
+  'OH' = 'Midwest',
+  'SD' = 'Midwest',
+  'WI' = 'Midwest',
+  
+  # South
+  'AB' = 'South',
+  'AR' = 'South',
+  'DE' = 'South',
+  'DC' = 'South',
+  'FL' = 'South',
+  'GA' = 'South',
+  'KY' = 'South',
+  'LA' = 'South',
+  'MD' = 'South',
+  'MS' = 'South',
+  'NC' = 'South',
+  'OK' = 'South',
+  'SC' = 'South',
+  'TN' = 'South',
+  'TX' = 'South',
+  'VA' = 'South',
+  'WV' = 'South',
+  
+  # West region
+  'AK' = 'West',
+  'AZ' = 'West',
+  'CA' = 'West',
+  'CO' = 'West',
+  'HI' = 'West',
+  'ID' = 'West',
+  'MT' = 'West',
+  'NV' = 'West',
+  'NM' = 'West',
+  'OR' = 'West',
+  'UT' = 'West',
+  'WA' = 'West',
+  'WY' = 'West'
+)
+
+# Step 2: Map the states to regions
+sample_data <- sample_data %>%
+  mutate(region = state_regions[state])
+```
+
+In the subsequent step, we conduct a **thorough examination** to determine whether our dataset contains any **missing values**, represented as **'NA'**. **Identifying and addressing these 'NA' values** is crucial to **maintaining the quality and integrity** of our analysis. Once detected, we proceed to **remove these missing values** to prevent them from **skewing our results** or **introducing biases** in the analysis. By **eliminating incomplete data**, we ensure that our data set remains **consistent**, allowing us to **derive accurate insights** and **maintain the robustness** of our statistical models.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Check for NA's in the data
 variable_na <- sample_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%
@@ -716,7 +675,13 @@ variable_na <- sample_data %>%
 # Remove NA's in attributes data
 sample_data <- sample_data %>% 
   filter(!is.na(attributes))
+```
 
+To facilitate the analysis of take-out versus non-take-out restaurants, we create a new variable called `take_out`. This variable will serve as an indicator, where a value of `1` represents take-out restaurants, and a value of `0` represents non-take-out establishments. This binary classification allows us to clearly differentiate between the two categories and conduct targeted analyses specific to take-out services.
+
+After defining this variable, we filter our data set to include only those rows where `take_out` is equal to `1`. By **focusing exclusively on take-out restaurants**, we can **delve deeper** into the **behaviors, characteristics, and ratings** associated specifically with this subset of businesses, thereby providing **more relevant insights** in relation to our research question. This **filtering step** ensures that our analysis remains **focused on the intended subject**, **eliminating any noise** that non-take-out restaurants might introduce.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Create a take_out variable that contains 1 for take-out restaurants and
 # 0 for non take-out restaurants
 # Select only the take-out restaurants
@@ -733,10 +698,188 @@ takeout_data <- sample_data %>%
 takeout_data <- takeout_data %>% select(-attributes)
 ```
 
-**Save the finalized sample data**
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Displaying the first few rows of the selected takeout_data
+kable(head(takeout_data), caption = "First Few Rows of Selected Takeout Data")
+```
 
-Finally, we save the data, which will be used for further analysis.
+### 2.3 **Analysis and Deployment**
 
-```{r, echo=TRUE, eval=FALSE}
-write_csv(takeout_data, "takeout_data.csv")
+#### 2.3.1 Exploratory Data Analysis
+
+In this stage, we use various **visualization techniques** such as **bar charts, scatter plots, box plots, and histograms** to **explore relationships** between variables, **uncover patterns**, and **highlight trends** within the data set. Effective data visualization enables us to **quickly identify outliers, distributions, and correlations** that might not be apparent from numerical summaries alone.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+### Libraries ###
+library(tidyverse)
+library(here)
+library(dplyr)
+library(ggcorrplot)
+library(ggplot2)
+
+### Input ###
+
+takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
+
+# Convert 'elite_review' to a factor with labels "No" and "Yes"
+takeout_data <- takeout_data %>%
+  mutate(elite_review = factor(elite_review, levels = c(0, 1), labels = c("No", "Yes")))
+```
+
+**Plot 1:** **Distribution of User Ratings by Elite Status**
+
+The "**Distribution of User Ratings by Elite Status**" plot illustrates how **ratings differ between elite and non-elite users**. By **comparing the distribution** of ratings across these groups, we aim to determine whether **elite users**, who are often more **experienced or influential**, tend to **rate businesses differently** compared to regular users. This visualization helps us **identify any biases or tendencies** in rating behavior based on **elite status**, providing **insights** into how influential users perceive take-out restaurants compared to non-influential ones.
+
+![Figure 1](../7-plots/distribution_user_ratings_by_elite_review.png){fig-align="center"}
+
+**Plot 2: Distribution of User Ratings for Take-Out Restaurants by Elite Status**
+
+The "**Distribution of User Ratings for Take-Out Restaurants by Elite Status**" plot shows how **ratings vary between elite and non-elite users** specifically for take-out restaurants. This comparison allows us to **assess whether elite users**, who may have **higher expectations or more experience**, **rate take-out establishments differently** than non-elite users. By visualizing these distributions, we can better understand any **distinctions in rating behavior** linked to **elite status** within the context of **take-out dining**.
+
+![Figure 2](../7-plots/distribution_ratings_takeout_by_elite_review.png){fig-align="center"}
+
+**Plot 3: Average User Rating by Region and Elite Status**
+
+The "**Average User Rating by Region and Elite Status**" plot displays the **average ratings given by users**, segmented by both **region and elite status**. This plot helps us explore whether **elite and non-elite users rate take-out restaurants differently** across various regions. By analyzing these averages, we can **identify regional patterns** in **user satisfaction** and understand if **elite users consistently rate higher or lower** compared to non-elite users in different geographic areas, revealing potential **regional biases or differences in rating behavior**.
+
+![Figure 3](../7-plots/user_ratings_by_region_elite_review.png){fig-align="center"}
+
+**Plot 4: Distribution of Review Count by Business Open Status**
+
+The "**Distribution of Review Count by Business Open Status**" plot shows how the **number of reviews** is distributed between **businesses that are currently open** versus those that are **closed**. This comparison allows us to **examine whether businesses that are still operating** tend to have more or fewer reviews compared to those that have closed, providing **insights into customer engagement** and potential **correlations between review volume and business success** or longevity.
+
+![Figure 4](../7-plots/distribution_review_count_business_by_is_open.png){fig-align="center"}
+
+**Plot 5: Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**
+
+The "**Average User Rating of Businesses with Review Count \> 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses that have accumulated **more than 1,000 reviews**, segmented by **region and user elite status**. This plot aims to assess whether **businesses with high engagement** are rated differently by **elite versus non-elite users** across different regions, helping us **identify potential regional variations** in **user satisfaction** for **highly popular establishments** and whether **elite users consistently provide higher or lower ratings** compared to non-elite users.
+
+![Figure 5](../7-plots/avg_rating_gt_1000_by_region.png){fig-align="center"}
+
+**Plot 6: Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**
+
+The "**Average User Rating of Businesses with Review Count \> 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses that have received **over 1,000 reviews**, segmented by whether the **business is currently open or closed**, and by **user elite status**. This visualization helps us **determine if there is a difference** in how **elite and non-elite users rate highly-reviewed businesses** based on their **open status**, providing **insights** into whether ratings might reflect a **business's success or its likelihood of remaining open**.
+
+![Figure 6](../7-plots/avg_rating_gt_1000_by_is_open.png){fig-align="center"}
+
+**Plot 7: Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**
+
+The "**Average User Rating of Businesses with Review Count \< 1000 by Region and Elite Status**" plot displays the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by **region and user elite status**. This plot helps us understand how **elite and non-elite users rate less popular businesses** across different regions, revealing potential **differences in rating behavior** based on **elite status and geographic location**, as well as **regional factors** that might influence **user satisfaction** for businesses with **lower engagement**.
+
+![Figure 7](../7-plots/avg_rating_lt_1000_by_region.png)
+
+**Plot 8: Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**
+
+The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
+
+![Figure 8](../7-plots/avg_rating_lt_1000_by_is_open.png)
+
+**Plot 9: Relationship Between Number of Fans and User Rating by Region and Open Status**
+
+The "**Relationship Between Number of Fans and User Rating by Region and Open Status**" plot visualizes how the **number of fans** a user has **correlates with their ratings** of businesses, segmented by both **regions** and whether the **business is open or closed**. This plot helps us understand if **users with more fans**, who may be more **influential**, tend to give **different ratings** based on **regional factors** and the **current status** of the business, providing **insights** into whether **user popularity affects rating behavior** and how this varies by **location and business longevity**.
+
+![Figure 9](../7-plots/relationship_fans_user_rating_faceted_by_region.png)
+
+Based on our exploratory analysis, we identified several key insights into how user ratings vary based on elite status, geographic region, business status, and user influence.
+
+-   **Distribution of User Ratings by Elite Status**: Non-elite reviewers are more likely to give higher ratings compared to elite reviewers, with significantly more 5-star ratings coming from non-elite users. This suggests a more generous evaluation pattern among non-elite reviewers.
+
+-   **Average Rating by Elite Status**: Both elite and non-elite reviewers give an average rating of 4.0 stars to take-out establishments, indicating similar overall attitudes towards these businesses.
+
+-   **Distribution of User Ratings by Region and Elite Status**: Geographic differences affect rating behavior, with elite users providing higher ratings, especially in the Midwest (4.0 stars). Non-elite reviewers tend to give similar average ratings across all regions (3.7 stars).
+
+-   **Impact of Business Open Status and Review Counts**: Open businesses generally have more reviews than closed ones, suggesting that higher engagement may be linked to business longevity.
+
+-   **High Review Counts (\>1000)**:
+
+    -   Non-elite reviewers give consistently higher average ratings than elite reviewers, except in the South.
+
+    -   Open businesses receive higher ratings from both elite and non-elite users compared to closed businesses. For closed businesses, elite users give much lower ratings (3.1 stars) compared to non-elite users (4.2 stars), implying that elite reviews may influence business survival.
+
+-   **Low Review Counts (\<1000)**:
+
+    -   Elite users tend to rate businesses with fewer reviews more favorably than non-elite users across all regions. This may indicate elite reviewers having better experiences, meeting higher expectations, or possible sponsorship.
+
+    -   The difference in average ratings between open and closed businesses is minimal for businesses with low review counts, regardless of elite status.
+
+-   **Relationship Between Number of Fans and User Rating**: There is a high correlation between the number of fans a user has and the ratings they give, particularly in the Midwest and West regions. This suggests that more popular users may be more inclined to rate businesses favorably, which could reflect their influence on user engagement.
+
+#### 2.3.2 Statistical Data Analysis
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
+### Libraries ###
+library(tidyverse)
+library(here)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(sjPlot)
+library(sjmisc)
+
+### Input ###
+takeout_data <- read_csv(here('3-final_data', 'takeout_data.csv'))
+
+# Ensure the key variables are correctly formatted
+takeout_data <- takeout_data %>%
+  mutate(
+    elite_review = as.factor(elite_review),
+    region = as.factor(region),
+    is_open = as.factor(is_open)
+  )
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+
+### Run Two-Way ANOVA ###
+anova_results <- aov(stars_user ~ elite_review * region, data = takeout_data)
+
+# Get ANOVA summary
+anova_summary <- summary(anova_results)
+```
+
+```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+# Run Tukey's HSD Post Hoc Test
+anova_tukey <- TukeyHSD(anova_results)
+
+### Display ANOVA Diagnostic Plots ###
+
+# Display Normal Q-Q Plot
+plot(anova_results, which = 2)  # Normal Q-Q plot
+```
+
+```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
+# Display Scale-Location Plot
+plot(anova_results, which = 3)  # Scale-Location plot
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Run Pairwise T-Test with Bonferroni Correction
+pairwise_results <- pairwise.t.test(takeout_data$stars_user, takeout_data$region, p.adjust.method = "bonferroni")
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+### Run Regression Analysis ###
+takeout_regression <- glm(
+  stars_user ~ elite_review + review_count_user + fans + is_open + stars_business,
+  data = takeout_data
+)
+
+# Get Regression Summary
+regression_summary <- summary(takeout_regression)
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+### Display Regression Diagnostic Plots ###
+
+# Display Normal Q-Q Plot for Regression
+qqnorm(residuals(takeout_regression))
+qqline(residuals(takeout_regression), col = "red")
+```
+
+```{r, eval=TRUE, echo=FALSE,results='markup'}
+# Display Residuals vs Fitted Plot
+plot(takeout_regression$fitted.values, residuals(takeout_regression),
+     xlab = "Fitted Values", ylab = "Residuals",
+     main = "Residuals vs Fitted")
+abline(h = 0, col = "red")
 ```

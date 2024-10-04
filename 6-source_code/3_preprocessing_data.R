@@ -21,18 +21,9 @@ sample_data <- sample_data %>%
     username = name
   )
 
-# Check changes
-colnames(sample_data)
-
-# Check elite variable
-unique(sample_data$elite)
-
 # Change user to elite users indicated by 1 and non-elite users indicated by 0
 sample_data <- sample_data %>%
   mutate(elite_review = if_else(is.na(elite), 0, 1))
-
-# Check elite_user variable
-sample_data$elite_review
 
 # Remove elite column
 sample_data <- sample_data %>% select(-elite)
@@ -115,8 +106,14 @@ state_divisions <- c(
 sample_data <- sample_data %>%
   mutate(division = state_divisions[state])
 
-# Check division variable
-unique(sample_data$division)
+# Check NA
+na_div <- sample_data %>% 
+  filter(is.na(division))
+na_div
+
+# Remove NA
+sample_data <- sample_data %>% 
+  filter(!is.na(division))
 
 # Create new region variable
 
@@ -186,9 +183,6 @@ state_regions <- c(
 sample_data <- sample_data %>%
   mutate(region = state_regions[state])
 
-# check region variable
-unique(sample_data$region)
-
 # Check for NA's in the data
 variable_na <- sample_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%
@@ -198,11 +192,11 @@ variable_na <- sample_data %>%
     values_to = "na_count"
   )
 
-View(variable_na)
-
-# Remove NA's in attributes data
+# Remove NA's in attributes, fans, and review count user data
 sample_data <- sample_data %>% 
-  filter(!is.na(attributes))
+  filter(!is.na(attributes),
+         !is.na(fans),
+         !is.na(review_count_user))
 
 # Create a take_out variable that contains 1 for take-out restaurants and
 # 0 for non take-out restaurants
