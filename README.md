@@ -35,6 +35,7 @@ This study aims to address the gap in the dynamics of online reviews, particular
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
 ### Conceptual Model
+#### ANOVA
 ![Figure 1](../3-final_data/ANOVA.jpeg)
 **Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 - This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
@@ -43,6 +44,13 @@ This study aims to address the gap in the dynamics of online reviews, particular
 - The state region acts as a quasi-moderator in the model. It includes four categories: Midwest, Northeast, South, and West. The main effect of this quasi-moderator is on the star rating of take-out restaurants, allowing us to determine how different regions influence the overall ratings.
 - Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
+#### Regression
+![Figure 2](../3-final_data/Regression.jpeg)
+**Independent Variables**
+- Elite Review: This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
+
+**Dependent Variable**
+- **Star Rating of Take-Out Restaurants:** The outcome we are interested in predicting is the star rating given to take-out restaurants. By analyzing the effects of elite status, user review count, user fans, and restaurant operational status, we aim to gain a deeper understanding of the factors influencing these ratings.
 
 ## Research Method and Results 
 ### Data Source
