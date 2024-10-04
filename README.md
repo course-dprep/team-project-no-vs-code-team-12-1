@@ -36,7 +36,7 @@ This study aims to address the gap in the dynamics of online reviews, particular
 
 ### Conceptual Model
 #### ANOVA
-![Figure 1](../3-final_data/ANOVA.jpeg)
+![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/3-final_data/ANOVA.jpeg)
 **Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 - This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
 
@@ -45,7 +45,7 @@ This study aims to address the gap in the dynamics of online reviews, particular
 - Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
 #### Regression
-![Figure 2](../3-final_data/Regression.jpeg)
+![Figure 2](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/3-final_data/Regression.jpeg)
 **Independent Variables**
 - **Elite Review:** This variable indicates whether the review was made by an elite Yelp user or a non-elite user. The main effect of this variable is to assess whether there are systematic differences in the star rating of take-out restaurants based on the reviewer status. Specifically, we aim to determine if elite reviewers provide higher or lower ratings compared to non-elite reviewers.
 - **User Review Count:** This variable represents the total number of reviews a user has submitted. The main effect of this variable is to explore how user engagement (as measured by the number of reviews) impacts the star rating of take-out restaurants. We aim to understand if prolific reviewers tend to give higher or lower ratings compared to those with fewer reviews.
