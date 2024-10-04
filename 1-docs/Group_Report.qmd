@@ -38,7 +38,9 @@ This study aims to address the gap in the dynamics of online reviews, particular
 
 ### 1.3 Conceptual Model
 
-![Figure 1](../3-final_data/ANOVA.jpeg)
+#### 1.3.1 ANOVA
+
+![Figure 1.3.1](../3-final_data/ANOVA.jpeg)
 
 **Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 
@@ -51,6 +53,26 @@ This study aims to address the gap in the dynamics of online reviews, particular
 -   Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
 To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as `review_id`, `user_id`, `business_id`, `stars_user`, `review_count_user`, `fans`, `state`, `city`, `stars_business`, `review_count_business`, `is_open`, `elite_review`, `division`, `region`, and `take_out`. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
+
+#### 1.3.2 Regression
+
+![Figure 1.3.2](../3-final_data/Regression.jpeg){fig-align="center"}
+
+**Independent Variables**
+
+-   **Elite Review:** This variable indicates whether the review was made by an elite Yelp user or a non-elite user. The main effect of this variable is to assess whether there are systematic differences in the **star rating of take-out restaurants** based on the reviewer status. Specifically, we aim to determine if elite reviewers provide higher or lower ratings compared to non-elite reviewers.
+
+-   **User Review Count:** This variable represents the total number of reviews a user has submitted. The main effect of this variable is to explore how user engagement (as measured by the number of reviews) impacts the **star rating of take-out restaurants**. We aim to understand if prolific reviewers tend to give higher or lower ratings compared to those with fewer reviews.
+
+-   **Fans:** This variable captures the number of fans a user has, serving as an indicator of their influence within the Yelp community. The main effect of this variable is to determine how a user's popularity impacts their ratings of take-out restaurants, allowing us to see if more influential users provide systematically different ratings.
+
+-   **Is_Open:** This variable indicates whether the restaurant is currently open or closed at the time of rating. The main effect of this variable is to investigate whether the operational status of a restaurant influences the **star rating of take-out restaurants**. Specifically, we are interested in whether open restaurants are rated differently compared to those that are closed.
+
+**Dependent Variable**
+
+-   **Star Rating of Take-Out Restaurants:** The outcome we are interested in predicting is the **star rating** given to take-out restaurants. By analyzing the effects of elite status, user review count, user fans, and restaurant operational status, we aim to gain a deeper understanding of the factors influencing these ratings.
+
+To complement the initial **ANOVA** analysis, **regression analysis** will be used to provide a deeper understanding of the relationships between the independent variables and the **star rating of take-out restaurants**. While ANOVA identifies significant differences in star ratings based on reviewer type and region, regression allows us to quantify the unique contributions of multiple predictors, such as **user review count**, **fans**, **is_open**, and **restaurant location**. This approach helps determine the effect size and direction of these influences, providing a comprehensive view of how reviewer characteristics and location impact ratings.
 
 ### 1.4 Repository Structure and Documentation
 
@@ -350,17 +372,17 @@ The **user_data** consists of the following variables:
 
 The **review_data** set consists of the following variables:
 
-|  Variable   |                      Description                       | Data Type |
-|:-----------------:|:--------------------------------:|:-----------------:|
-|  review_id  |                    Unique review id                    | Character |
-|   user_id   |         An unique character string as user id          | Character |
-| business_id | A unique character string for each individual business | Character |
-|    stars    |               Star rating of the review                |  Numeric  |
-|    date     |          Date of review, formatted YYYY-MM-DD          | Character |
-|    text     |                    The review text                     | Character |
-|   useful    |         The number of 'useful' votes received          |  Numeric  |
-|    funny    |          The number of 'funny' votes received          |  Numeric  |
-|    Cool     |          The number of 'cool' votes received           |  Numeric  |
+|  Variable   |                 Description                 | Data Type |
+|:-----------:|:-------------------------------------------:|:---------:|
+|  review_id  |              Unique review id               | Character |
+|   user_id   |    An unique character string as user id    | Character |
+| business_id | A unique character string for each business | Character |
+|    stars    |          Star rating of the review          |  Numeric  |
+|    date     |    Date of review, formatted YYYY-MM-DD     | Character |
+|    text     |               The review text               | Character |
+|   useful    |    The number of 'useful' votes received    |  Numeric  |
+|    funny    |    The number of 'funny' votes received     |  Numeric  |
+|    Cool     |     The number of 'cool' votes received     |  Numeric  |
 
 ### 2.2 **Data Processing**
 
@@ -660,7 +682,7 @@ sample_data <- sample_data %>%
   mutate(region = state_regions[state])
 ```
 
-In the subsequent step, we conduct a **thorough examination** to determine whether our dataset contains any **missing values**, represented as **'NA'**. **Identifying and addressing these 'NA' values** is crucial to **maintaining the quality and integrity** of our analysis. Once detected, we proceed to **remove these missing values** to prevent them from **skewing our results** or **introducing biases** in the analysis. By **eliminating incomplete data**, we ensure that our data set remains **consistent**, allowing us to **derive accurate insights** and **maintain the robustness** of our statistical models.
+In the subsequent step, we conduct a **thorough examination** to determine whether our data set contains any **missing values**, represented as **'NA'**. **Identifying and addressing these 'NA' values** is crucial to **maintaining the quality and integrity** of our analysis. Once detected, we proceed to **remove these missing values** to prevent them from **skewing our results** or **introducing biases** in the analysis. By **eliminating incomplete data**, we ensure that our data set remains **consistent**, allowing us to **derive accurate insights** and **maintain the robustness** of our statistical models.
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 # Check for NA's in the data
