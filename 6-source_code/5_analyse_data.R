@@ -147,7 +147,7 @@ regression1_summary <- summary(takeout_lm1)
 regression1_summary
 
 # Save Regression Summary to a Text File
-regression_summary_text <- capture.output(regression_summary)
+regression_summary_text <- capture.output(regression1_summary)
 writeLines(regression_summary_text, here('8-results', 'regression_summary.txt'))
 
 ### Save Regression Diagnostic Plots ###
@@ -155,18 +155,15 @@ writeLines(regression_summary_text, here('8-results', 'regression_summary.txt'))
 # Save Normal Q-Q Plot for Regression
 qq_plot_reg_file <- here('8-results', 'regression_normal_qq_plot.png')
 png(qq_plot_reg_file)
-qqnorm(residuals(takeout_regression))
-qqline(residuals(takeout_regression), col = "red")
+qqnorm(residuals(takeout_lm1))
+qqline(residuals(takeout_lm1), col = "red")
 dev.off()
 
 # Save Residuals vs Fitted Plot
 residuals_plot_file <- here('8-results', 'regression_residuals_fitted_plot.png')
 png(residuals_plot_file)
-plot(takeout_regression$fitted.values, residuals(takeout_regression),
+plot(takeout_lm1$fitted.values, residuals(takeout_lm1),
      xlab = "Fitted Values", ylab = "Residuals",
      main = "Residuals vs Fitted")
 abline(h = 0, col = "red")
 dev.off()
-
-# Space for extra plots
-
