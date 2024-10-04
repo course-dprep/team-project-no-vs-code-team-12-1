@@ -37,7 +37,8 @@ This study aims to address the gap in the dynamics of online reviews, particular
 ### Conceptual Model
 #### ANOVA
 ![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/3-final_data/ANOVA.jpeg)
-**Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
+
+**Independent Variable: Type of Yelp Review**
 - This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
 
 **Quasi-Moderator (State Region): Midwest, Northeast, South, West**
