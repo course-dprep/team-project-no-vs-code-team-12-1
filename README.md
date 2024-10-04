@@ -35,6 +35,7 @@ This study aims to address the gap in the dynamics of online reviews, particular
 | stars         | The average star rating rounded to half-stars                       | numeric    | review dataset    |
 
 ### Conceptual Model
+#### ANOVA
 ![Figure 1](../3-final_data/ANOVA.jpeg)
 **Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 - This variable represents the categorization of Yelp reviews into two groups: Elite and Non-Elite reviews. The main effect of this variable is to examine how being an elite reviewer or a non-elite reviewer influences the star rating of take-out restaurants. Specifically, we aim to determine whether elite reviewers provide systematically different ratings compared to non-elite reviewers.
@@ -43,6 +44,15 @@ This study aims to address the gap in the dynamics of online reviews, particular
 - The state region acts as a quasi-moderator in the model. It includes four categories: Midwest, Northeast, South, and West. The main effect of this quasi-moderator is on the star rating of take-out restaurants, allowing us to determine how different regions influence the overall ratings.
 - Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
+#### Regresssion
+![Figure 2](../3-final_data/Regression.jpeg)
+**Independent Variable**
+- **Elite Review:** This variable indicates whether the review was made by an elite Yelp user or a non-elite user. The main effect of this variable is to assess whether there are systematic differences in the star rating of take-out restaurants based on the reviewer status. Specifically, we aim to determine if elite reviewers provide higher or lower ratings compared to non-elite reviewers.
+- **User Review Count:** This variable represents the total number of reviews a user has submitted. The main effect of this variable is to explore how user engagement (as measured by the number of reviews) impacts the star rating of take-out restaurants. We aim to understand if prolific reviewers tend to give higher or lower ratings compared to those with fewer reviews.
+- **Fans:** This variable captures the number of fans a user has, serving as an indicator of their influence within the Yelp community. The main effect of this variable is to determine how a user's popularity impacts their ratings of take-out restaurants, allowing us to see if more influential users provide systematically different ratings.
+- **Is Open:** This variable indicates whether the restaurant is currently open or closed at the time of rating. The main effect of this variable is to investigate whether the operational status of a restaurant influences the star rating of take-out restaurants. Specifically, we are interested in whether open restaurants are rated differently compared to those that are closed.
+**Dependent Variable**
+- **Star Rating of Take-Out Restaurants:** The outcome we are interested in predicting is the star rating given to take-out restaurants. By analyzing the effects of elite status, user review count, user fans, and restaurant operational status, we aim to gain a deeper understanding of the factors influencing these ratings.
 
 ## Research Method and Results 
 ### Data Source
@@ -66,6 +76,8 @@ To streamline the process, we've provided an R script that **automatically downl
 
 ### Research Method
 To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as review_id, user_id, business_id, stars_user, review_count_user, fans, state, city, stars_business, review_count_business, is_open, elite_review, division, region, and take_out. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
+
+To complement the initial ANOVA analysis, **regression analysis** will be used to provide a deeper understanding of the relationships between the independent variables and the star rating of take-out restaurants. While ANOVA identifies significant differences in star ratings based on reviewer type and region, regression allows us to **quantify the unique contributions of multiple predictors, such as user review count, fans, is_open, and restaurant location**. This approach helps **determine the effect size and direction of these influences**, providing a comprehensive view of how reviewer characteristics and location impact ratings.
 
 ### Result  
 #### Exploratory Analysis

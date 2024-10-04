@@ -38,7 +38,9 @@ This study aims to address the gap in the dynamics of online reviews, particular
 
 ### 1.3 Conceptual Model
 
-![Figure 1](../3-final_data/ANOVA.jpeg)
+#### 1.3.1 ANOVA
+
+![Figure 1.3.1](../3-final_data/ANOVA.jpeg)
 
 **Independent Variable (Type of Yelp Review): Elite Review, Non-Elite Review**
 
@@ -51,6 +53,24 @@ This study aims to address the gap in the dynamics of online reviews, particular
 -   Additionally, interaction effects between the independent variable (type of Yelp review) and the quasi-moderator (state region) will be analyzed. This means we are interested in whether the influence of being an elite or non-elite reviewer on the star ratings of take-out restaurants changes based on the region. For example, elite reviewers in the Midwest might rate take-out restaurants differently compared to elite reviewers in the West.
 
 To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants). Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as `review_id`, `user_id`, `business_id`, `stars_user`, `review_count_user`, `fans`, `state`, `city`, `stars_business`, `review_count_business`, `is_open`, `elite_review`, `division`, `region`, and `take_out`. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
+
+#### 1.3.2 Regression
+
+![Figure 1.3.2](../3-final_data/Regression.jpeg){fig-align="center"}
+
+**Independent Variable**
+
+-   **Elite Review:** This variable indicates whether the review was made by an elite Yelp user or a non-elite user. The main effect of this variable is to assess whether there are systematic differences in the star rating of take-out restaurants based on the reviewer status. Specifically, we aim to determine if elite reviewers provide higher or lower ratings compared to non-elite reviewers.
+
+-   **User Review Count:** This variable represents the total number of reviews a user has submitted. The main effect of this variable is to explore how user engagement (as measured by the number of reviews) impacts the star rating of take-out restaurants. We aim to understand if prolific reviewers tend to give higher or lower ratings compared to those with fewer reviews.
+
+-   **Fans:** This variable captures the number of fans a user has, serving as an indicator of their influence within the Yelp community. The main effect of this variable is to determine how a user's popularity impacts their ratings of take-out restaurants, allowing us to see if more influential users provide systematically different ratings.
+
+-   **Is Open:** This variable indicates whether the restaurant is currently open or closed at the time of rating. The main effect of this variable is to investigate whether the operational status of a restaurant influences the star rating of take-out restaurants. Specifically, we are interested in whether open restaurants are rated differently compared to those that are closed.
+
+**Dependent Variable**
+
+-   **Star Rating of Take-Out Restaurants:** The outcome we are interested in predicting is the star rating given to take-out restaurants. By analyzing the effects of `elite status`, `user review count`, `user fans`, and `is_open`, we aim to gain a deeper understanding of the factors influencing these ratings.
 
 ### 1.4 Repository Structure and Documentation
 
@@ -321,46 +341,46 @@ The **business_data** set consists of the following variables:
 
 The **user_data** consists of the following variables:
 
-|      Variable      |                     Description                      | Data Type |
+|      Variable      |                     Description                     | Data Type |
 |:-----------------:|:--------------------------------:|:-----------------:|
-|      user_id       |   A unique character string as user identification   | Character |
-|        name        |                The user's first name                 | Character |
-|    review_count    | The number of reviews written by an individual user  |  Numeric  |
-|   yelping_since    |              Date when user joined Yelp              | Character |
-|      friends       |     An array of the user's friends as user id's      | Character |
-|       useful       |        Number of 'useful' votes send by user         |  Numeric  |
-|       funny        |         Number of 'funny' votes send by user         |  Numeric  |
-|        cool        |         Number of 'cool' votes send by user          |  Numeric  |
-|        fans        |            The number of fans a user has             |  Numeric  |
-|       elite        |   The years the user had an 'elite' status on Yelp   |  Numeric  |
-|   average_stars    |            Average rating of all reviews             |  Numeric  |
-|   compliment_hot   |   Number of 'hot' compliments received by the user   |  Numeric  |
-|  compliment_more   |  Number of 'more' compliments received by the user   |  Numeric  |
-| compliment_profile | Number of 'profile' compliments received by the user |  Numeric  |
-|  compliment_cute   |  Number of 'cute' compliments received by the user   |  Numeric  |
-|  compliment_list   |  Number of 'list' compliments received by the user   |  Numeric  |
-|  compliment_note   |  Number of 'note' compliments received by the user   |  Numeric  |
-|  compliment_plain  |  Number of 'plain' compliments received by the user  |  Numeric  |
-|  compliment_cool   |  Number of 'cool' compliments received by the user   |  Numeric  |
-|  compliment_funny  |  Number of 'funny' compliments received by the user  |  Numeric  |
-| compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
-|  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
+|      user_id       |  A unique character string as user identification   | Character |
+|        name        |                The user's first name                | Character |
+|    review_count    | The number of reviews written by an individual user |  Numeric  |
+|   yelping_since    |             Date when user joined Yelp              | Character |
+|      friends       |     An array of the user's friends as user id's     | Character |
+|       useful       |        Number of 'useful' votes send by user        |  Numeric  |
+|       funny        |        Number of 'funny' votes send by user         |  Numeric  |
+|        cool        |         Number of 'cool' votes send by user         |  Numeric  |
+|        fans        |            The number of fans a user has            |  Numeric  |
+|       elite        |  The years the user had an 'elite' status on Yelp   |  Numeric  |
+|   average_stars    |            Average rating of all reviews            |  Numeric  |
+|   compliment_hot   |    Number of 'hot' compliments received by user     |  Numeric  |
+|  compliment_more   |    Number of 'more' compliments received by user    |  Numeric  |
+| compliment_profile |  Number of 'profile' compliments received by user   |  Numeric  |
+|  compliment_cute   |    Number of 'cute' compliments received by user    |  Numeric  |
+|  compliment_list   |    Number of 'list' compliments received by user    |  Numeric  |
+|  compliment_note   |    Number of 'note' compliments received by user    |  Numeric  |
+|  compliment_plain  |   Number of 'plain' compliments received by user    |  Numeric  |
+|  compliment_cool   |    Number of 'cool' compliments received by user    |  Numeric  |
+|  compliment_funny  |   Number of 'funny' compliments received by user    |  Numeric  |
+| compliment_writer  |   Number of 'writer' compliments received by user   |  Numeric  |
+|  compliment_photo  |   Number of 'photo' compliments received by user    |  Numeric  |
 
 ##### 2.1.2.3 review_data
 
 The **review_data** set consists of the following variables:
 
-|  Variable   |                      Description                       | Data Type |
-|:-----------------:|:--------------------------------:|:-----------------:|
-|  review_id  |                    Unique review id                    | Character |
-|   user_id   |         An unique character string as user id          | Character |
-| business_id | A unique character string for each individual business | Character |
-|    stars    |               Star rating of the review                |  Numeric  |
-|    date     |          Date of review, formatted YYYY-MM-DD          | Character |
-|    text     |                    The review text                     | Character |
-|   useful    |         The number of 'useful' votes received          |  Numeric  |
-|    funny    |          The number of 'funny' votes received          |  Numeric  |
-|    Cool     |          The number of 'cool' votes received           |  Numeric  |
+|  Variable   |                 Description                  | Data Type |
+|:-----------:|:--------------------------------------------:|:---------:|
+|  review_id  |               Unique review id               | Character |
+|   user_id   |    An unique character string as user id     | Character |
+| business_id | A unique string for each individual business | Character |
+|    stars    |          Star rating of the review           |  Numeric  |
+|    date     |     Date of review, formatted YYYY-MM-DD     | Character |
+|    text     |               The review text                | Character |
+|   useful    |    The number of 'useful' votes received     |  Numeric  |
+|    funny    |     The number of 'funny' votes received     |  Numeric  |
+|    Cool     |     The number of 'cool' votes received      |  Numeric  |
 
 ### 2.2 **Data Processing**
 
@@ -770,7 +790,7 @@ The "**Average User Rating of Businesses with Review Count \< 1000 by Region and
 
 **Plot 8: Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**
 
-The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite and non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
+The "**Average User Rating of Businesses with Review Count \< 1000 by Open Status and Elite Status**" plot shows the **average ratings** for businesses with **fewer than 1,000 reviews**, segmented by whether the **business is open or closed**, and by **user elite status**. This plot helps us **assess whether elite** and **non-elite users rate less popular businesses differently** depending on whether they are **still operating**, providing **insights** into how **user ratings** may relate to the **success or closure** of businesses with **lower engagement**.
 
 ![Figure 8](../7-plots/avg_rating_lt_1000_by_is_open.png)
 
@@ -805,6 +825,8 @@ Based on our exploratory analysis, we identified several key insights into how u
 -   **Relationship Between Number of Fans and User Rating**: There is a high correlation between the number of fans a user has and the ratings they give, particularly in the Midwest and West regions. This suggests that more popular users may be more inclined to rate businesses favorably, which could reflect their influence on user engagement.
 
 #### 2.3.2 Statistical Data Analysis
+
+To explore these relationships, **ANOVA** will be used as the primary research method. This method is appropriate for **comparing the main effects of the independent variable (type of Yelp review) and the quasi-moderator (state region) on the dependent variable (star rating of take-out restaurants).** Specifically, ANOVA will allow us to determine whether there are statistically significant differences in star ratings based on the type of reviewer (elite vs. non-elite) and how these effects interact with the state region. The analysis will incorporate columns such as review_id, user_id, business_id, stars_user, review_count_user, fans, state, city, stars_business, review_count_business, is_open, elite_review, division, region, and take_out. By examining these factors, ANOVA will help reveal any meaningful differences in ratings attributable to both reviewer influence and regional variation.
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 ### Libraries ###
@@ -883,3 +905,5 @@ plot(takeout_regression$fitted.values, residuals(takeout_regression),
      main = "Residuals vs Fitted")
 abline(h = 0, col = "red")
 ```
+
+To complement the initial ANOVA analysis, **regression analysis** will be used to provide a deeper understanding of the relationships between the independent variables and the star rating of take-out restaurants. While ANOVA identifies significant differences in star ratings based on reviewer type and region, regression allows us to **quantify the unique contributions of multiple predictors, such as user review count, fans, is_open, and restaurant location**. This approach helps **determine the effect size and direction of these influences**, providing a comprehensive view of how reviewer characteristics and location impact ratings.
