@@ -343,30 +343,30 @@ The **business_data** set consists of the following variables:
 
 The **user_data** consists of the following variables:
 
-|      Variable      |                     Description                      | Data Type |
+| Variable | Description | Data Type |
 |:-----------------:|:--------------------------------:|:-----------------:|
-|      user_id       |   A unique character string as user identification   | Character |
-|        name        |                The user's first name                 | Character |
-|    review_count    | The number of reviews written by an individual user  |  Numeric  |
-|   yelping_since    |              Date when user joined Yelp              | Character |
-|      friends       |     An array of the user's friends as user id's      | Character |
-|       useful       |        Number of 'useful' votes send by user         |  Numeric  |
-|       funny        |         Number of 'funny' votes send by user         |  Numeric  |
-|        cool        |         Number of 'cool' votes send by user          |  Numeric  |
-|        fans        |            The number of fans a user has             |  Numeric  |
-|       elite        |   The years the user had an 'elite' status on Yelp   |  Numeric  |
-|   average_stars    |            Average rating of all reviews             |  Numeric  |
-|   compliment_hot   |   Number of 'hot' compliments received by the user   |  Numeric  |
-|  compliment_more   |  Number of 'more' compliments received by the user   |  Numeric  |
-| compliment_profile | Number of 'profile' compliments received by the user |  Numeric  |
-|  compliment_cute   |  Number of 'cute' compliments received by the user   |  Numeric  |
-|  compliment_list   |  Number of 'list' compliments received by the user   |  Numeric  |
-|  compliment_note   |  Number of 'note' compliments received by the user   |  Numeric  |
-|  compliment_plain  |  Number of 'plain' compliments received by the user  |  Numeric  |
-|  compliment_cool   |  Number of 'cool' compliments received by the user   |  Numeric  |
-|  compliment_funny  |  Number of 'funny' compliments received by the user  |  Numeric  |
-| compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
-|  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
+| user_id | A unique character string as user identification | Character |
+| name | The user's first name | Character |
+| review_count | The number of reviews written by an individual user | Numeric |
+| yelping_since | Date when user joined Yelp | Character |
+| friends | An array of the user's friends as user id's | Character |
+| useful | Number of 'useful' votes send by user | Numeric |
+| funny | Number of 'funny' votes send by user | Numeric |
+| cool | Number of 'cool' votes send by user | Numeric |
+| fans | The number of fans a user has | Numeric |
+| elite | The years the user had an 'elite' status on Yelp | Numeric |
+| average_stars | Average rating of all reviews | Numeric |
+| compliment_hot | Number of 'hot' compliments received by the user | Numeric |
+| compliment_more | Number of 'more' compliments received by the user | Numeric |
+| compliment_profile | Number of 'profile' compliments received by the user | Numeric |
+| compliment_cute | Number of 'cute' compliments received by the user | Numeric |
+| compliment_list | Number of 'list' compliments received by the user | Numeric |
+| compliment_note | Number of 'note' compliments received by the user | Numeric |
+| compliment_plain | Number of 'plain' compliments received by the user | Numeric |
+| compliment_cool | Number of 'cool' compliments received by the user | Numeric |
+| compliment_funny | Number of 'funny' compliments received by the user | Numeric |
+| compliment_writer | Number of 'writer' compliments received by the user | Numeric |
+| compliment_photo | Number of 'photo' compliments received by the user | Numeric |
 
 ##### 2.1.2.3 review_data
 
@@ -850,14 +850,26 @@ takeout_data <- takeout_data %>%
   )
 ```
 
+#### Factorial Anova
+
+A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and th einteraction between **Review Type** and **State Regions** on **User Star Ratings of Takeout Restaurants**. **Review Type** included two levels (Elite Review, Non-Elite Review) and **State Regions** types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.
+
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 
 ### Run Two-Way ANOVA ###
 anova_results <- aov(stars_user ~ elite_review * region, data = takeout_data)
 
+takeout_anova  <- lm(stars_user ~ elite_review * region, data = takeout_data)
+anova_results2 <- Anova(takeout_anova, type=3)
+
 # Get ANOVA summary
 anova_summary <- summary(anova_results)
+anova_summary2 <- summary(anova_results2)
 ```
+
+The main effect for **Review Type** was significant, **F**(1, 323848) = 1419,98, **p** \< .001, with a small effect size, η2 = 0.004, 95% CI \[0.00, 1.00\], indicating a significant difference between the two review types. Specifically, the mean rating for non-elite reviewers (**M** = 3.74, **SD** = 1.49) was lower than that for elite reviewers (**M** = 3.95, **SD** = 1.05), suggesting that elite reviewers tend to give higher ratings.
+
+The main effect of **State Region** was significant, **F**(3, 323848) = 71.79, **p** \< .001, with a smaller effect size, η2 = 0.0007, 95% CI \[0.00, 1.00\], indicating that there were significant differences in mean ratings across regions. Specifically, the mean ratings were as follows: Midwest (**M** = 3.81, **SD** = 1.38), Northeast (**M** = 3.73, **SD** = 1.38), South (**M** = 3.82, **SD** = 1.39), and West (**M** = 3.79, **SD** = 1.43).
 
 ```{r, eval=TRUE, echo=FALSE,fig.show = "asis"}
 # Run Tukey's HSD Post Hoc Test
@@ -878,6 +890,14 @@ plot(anova_results, which = 3)  # Scale-Location plot
 # Run Pairwise T-Test with Bonferroni Correction
 pairwise_results <- pairwise.t.test(takeout_data$stars_user, takeout_data$region, p.adjust.method = "bonferroni")
 ```
+
+Pairwise comparisons with Bonferroni adjustment revealed that the Northeast had significantly lower mean ratings compared to the Midwest (**p** \< .001), South (**p** \< .001), and West (**p** \< .001). The South had significantly higher mean ratings compared to the Northeast (**p** \< .001) and the West (**p** \< .001), but not significantly different from the Midwest (**p** = .146). The Midwest and West were not significantly different (**p** = .062).
+
+The interaction effect of **Review Type** **x State Region** was also significant, **F**(3, 323848) - 12.29, **p** \< .001, with a very small effect size, η2 = 0.0001, 95% CI \[0.00, 1.00\].
+
+These results indicate that both **Review Type** and **State Region** had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between **Review Type** and **State Region** had a minimal influence on the results.
+
+### Regression
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 ### Run Regression Analysis ###
