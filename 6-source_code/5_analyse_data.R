@@ -63,7 +63,7 @@ leveneTest(stars_user ~ elite_review*region, data = takeout_data,
 
 
 
-### Run Two-Way ANOVA ###
+### Run Factorial ANOVA ###
 anova_results <- aov(stars_user ~ elite_review * region, data = takeout_data)
 
 
