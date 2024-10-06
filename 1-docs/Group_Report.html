@@ -1142,26 +1142,7 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 </section>
 <section id="factorial-anova" class="level4">
 <h4 class="anchored" data-anchor-id="factorial-anova">Factorial Anova</h4>
-<p>A Factorial ANOVA was conducted to compare the main effects of <strong>Review Type</strong> and <strong>State Regions</strong> and th einteraction between <strong>Review Type</strong> and <strong>State Regions</strong> on <strong>User Star Ratings of Takeout Restaurants</strong>. <strong>Review Type</strong> included two levels (Elite Review, Non-Elite Review) and <strong>State Regions</strong> types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: carData</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'car'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:dplyr':
-
-    recode</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:purrr':
-
-    some</code></pre>
-</div>
-</div>
+<p>A Factorial ANOVA was conducted to compare the main effects of <strong>Review Type</strong> and <strong>State Regions</strong> and the interaction between <strong>Review Type</strong> and <strong>State Regions</strong> on <strong>User Star Ratings of Takeout Restaurants</strong>. <strong>Review Type</strong> included two levels (Elite Review, Non-Elite Review) and <strong>State Regions</strong> types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.</p>
 <p>The main effect for <strong>Review Type</strong> was significant, <strong>F</strong>(1, 323848) = 1419,98, <strong>p</strong> &lt; .001, with a small effect size, η2 = 0.004, 95% CI [0.00, 1.00], indicating a significant difference between the two review types. Specifically, the mean rating for non-elite reviewers (<strong>M</strong> = 3.74, <strong>SD</strong> = 1.49) was lower than that for elite reviewers (<strong>M</strong> = 3.95, <strong>SD</strong> = 1.05), suggesting that elite reviewers tend to give higher ratings.</p>
 <p>The main effect of <strong>State Region</strong> was significant, <strong>F</strong>(3, 323848) = 71.79, <strong>p</strong> &lt; .001, with a smaller effect size, η2 = 0.0007, 95% CI [0.00, 1.00], indicating that there were significant differences in mean ratings across regions. Specifically, the mean ratings were as follows: Midwest (<strong>M</strong> = 3.81, <strong>SD</strong> = 1.38), Northeast (<strong>M</strong> = 3.73, <strong>SD</strong> = 1.38), South (<strong>M</strong> = 3.82, <strong>SD</strong> = 1.39), and West (<strong>M</strong> = 3.79, <strong>SD</strong> = 1.43).</p>
 <div class="cell">
@@ -1189,6 +1170,14 @@ Attaching package: 'car'</code></pre>
 </section>
 <section id="regression-1" class="level3">
 <h3 class="anchored" data-anchor-id="regression-1">Regression</h3>
+<p>A multiple linear regression was calculated to predict <strong>User Ratings (stars_user)</strong> based on <strong>Elite Review Status (elite_review)</strong>, <strong>Review Count (review_count_user)</strong>, <strong>Number of Fans (fans)</strong>, and <strong>whether the Business is Open (is_open)</strong>. A significant regression equation was found, <strong>F(4, 323851) = 603.4</strong>, p &lt; .001, with an R² of <strong>.007</strong>. This indicates that approximately <strong>0.74%</strong> of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.</p>
+<p>Participants’ predicted user rating is equal to <strong>3.59 + 0.2315</strong> (elite_review) <strong>- 0.0000868</strong> (review_count_user) <strong>+ 0.0001787</strong> (fans) <strong>+ 0.1824</strong> (is_open), where:</p>
+<ul>
+<li><p><strong>elite_review</strong> is coded as 1 if the user has elite status and 0 otherwise,</p></li>
+<li><p><strong>is_open</strong> is coded as 1 if the business is open and 0 if it is closed.</p></li>
+</ul>
+<p>User ratings increased by <strong>0.2315 stars</strong> for users with elite status and by <strong>0.1824 stars</strong> for businesses that are open. Both <strong>elite_review</strong> and <strong>is_open</strong> were significant predictors of user ratings (p &lt; .001). While <strong>review_count_user</strong> had a small negative effect (with user ratings decreasing by <strong>0.0000868 stars</strong> for each additional review written), and <strong>fans</strong> had a small positive effect (with user ratings increasing by <strong>0.0001787 stars</strong> for each additional fan), their contributions to the model were also statistically significant.</p>
+<p>In conclusion, while elite status and the open status of a business have a noticeable positive impact on user ratings, the overall explanatory power of the model is quite low, as indicated by the R² value. This suggests that other unexamined factors are likely influencing user ratings. Future research could explore additional variables, such as service quality or price, to gain further insights into the factors that influence users’ ratings.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>

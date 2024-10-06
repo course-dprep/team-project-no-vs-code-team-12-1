@@ -343,30 +343,30 @@ The **business_data** set consists of the following variables:
 
 The **user_data** consists of the following variables:
 
-| Variable | Description | Data Type |
+|      Variable      |                     Description                      | Data Type |
 |:-----------------:|:--------------------------------:|:-----------------:|
-| user_id | A unique character string as user identification | Character |
-| name | The user's first name | Character |
-| review_count | The number of reviews written by an individual user | Numeric |
-| yelping_since | Date when user joined Yelp | Character |
-| friends | An array of the user's friends as user id's | Character |
-| useful | Number of 'useful' votes send by user | Numeric |
-| funny | Number of 'funny' votes send by user | Numeric |
-| cool | Number of 'cool' votes send by user | Numeric |
-| fans | The number of fans a user has | Numeric |
-| elite | The years the user had an 'elite' status on Yelp | Numeric |
-| average_stars | Average rating of all reviews | Numeric |
-| compliment_hot | Number of 'hot' compliments received by the user | Numeric |
-| compliment_more | Number of 'more' compliments received by the user | Numeric |
-| compliment_profile | Number of 'profile' compliments received by the user | Numeric |
-| compliment_cute | Number of 'cute' compliments received by the user | Numeric |
-| compliment_list | Number of 'list' compliments received by the user | Numeric |
-| compliment_note | Number of 'note' compliments received by the user | Numeric |
-| compliment_plain | Number of 'plain' compliments received by the user | Numeric |
-| compliment_cool | Number of 'cool' compliments received by the user | Numeric |
-| compliment_funny | Number of 'funny' compliments received by the user | Numeric |
-| compliment_writer | Number of 'writer' compliments received by the user | Numeric |
-| compliment_photo | Number of 'photo' compliments received by the user | Numeric |
+|      user_id       |   A unique character string as user identification   | Character |
+|        name        |                The user's first name                 | Character |
+|    review_count    | The number of reviews written by an individual user  |  Numeric  |
+|   yelping_since    |              Date when user joined Yelp              | Character |
+|      friends       |     An array of the user's friends as user id's      | Character |
+|       useful       |        Number of 'useful' votes send by user         |  Numeric  |
+|       funny        |         Number of 'funny' votes send by user         |  Numeric  |
+|        cool        |         Number of 'cool' votes send by user          |  Numeric  |
+|        fans        |            The number of fans a user has             |  Numeric  |
+|       elite        |   The years the user had an 'elite' status on Yelp   |  Numeric  |
+|   average_stars    |            Average rating of all reviews             |  Numeric  |
+|   compliment_hot   |   Number of 'hot' compliments received by the user   |  Numeric  |
+|  compliment_more   |  Number of 'more' compliments received by the user   |  Numeric  |
+| compliment_profile | Number of 'profile' compliments received by the user |  Numeric  |
+|  compliment_cute   |  Number of 'cute' compliments received by the user   |  Numeric  |
+|  compliment_list   |  Number of 'list' compliments received by the user   |  Numeric  |
+|  compliment_note   |  Number of 'note' compliments received by the user   |  Numeric  |
+|  compliment_plain  |  Number of 'plain' compliments received by the user  |  Numeric  |
+|  compliment_cool   |  Number of 'cool' compliments received by the user   |  Numeric  |
+|  compliment_funny  |  Number of 'funny' compliments received by the user  |  Numeric  |
+| compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
+|  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
 
 ##### 2.1.2.3 review_data
 
@@ -854,7 +854,7 @@ takeout_data <- takeout_data %>%
 
 A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and the interaction between **Review Type** and **State Regions** on **User Star Ratings of Takeout Restaurants**. **Review Type** included two levels (Elite Review, Non-Elite Review) and **State Regions** types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
+```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
 
 ### Load necessary package
 library(car)
@@ -914,7 +914,7 @@ User ratings increased by **0.2315 stars** for users with elite status and by **
 
 In conclusion, while elite status and the open status of a business have a noticeable positive impact on user ratings, the overall explanatory power of the model is quite low, as indicated by the R² value. This suggests that other unexamined factors are likely influencing user ratings. Future research could explore additional variables, such as service quality or price, to gain further insights into the factors that influence users' ratings.
 
-```{multiple{r, eval=TRUE, echo=FALSE,results='markup'}
+```{r, eval=TRUE, echo=FALSE,results='markup'}
 ### Run Regression Analysis ###
 takeout_lm1 <- lm(
   stars_user ~ elite_review + review_count_user + fans + 
@@ -930,13 +930,13 @@ regression_summary <- summary(takeout_lm1)
 ### Display Regression Diagnostic Plots ###
 
 # Display Normal Q-Q Plot for Regression
-qqnorm(residuals(takeout_regression))
-qqline(residuals(takeout_regression), col = "red")
+qqnorm(residuals(takeout_lm1))
+qqline(residuals(takeout_lm1), col = "red")
 ```
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 # Display Residuals vs Fitted Plot
-plot(takeout_regression$fitted.values, residuals(takeout_regression),
+plot(takeout_lm1$fitted.values, residuals(takeout_lm1),
      xlab = "Fitted Values", ylab = "Residuals",
      main = "Residuals vs Fitted")
 abline(h = 0, col = "red")
