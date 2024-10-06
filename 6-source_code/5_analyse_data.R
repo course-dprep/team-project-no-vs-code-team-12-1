@@ -9,6 +9,7 @@ library(sjmisc)
 library(car)
 library(emmeans)
 library(effectsize)
+library(broom)
 
 ### Create Results Directory ###
 if (!dir.exists(here('8-results'))) {
@@ -134,6 +135,11 @@ plot(anova_results, which = 3)  # Scale-Location plot
 dev.off()
 
 ### Run Regression Analysis ###
+
+# Get descriptive values
+
+
+# run lm()
 takeout_lm1 <- lm(
   stars_user ~ elite_review + review_count_user + fans + 
     is_open,
@@ -141,6 +147,8 @@ takeout_lm1 <- lm(
 )
 
 vif(takeout_lm1)
+
+takeout_res1 <- augment(takeout_lm1)
 
 # Get Regression Summary
 regression1_summary <- summary(takeout_lm1)
