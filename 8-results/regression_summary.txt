@@ -15,7 +15,7 @@ review_count_user -8.680e-05  9.054e-06  -9.587  < 2e-16 ***
 fans               1.787e-04  3.129e-05   5.711 1.12e-08 ***
 is_open1           1.824e-01  6.114e-03  29.829  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 1.39 on 323851 degrees of freedom
 Multiple R-squared:  0.007397,	Adjusted R-squared:  0.007385 
