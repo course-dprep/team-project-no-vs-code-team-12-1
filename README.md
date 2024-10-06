@@ -145,9 +145,9 @@ A multiple linear regression was calculated to predict User Ratings (stars_user)
 
 Participants’ predicted user rating is equal to 3.59 + 0.2315 (elite_review) - 0.0000868 (review_count_user) + 0.0001787 (fans) + 0.1824 (is_open), where:
 
-elite_review is coded as 1 if the user has elite status and 0 otherwise,
+- elite_review is coded as 1 if the user has elite status and 0 otherwise,
 
-is_open is coded as 1 if the business is open and 0 if it is closed.
+- is_open is coded as 1 if the business is open and 0 if it is closed.
 
 User ratings increased by 0.2315 stars for users with elite status and by 0.1824 stars for businesses that are open. Both elite_review and is_open were significant predictors of user ratings (p < .001). While review_count_user had a small negative effect (with user ratings decreasing by 0.0000868 stars for each additional review written), and fans had a small positive effect (with user ratings increasing by 0.0001787 stars for each additional fan), their contributions to the model were also statistically significant.
 
@@ -239,6 +239,7 @@ install.packages("ggcorrplot")
 install.packages("sjPlot")
 install.packages("sjmisc")
 install.packages("gridExtra")
+install.packages("car")
 ```
 
 ## Running Instructions
