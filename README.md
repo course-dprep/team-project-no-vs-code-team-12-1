@@ -123,7 +123,39 @@ Figure 8 suggests that for businesses with low review counts, the difference in 
 ![Figure 9](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/relationship_fans_user_rating_faceted_by_region.png)
 
 #### Statistical Analysis
+##### Factorial ANOVA
+A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and the **interaction between Review Type and State Regions on User Star Ratings of Takeout Restaurants**. Review Type included two levels (Elite Review, Non-Elite Review) and State Regions types included four levels (Midwest, Northeast, South, and West). All effects were statistically significant at the .05 significance level.
 
+The **main effect** for **Review Type** was significant, F(1, 323848) = 1419,98, p < .001, with a small effect size, η2 = 0.004, 95% CI [0.00, 1.00], indicating a significant difference between the two review types. Specifically, the mean rating for non-elite reviewers (M = 3.74, SD = 1.49) was lower than that for elite reviewers (M = 3.95, SD = 1.05), suggesting that elite reviewers tend to give higher ratings.
+
+The **main effect** of **State Region** was significant, F(3, 323848) = 71.79, p < .001, with a smaller effect size, η2 = 0.0007, 95% CI [0.00, 1.00], indicating that there were significant differences in mean ratings across regions. Specifically, the mean ratings were as follows: Midwest (M = 3.81, SD = 1.38), Northeast (M = 3.73, SD = 1.38), South (M = 3.82, SD = 1.39), and West (M = 3.79, SD = 1.43).
+
+![Figure 10](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/8-results/anova_normal_qq_plot.png)
+
+![Figure 11](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/8-results/anova_scale_location_plot.png)
+
+Pairwise comparisons with Bonferroni adjustment revealed that the Northeast had significantly lower mean ratings compared to the Midwest (p < .001), South (p < .001), and West (p < .001). The South had significantly higher mean ratings compared to the Northeast (p < .001) and the West (p < .001), but not significantly different from the Midwest (p = .146). The Midwest and West were not significantly different (p = .062).
+
+The interaction effect of **Review Type x State Region** was also significant, F(3, 323848) - 12.29, p < .001, with a very small effect size, η2 = 0.0001, 95% CI [0.00, 1.00].
+
+These results indicate that both Review Type and State Region had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between the Review Type and State Region had a minimal influence on the results.
+
+##### Regression
+A multiple linear regression was calculated to predict User Ratings (stars_user) based on Elite Review Status (elite_review), Review Count (review_count_user), Number of Fans (fans), and whether the Business is Open (is_open). A significant regression equation was found, F(4, 323851) = 603.4, p < .001, with an R² of .007. This indicates that approximately 0.74% of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.
+
+Participants’ predicted user rating is equal to 3.59 + 0.2315 (elite_review) - 0.0000868 (review_count_user) + 0.0001787 (fans) + 0.1824 (is_open), where:
+
+elite_review is coded as 1 if the user has elite status and 0 otherwise,
+
+is_open is coded as 1 if the business is open and 0 if it is closed.
+
+User ratings increased by 0.2315 stars for users with elite status and by 0.1824 stars for businesses that are open. Both elite_review and is_open were significant predictors of user ratings (p < .001). While review_count_user had a small negative effect (with user ratings decreasing by 0.0000868 stars for each additional review written), and fans had a small positive effect (with user ratings increasing by 0.0001787 stars for each additional fan), their contributions to the model were also statistically significant.
+
+In conclusion, while elite status and the open status of a business have a noticeable positive impact on user ratings, the overall explanatory power of the model is quite low, as indicated by the R² value. This suggests that other unexamined factors are likely influencing user ratings. Future research could explore additional variables, such as service quality or price, to gain further insights into the factors that influence users’ ratings.
+
+![Figure 12](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/8-results/regression_normal_qq_plot.png)
+
+![Figure 13](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/8-results/regression_residuals_fitted_plot.png)
 
 ## Relevance of Analysis / Future Applications
 The analysis conducted in this study holds significant relevance for a diverse range of stakeholders, including take-out restaurant owners, online review platforms, consumers, and the academic community. By shedding light on the influence of elite Yelp users and the impact of location on restaurant ratings, the research addresses critical gaps in the current understanding of online consumer behavior within the niche of take-out dining.
