@@ -16,7 +16,7 @@ install.packages("knitr")
 install.packages("ggcorrplot")
 install.packages("sjPlot")
 install.packages("sjmisc")
-
+install.packages("car")
 
 # Install the gridExtra package
 install.packages("gridExtra")
