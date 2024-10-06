@@ -1139,6 +1139,31 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 </section>
 <section id="statistical-data-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="statistical-data-analysis">2.3.2 Statistical Data Analysis</h4>
+</section>
+<section id="factorial-anova" class="level4">
+<h4 class="anchored" data-anchor-id="factorial-anova">Factorial Anova</h4>
+<p>A Factorial ANOVA was conducted to compare the main effects of <strong>Review Type</strong> and <strong>State Regions</strong> and th einteraction between <strong>Review Type</strong> and <strong>State Regions</strong> on <strong>User Star Ratings of Takeout Restaurants</strong>. <strong>Review Type</strong> included two levels (Elite Review, Non-Elite Review) and <strong>State Regions</strong> types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'car'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    recode</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    some</code></pre>
+</div>
+</div>
+<p>The main effect for <strong>Review Type</strong> was significant, <strong>F</strong>(1, 323848) = 1419,98, <strong>p</strong> &lt; .001, with a small effect size, η2 = 0.004, 95% CI [0.00, 1.00], indicating a significant difference between the two review types. Specifically, the mean rating for non-elite reviewers (<strong>M</strong> = 3.74, <strong>SD</strong> = 1.49) was lower than that for elite reviewers (<strong>M</strong> = 3.95, <strong>SD</strong> = 1.05), suggesting that elite reviewers tend to give higher ratings.</p>
+<p>The main effect of <strong>State Region</strong> was significant, <strong>F</strong>(3, 323848) = 71.79, <strong>p</strong> &lt; .001, with a smaller effect size, η2 = 0.0007, 95% CI [0.00, 1.00], indicating that there were significant differences in mean ratings across regions. Specifically, the mean ratings were as follows: Midwest (<strong>M</strong> = 3.81, <strong>SD</strong> = 1.38), Northeast (<strong>M</strong> = 3.73, <strong>SD</strong> = 1.38), South (<strong>M</strong> = 3.82, <strong>SD</strong> = 1.39), and West (<strong>M</strong> = 3.79, <strong>SD</strong> = 1.43).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1157,6 +1182,13 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 </div>
 </div>
 </div>
+<p>Pairwise comparisons with Bonferroni adjustment revealed that the Northeast had significantly lower mean ratings compared to the Midwest (<strong>p</strong> &lt; .001), South (<strong>p</strong> &lt; .001), and West (<strong>p</strong> &lt; .001). The South had significantly higher mean ratings compared to the Northeast (<strong>p</strong> &lt; .001) and the West (<strong>p</strong> &lt; .001), but not significantly different from the Midwest (<strong>p</strong> = .146). The Midwest and West were not significantly different (<strong>p</strong> = .062).</p>
+<p>The interaction effect of <strong>Review Type</strong> <strong>x State Region</strong> was also significant, <strong>F</strong>(3, 323848) - 12.29, <strong>p</strong> &lt; .001, with a very small effect size, η2 = 0.0001, 95% CI [0.00, 1.00].</p>
+<p>These results indicate that both <strong>Review Type</strong> and <strong>State Region</strong> had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between <strong>Review Type</strong> and <strong>State Region</strong> had a minimal influence on the results.</p>
+</section>
+</section>
+<section id="regression-1" class="level3">
+<h3 class="anchored" data-anchor-id="regression-1">Regression</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1175,7 +1207,6 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 </section>
