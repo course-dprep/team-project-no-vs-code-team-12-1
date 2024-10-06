@@ -143,7 +143,7 @@ These results indicate that both Review Type and State Region had statistically 
 ##### Regression
 A multiple linear regression was calculated to predict User Ratings (stars_user) based on Elite Review Status (elite_review), Review Count (review_count_user), Number of Fans (fans), and whether the Business is Open (is_open). A significant regression equation was found, F(4, 323851) = 603.4, p < .001, with an R² of .007. This indicates that approximately 0.74% of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.
 
-Participants’ predicted user rating is equal to 3.59 + 0.2315 (elite_review) - 0.0000868 (review_count_user) + 0.0001787 (fans) + 0.1824 (is_open), where:
+Participants predicted user rating is equal to 3.59 + 0.2315 (elite_review) - 0.0000868 (review_count_user) + 0.0001787 (fans) + 0.1824 (is_open), where:
 
 - elite_review is coded as 1 if the user has elite status and 0 otherwise,
 
@@ -204,7 +204,6 @@ This repository contains a structured workflow for downloading, preparing, prepr
 │   ├── 5_analyse_data.R
 ├── 7-plots
 ├── 8-results
-├── 9-shiny_app
 ```
 
 ## Dependencies
