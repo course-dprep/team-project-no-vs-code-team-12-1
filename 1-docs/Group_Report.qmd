@@ -343,30 +343,30 @@ The **business_data** set consists of the following variables:
 
 The **user_data** consists of the following variables:
 
-|      Variable      |                     Description                      | Data Type |
+| Variable | Description | Data Type |
 |:-----------------:|:--------------------------------:|:-----------------:|
-|      user_id       |   A unique character string as user identification   | Character |
-|        name        |                The user's first name                 | Character |
-|    review_count    | The number of reviews written by an individual user  |  Numeric  |
-|   yelping_since    |              Date when user joined Yelp              | Character |
-|      friends       |     An array of the user's friends as user id's      | Character |
-|       useful       |        Number of 'useful' votes send by user         |  Numeric  |
-|       funny        |         Number of 'funny' votes send by user         |  Numeric  |
-|        cool        |         Number of 'cool' votes send by user          |  Numeric  |
-|        fans        |            The number of fans a user has             |  Numeric  |
-|       elite        |   The years the user had an 'elite' status on Yelp   |  Numeric  |
-|   average_stars    |            Average rating of all reviews             |  Numeric  |
-|   compliment_hot   |   Number of 'hot' compliments received by the user   |  Numeric  |
-|  compliment_more   |  Number of 'more' compliments received by the user   |  Numeric  |
-| compliment_profile | Number of 'profile' compliments received by the user |  Numeric  |
-|  compliment_cute   |  Number of 'cute' compliments received by the user   |  Numeric  |
-|  compliment_list   |  Number of 'list' compliments received by the user   |  Numeric  |
-|  compliment_note   |  Number of 'note' compliments received by the user   |  Numeric  |
-|  compliment_plain  |  Number of 'plain' compliments received by the user  |  Numeric  |
-|  compliment_cool   |  Number of 'cool' compliments received by the user   |  Numeric  |
-|  compliment_funny  |  Number of 'funny' compliments received by the user  |  Numeric  |
-| compliment_writer  | Number of 'writer' compliments received by the user  |  Numeric  |
-|  compliment_photo  |  Number of 'photo' compliments received by the user  |  Numeric  |
+| user_id | A unique character string as user identification | Character |
+| name | The user's first name | Character |
+| review_count | The number of reviews written by an individual user | Numeric |
+| yelping_since | Date when user joined Yelp | Character |
+| friends | An array of the user's friends as user id's | Character |
+| useful | Number of 'useful' votes send by user | Numeric |
+| funny | Number of 'funny' votes send by user | Numeric |
+| cool | Number of 'cool' votes send by user | Numeric |
+| fans | The number of fans a user has | Numeric |
+| elite | The years the user had an 'elite' status on Yelp | Numeric |
+| average_stars | Average rating of all reviews | Numeric |
+| compliment_hot | Number of 'hot' compliments received by the user | Numeric |
+| compliment_more | Number of 'more' compliments received by the user | Numeric |
+| compliment_profile | Number of 'profile' compliments received by the user | Numeric |
+| compliment_cute | Number of 'cute' compliments received by the user | Numeric |
+| compliment_list | Number of 'list' compliments received by the user | Numeric |
+| compliment_note | Number of 'note' compliments received by the user | Numeric |
+| compliment_plain | Number of 'plain' compliments received by the user | Numeric |
+| compliment_cool | Number of 'cool' compliments received by the user | Numeric |
+| compliment_funny | Number of 'funny' compliments received by the user | Numeric |
+| compliment_writer | Number of 'writer' compliments received by the user | Numeric |
+| compliment_photo | Number of 'photo' compliments received by the user | Numeric |
 
 ##### 2.1.2.3 review_data
 
@@ -852,7 +852,7 @@ takeout_data <- takeout_data %>%
 
 #### Factorial Anova
 
-A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and th einteraction between **Review Type** and **State Regions** on **User Star Ratings of Takeout Restaurants**. **Review Type** included two levels (Elite Review, Non-Elite Review) and **State Regions** types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.
+A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and the interaction between **Review Type** and **State Regions** on **User Star Ratings of Takeout Restaurants**. **Review Type** included two levels (Elite Review, Non-Elite Review) and **State Regions** types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
 
@@ -902,15 +902,28 @@ These results indicate that both **Review Type** and **State Region** had statis
 
 ### Regression
 
-```{r, eval=TRUE, echo=FALSE,results='markup'}
+A multiple linear regression was calculated to predict **User Ratings (stars_user)** based on **Elite Review Status (elite_review)**, **Review Count (review_count_user)**, **Number of Fans (fans)**, and **whether the Business is Open (is_open)**. A significant regression equation was found, **F(4, 323851) = 603.4**, p \< .001, with an R² of **.007**. This indicates that approximately **0.74%** of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.
+
+Participants' predicted user rating is equal to **3.59 + 0.2315** (elite_review) **- 0.0000868** (review_count_user) **+ 0.0001787** (fans) **+ 0.1824** (is_open), where:
+
+-   **elite_review** is coded as 1 if the user has elite status and 0 otherwise,
+
+-   **is_open** is coded as 1 if the business is open and 0 if it is closed.
+
+User ratings increased by **0.2315 stars** for users with elite status and by **0.1824 stars** for businesses that are open. Both **elite_review** and **is_open** were significant predictors of user ratings (p \< .001). While **review_count_user** had a small negative effect (with user ratings decreasing by **0.0000868 stars** for each additional review written), and **fans** had a small positive effect (with user ratings increasing by **0.0001787 stars** for each additional fan), their contributions to the model were also statistically significant.
+
+In conclusion, while elite status and the open status of a business have a noticeable positive impact on user ratings, the overall explanatory power of the model is quite low, as indicated by the R² value. This suggests that other unexamined factors are likely influencing user ratings. Future research could explore additional variables, such as service quality or price, to gain further insights into the factors that influence users' ratings.
+
+```{multiple{r, eval=TRUE, echo=FALSE,results='markup'}
 ### Run Regression Analysis ###
-takeout_regression <- glm(
-  stars_user ~ elite_review + review_count_user + fans + is_open + stars_business,
+takeout_lm1 <- lm(
+  stars_user ~ elite_review + review_count_user + fans + 
+    is_open,
   data = takeout_data
 )
 
 # Get Regression Summary
-regression_summary <- summary(takeout_regression)
+regression_summary <- summary(takeout_lm1)
 ```
 
 ```{r, eval=TRUE, echo=FALSE,results='markup'}
