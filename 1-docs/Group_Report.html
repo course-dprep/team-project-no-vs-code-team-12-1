@@ -166,8 +166,7 @@ ul.task-list li input[type="checkbox"] {
 │   ├── 4_plot_data.R
 │   ├── 5_analyse_data.R
 ├── 7-plots
-├── 8-results
-├── 9-shiny_app</code></pre>
+├── 8-results</code></pre>
 </section>
 </section>
 <section id="data-preparation-analysis" class="level2">
@@ -1045,6 +1044,26 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 <h3 class="anchored" data-anchor-id="analysis-and-deployment">2.3 <strong>Analysis and Deployment</strong></h3>
 <section id="exploratory-data-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="exploratory-data-analysis">2.3.1 Exploratory Data Analysis</h4>
+</section>
+<section id="uni-variate-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="uni-variate-analysis">2.3.1.1 Uni-variate Analysis</h4>
+<p>In this stage, we use <strong>box-plots</strong> and <strong>histograms</strong> to <strong>explore each variable</strong>, <strong>uncover patterns</strong>, and <strong>highlight outlines</strong> within the data set. Effective data visualization enables us to <strong>quickly identify trends, distributions, and issues</strong> that might not be apparent from numerical summaries alone.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../7-plots/figure_1_boxplots.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2.3.1.1 Boxplots</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../7-plots/figure_2_histograms.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2.3.1.1 Histograms</figcaption>
+</figure>
+</div>
+<p>Based on the histograms and boxplots, it is evident that the variables <code>review_count_user</code>, <code>fans</code>, and <code>review_count_business</code> contain a significant number of outliers. These outliers suggest that there are users and businesses with exceptionally high review counts or fan numbers, deviating far from the typical values in the dataset. Additionally, the distributions of these variables are heavily skewed to the right, indicating that the majority of the data points cluster toward lower values, with a long tail extending towards higher numbers. This right-skewed distribution suggests that while most users and businesses have relatively low review counts and fan numbers, a small subset exhibits much higher counts, likely contributing to the observed outliers.</p>
+</section>
+<section id="bi-variate-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="bi-variate-analysis">2.3.1.2 Bi-variate Analysis</h4>
 <p>In this stage, we use various <strong>visualization techniques</strong> such as <strong>bar charts, scatter plots, box plots, and histograms</strong> to <strong>explore relationships</strong> between variables, <strong>uncover patterns</strong>, and <strong>highlight trends</strong> within the data set. Effective data visualization enables us to <strong>quickly identify outliers, distributions, and correlations</strong> that might not be apparent from numerical summaries alone.</p>
 <p><strong>Plot 1:</strong> <strong>Distribution of User Ratings by Elite Status</strong></p>
 <p>The “<strong>Distribution of User Ratings by Elite Status</strong>” plot illustrates how <strong>ratings differ between elite and non-elite users</strong>. By <strong>comparing the distribution</strong> of ratings across these groups, we aim to determine whether <strong>elite users</strong>, who are often more <strong>experienced or influential</strong>, tend to <strong>rate businesses differently</strong> compared to regular users. This visualization helps us <strong>identify any biases or tendencies</strong> in rating behavior based on <strong>elite status</strong>, providing <strong>insights</strong> into how influential users perceive take-out restaurants compared to non-influential ones.</p>
@@ -1167,9 +1186,8 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 <p>The interaction effect of <strong>Review Type</strong> <strong>x State Region</strong> was also significant, <strong>F</strong>(3, 323848) - 12.29, <strong>p</strong> &lt; .001, with a very small effect size, η2 = 0.0001, 95% CI [0.00, 1.00].</p>
 <p>These results indicate that both <strong>Review Type</strong> and <strong>State Region</strong> had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between <strong>Review Type</strong> and <strong>State Region</strong> had a minimal influence on the results.</p>
 </section>
-</section>
-<section id="regression-1" class="level3">
-<h3 class="anchored" data-anchor-id="regression-1">Regression</h3>
+<section id="regression-1" class="level4">
+<h4 class="anchored" data-anchor-id="regression-1">Regression</h4>
 <p>A multiple linear regression was calculated to predict <strong>User Ratings (stars_user)</strong> based on <strong>Elite Review Status (elite_review)</strong>, <strong>Review Count (review_count_user)</strong>, <strong>Number of Fans (fans)</strong>, and <strong>whether the Business is Open (is_open)</strong>. A significant regression equation was found, <strong>F(4, 323851) = 603.4</strong>, p &lt; .001, with an R² of <strong>.007</strong>. This indicates that approximately <strong>0.74%</strong> of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.</p>
 <p>Participants’ predicted user rating is equal to <strong>3.59 + 0.2315</strong> (elite_review) <strong>- 0.0000868</strong> (review_count_user) <strong>+ 0.0001787</strong> (fans) <strong>+ 0.1824</strong> (is_open), where:</p>
 <ul>
@@ -1196,6 +1214,7 @@ $ date        &lt;dttm&gt; 2010-12-24 19:01:48, 2020-11-23 13:42:32, 2010-09-20 
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 </section>

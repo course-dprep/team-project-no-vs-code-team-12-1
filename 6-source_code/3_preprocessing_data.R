@@ -1,6 +1,7 @@
 ### Libraries ###
 library(tidyverse)
 library(here)
+library(ggplot2)
 
 ### Input ###
 
@@ -214,6 +215,77 @@ takeout_data <- sample_data %>%
 takeout_data <- takeout_data %>% select(-attributes)
 
 dir.create(here("3-final_data"), showWarnings = FALSE)
+
+colnames(takeout_data)
+
+# Uni-variate Analysis
+# Define the columns
+columns <- c('review_count_user', 'fans','review_count_business')
+
+# Function to display and save boxplots
+display_boxplots <- function(dataset, columns, save_path, figure_name) {
+  # Create the directory if it doesn't exist
+  if (!dir.exists(save_path)) {
+    dir.create(save_path, recursive = TRUE)
+  }
+  
+  # Set up a list to store plots
+  plot_list <- list()
+  
+  # Loop through each column to create boxplots
+  for (col in columns) {
+    p <- ggplot(data = dataset, aes_string(y = col)) +
+      geom_boxplot() +
+      theme_minimal() +
+      ggtitle(paste("Boxplot of", col))
+    plot_list[[col]] <- p
+  }
+  
+  # Arrange the plots in a grid and save the figure
+  grid_plot <- cowplot::plot_grid(plotlist = plot_list, ncol = 2)
+  ggsave(filename = file.path(save_path, figure_name), plot = grid_plot, width = 15, height = length(columns) * 2.5, dpi = 300)
+  
+  # Display the grid plot
+  print(grid_plot)
+}
+
+# Define the path to save the figure
+save_path <- '7-plots'
+
+# Call the function to display and save the graph
+display_boxplots(takeout_data, columns, save_path, 'figure_1_boxplots.png')
+
+# Function to display and save histograms
+display_histograms <- function(dataset, columns, save_path, figure_name) {
+  # Create the directory if it doesn't exist
+  if (!dir.exists(save_path)) {
+    dir.create(save_path, recursive = TRUE)
+  }
+  
+  # Set up a list to store plots
+  plot_list <- list()
+  
+  # Loop through each column to create histograms
+  for (col in columns) {
+    p <- ggplot(data = dataset, aes_string(x = col)) +
+      geom_histogram(binwidth = 10, fill = 'skyblue', color = 'black') +
+      theme_minimal() +
+      ggtitle(paste("Histogram of", col)) +
+      xlab(col) +
+      ylab('Frequency')
+    plot_list[[col]] <- p
+  }
+  
+  # Arrange the plots in a grid and save the figure
+  grid_plot <- cowplot::plot_grid(plotlist = plot_list, ncol = 2)
+  ggsave(filename = file.path(save_path, figure_name), plot = grid_plot, width = 15, height = length(columns) * 2.5, dpi = 300)
+  
+  # Display the grid plot
+  print(grid_plot)
+}
+
+# Call the function to display and save the graph
+display_histograms(takeout_data, columns, save_path, 'figure_2_histograms.png')
 
 ### Output ###
 write_csv(takeout_data, here("3-final_data", "takeout_data.csv"))
