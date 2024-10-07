@@ -111,7 +111,6 @@ To complement the initial **ANOVA** analysis, **regression analysis** will be us
 │   ├── 5_analyse_data.R
 ├── 7-plots
 ├── 8-results
-├── 9-shiny_app
 ```
 
 ## 2. Data Preparation & Analysis
@@ -729,6 +728,18 @@ kable(head(takeout_data), caption = "First Few Rows of Selected Takeout Data")
 
 #### 2.3.1 Exploratory Data Analysis
 
+#### 2.3.1.1 Uni-variate Analysis
+
+In this stage, we use **box-plots** and **histograms** to **explore each variable**, **uncover patterns**, and **highlight outlines** within the data set. Effective data visualization enables us to **quickly identify trends, distributions, and issues** that might not be apparent from numerical summaries alone.
+
+![Figure 2.3.1.1 Boxplots](../7-plots/figure_1_boxplots.png){fig-align="center"}
+
+![Figure 2.3.1.1 Histograms](../7-plots/figure_2_histograms.png){fig-align="center"}
+
+Based on the histograms and boxplots, it is evident that the variables `review_count_user`, `fans`, and `review_count_business` contain a significant number of outliers. These outliers suggest that there are users and businesses with exceptionally high review counts or fan numbers, deviating far from the typical values in the dataset. Additionally, the distributions of these variables are heavily skewed to the right, indicating that the majority of the data points cluster toward lower values, with a long tail extending towards higher numbers. This right-skewed distribution suggests that while most users and businesses have relatively low review counts and fan numbers, a small subset exhibits much higher counts, likely contributing to the observed outliers.
+
+#### 2.3.1.2 Bi-variate Analysis
+
 In this stage, we use various **visualization techniques** such as **bar charts, scatter plots, box plots, and histograms** to **explore relationships** between variables, **uncover patterns**, and **highlight trends** within the data set. Effective data visualization enables us to **quickly identify outliers, distributions, and correlations** that might not be apparent from numerical summaries alone.
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE,warning=FALSE}
@@ -900,7 +911,7 @@ The interaction effect of **Review Type** **x State Region** was also significan
 
 These results indicate that both **Review Type** and **State Region** had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between **Review Type** and **State Region** had a minimal influence on the results.
 
-### Regression
+#### Regression
 
 A multiple linear regression was calculated to predict **User Ratings (stars_user)** based on **Elite Review Status (elite_review)**, **Review Count (review_count_user)**, **Number of Fans (fans)**, and **whether the Business is Open (is_open)**. A significant regression equation was found, **F(4, 323851) = 603.4**, p \< .001, with an R² of **.007**. This indicates that approximately **0.74%** of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.
 

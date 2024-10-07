@@ -84,6 +84,16 @@ To complement the initial ANOVA analysis, **regression analysis** will be used t
 
 ### Result  
 #### Exploratory Analysis
+
+##### Univariate Analysis
+In this stage, we use box-plots and histograms to explore each variable, uncover patterns, and highlight outlines within the data set. Effective data visualization enables us to quickly identify trends, distributions, and issues that might not be apparent from numerical summaries alone.
+![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/figure_1_boxplots.png)
+
+![Figure 2](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/figure_2_histograms.png)
+
+Based on the histograms and boxplots, it is evident that the variables review_count_user, fans, and review_count_business contain a significant number of outliers. These outliers suggest that there are users and businesses with exceptionally high review counts or fan numbers, deviating far from the typical values in the dataset. Additionally, the distributions of these variables are heavily skewed to the right, indicating that the majority of the data points cluster toward lower values, with a long tail extending towards higher numbers. This right-skewed distribution suggests that while most users and businesses have relatively low review counts and fan numbers, a small subset exhibits much higher counts, likely contributing to the observed outliers.
+
+##### Bivariate Analysis
 **Distribution of User Ratings by Elite Review Status:** To understand how user ratings vary between elite and non-elite reviewers, we analyzed the distribution of stars_user across both groups. As shown in Figure 1, non-elite reviewers give significantly higher ratings than elite reviewers. Specifically, around 30,000 elite reviews have 5-star ratings, whereas over 100,000 non-elite reviews achieve the same. This suggests that non-elite users may have a more positive perception or are more generous in their evaluations.
 
 ![Figure 1](https://github.com/course-dprep/team-project-no-vs-code-team-12-1/blob/main/7-plots/distribution_user_ratings_by_elite_review.png)

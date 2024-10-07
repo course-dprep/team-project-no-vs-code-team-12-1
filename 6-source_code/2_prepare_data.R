@@ -27,14 +27,8 @@ review_data <- review_data %>%
 
 # Combining the data
 merge1 <- left_join(review_data, user_data, by = "user_id")
-
 merged_data <- left_join(merge1, business_data, by = "business_id")
 
-# Take sample of 50.000
-
-#set.seed(90)
-#sample_data <- merged_data %>% 
-#  slice_sample(n = 50000)
 
 ### Output ###
 
