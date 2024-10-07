@@ -215,12 +215,16 @@ takeout_data <- sample_data %>%
 takeout_data <- takeout_data %>% select(-attributes)
 
 dir.create(here("3-final_data"), showWarnings = FALSE)
+dir.create(here("7-plots"), showWarnings = FALSE)
 
 colnames(takeout_data)
 
 # Uni-variate Analysis
 # Define the columns
 columns <- c('review_count_user', 'fans','review_count_business')
+
+# Define the path to save the figure
+save_path <- '7-plots'
 
 # Function to display and save boxplots
 display_boxplots <- function(dataset, columns, save_path, figure_name) {
@@ -237,6 +241,7 @@ display_boxplots <- function(dataset, columns, save_path, figure_name) {
     p <- ggplot(data = dataset, aes_string(y = col)) +
       geom_boxplot() +
       theme_minimal() +
+      theme(panel.background = element_rect(fill = 'white', color = 'white')) +  # Set background to white
       ggtitle(paste("Boxplot of", col))
     plot_list[[col]] <- p
   }
@@ -248,9 +253,6 @@ display_boxplots <- function(dataset, columns, save_path, figure_name) {
   # Display the grid plot
   print(grid_plot)
 }
-
-# Define the path to save the figure
-save_path <- '7-plots'
 
 # Call the function to display and save the graph
 display_boxplots(takeout_data, columns, save_path, 'figure_1_boxplots.png')
@@ -270,6 +272,7 @@ display_histograms <- function(dataset, columns, save_path, figure_name) {
     p <- ggplot(data = dataset, aes_string(x = col)) +
       geom_histogram(binwidth = 10, fill = 'skyblue', color = 'black') +
       theme_minimal() +
+      theme(panel.background = element_rect(fill = 'white', color = 'white')) +  # Set background to white
       ggtitle(paste("Histogram of", col)) +
       xlab(col) +
       ylab('Frequency')
