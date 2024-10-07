@@ -4,10 +4,6 @@ library(here)
 library(googledrive)
 
 ### Authentication ###
-options(
-  gargle_oauth_email = "lyba.tho2412@gmail.com",
-  gargle_oauth_cache = here(".secrets")
-)
 
 drive_auth()
 
