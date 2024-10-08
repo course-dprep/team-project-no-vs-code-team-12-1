@@ -255,16 +255,16 @@ install.packages("car")
 To execute this study, the source code will be run in the correct sequence, ultimately producing the analysis results. You can run the ```Makefile``` by following these steps:
 
 1. **Clone the Repository:**
-   - Fork this repository and you will have the link ```https://github.com/{your username}/team-project-no-vs-code-team-12-1```
+   - Fork this repository and you will have the link ```https://github.com/{your username}/yelp-influencers-takeout-ratings```
    - Open GitBash in your preferred file location
    - Type
 ```
-git clone https://github.com/{your username}/team-project-no-vs-code-team-12-1
+git clone https://github.com/{your username}/yelp-influencers-takeout-ratings
 ```
 2. **Set the Working Directory:**
    - Type
 ```
-cd team-project-no-vs-code-team-12-1
+cd yelp-influencers-takeout-ratings
 ```
 3. **Run the Workflow:**
    - Open the Command Prompt (terminal) in the working directory
