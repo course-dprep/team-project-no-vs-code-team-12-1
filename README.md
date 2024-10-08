@@ -236,19 +236,20 @@ pip install os
 
 For R, make sure you have installed the following packages:
 ```{}
-install.packages("tidyverse")
 install.packages("here")
-install.packages("googledrive")
-install.packages("reticulate")
 install.packages("rstudioapi")
-install.packages("readr")
-install.packages("dplyr")
+install.packages(c("tidyverse", "googledrive", "readr", "dplyr"))
+install.packages("reticulate")
 install.packages("knitr")
 install.packages("ggcorrplot")
 install.packages("sjPlot")
 install.packages("sjmisc")
-install.packages("gridExtra")
 install.packages("car")
+install.packages("cowplot")
+install.packages("broom")
+install.packages("effectsize")
+install.packages("emmeans")
+install.packages("gridExtra")
 ```
 
 ## Running Instructions
