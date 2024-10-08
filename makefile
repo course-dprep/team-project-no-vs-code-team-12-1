@@ -31,4 +31,8 @@ packages: 6-source_code/0_install_packages.R
 
 # Clean command to remove files using R's unlink
 clean:
-	Rscript 6_clean.R
+	Rscript -e "unlink('2-temporary_data/*.csv', recursive = FALSE)"
+	Rscript -e "unlink('3-final_data/*.csv', recursive = FALSE)"
+	Rscript -e "unlink('7-plots/*', recursive = TRUE)"
+	Rscript -e "unlink('8-results/*', recursive = TRUE)"
+	Rscript -e "unlink('1-docs/*.html', recursive = FALSE)"

@@ -861,7 +861,7 @@ takeout_data <- takeout_data %>%
   )
 ```
 
-#### Factorial Anova
+##### Factorial Anova
 
 A Factorial ANOVA was conducted to compare the main effects of **Review Type** and **State Regions** and the interaction between **Review Type** and **State Regions** on **User Star Ratings of Takeout Restaurants**. **Review Type** included two levels (Elite Review, Non-Elite Review) and **State Regions** types included four levels (Midwest, Northeast, South, West). All effects were statistically significant at the .05 significance level.
 
@@ -911,7 +911,7 @@ The interaction effect of **Review Type** **x State Region** was also significan
 
 These results indicate that both **Review Type** and **State Region** had statistically significant, though small, effects on rating, with the Northeast region generally showing the lowest ratings, and elite reviewer giving slightly higher ratings overall. The interaction between **Review Type** and **State Region** had a minimal influence on the results.
 
-#### Regression
+##### Regression
 
 A multiple linear regression was calculated to predict **User Ratings (stars_user)** based on **Elite Review Status (elite_review)**, **Review Count (review_count_user)**, **Number of Fans (fans)**, and **whether the Business is Open (is_open)**. A significant regression equation was found, **F(4, 323851) = 603.4**, p \< .001, with an R² of **.007**. This indicates that approximately **0.74%** of the variance in user ratings is explained by the variables included in the model, suggesting that other factors not included in the model may also contribute significantly to predicting user ratings.
 
