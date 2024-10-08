@@ -18,6 +18,9 @@ install.packages("sjPlot")
 install.packages("sjmisc")
 install.packages("car")
 install.packages("cowplot")
+install.packages("broom")
+install.packages("effectsize")
+install.packages("emmeans")
 
 # Install the gridExtra package
 install.packages("gridExtra")
