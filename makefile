@@ -29,7 +29,6 @@ packages: 6-source_code/0_install_packages.R
 1-docs/Group_Report.html: 1-docs/Group_Report.qmd 2-temporary_data/business_data.csv 2-temporary_data/user_data.csv 2-temporary_data/review_data.csv 2-temporary_data/sample_data.csv 3-final_data/takeout_data.csv 7-plots 8-results | 1-docs
 	quarto render "1-docs/Group_Report.qmd" --to html
 
-# Clean command to remove .csv files in specified directories
+# Clean command to remove files using R's unlink
 clean:
-	rm -f 2-temporary_data/*.csv 3-final_data/*.csv
-	rm -rf 7-plots/* 8-results/* 1-docs/*.html
+	Rscript 6_clean.R
