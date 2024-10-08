@@ -17,6 +17,7 @@ install.packages("ggcorrplot")
 install.packages("sjPlot")
 install.packages("sjmisc")
 install.packages("car")
+install.packages("cowplot")
 
 # Install the gridExtra package
 install.packages("gridExtra")
